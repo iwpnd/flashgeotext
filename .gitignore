@@ -6,7 +6,7 @@ flash-geotext.code-workspace
 *.ipynb
 scripts/
 .DS_Store
-
+.vscode/
 
 # C extensions
 *.so
