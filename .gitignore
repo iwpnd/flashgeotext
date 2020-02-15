@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 flash-geotext.code-workspace
+*.ipynb
 
 # C extensions
 *.so

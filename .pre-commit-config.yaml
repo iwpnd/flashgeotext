@@ -1,0 +1,24 @@
+repos:
+    -   repo: https://github.com/pre-commit/pre-commit-hooks
+        rev: v2.3.0
+        hooks:
+        -   id: check-yaml
+        -   id: end-of-file-fixer
+        -   id: trailing-whitespace
+        -   id: check-json
+        -   id: check-added-large-files
+        -   id: check-ast
+    -   repo: https://github.com/psf/black
+        rev: 19.3b0
+        hooks:
+        -   id: black
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v1.2.3
+      hooks:
+          - id: flake8
+            args: ["--ignore=E203,W503,E501"]
+    -   repo: https://github.com/asottile/reorder_python_imports
+        rev: v1.4.0
+        hooks:
+        -   id: reorder-python-imports
+            language_version: python3
