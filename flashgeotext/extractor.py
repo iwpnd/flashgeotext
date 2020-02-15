@@ -37,9 +37,13 @@ class DemoData(object):
             return list(json.loads(f.read()).keys())
 
 
-class Extractor(object):
-    cities: KeywordProcessor = KeywordProcessor
-    countries: KeywordProcessor = KeywordProcessor
+class Extractor:
+    cities: KeywordProcessor = KeywordProcessor(case_sensitive=True)
+    countries: KeywordProcessor = KeywordProcessor(case_sensitive=True)
 
-    def __init__(self):
-        pass
+    def __init__(self, demo_data: bool = False):
+
+        if demo_data:
+            demodata = DemoData()
+            self.cities.add_keywords_from_dict(keyword_dict=demodata.cities)
+            self.countries.add_keywords_from_dict(keyword_dict=demodata.countries)

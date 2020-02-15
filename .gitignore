@@ -5,6 +5,8 @@ __pycache__/
 flash-geotext.code-workspace
 *.ipynb
 scripts/
+.DS_Store
+
 
 # C extensions
 *.so
