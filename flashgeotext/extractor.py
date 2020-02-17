@@ -10,27 +10,30 @@ class Alphabets(object):
     pass
 
 
-class DemoData(object):
+class LookupData(object):
     cities: dict = {}
     countries: dict = {}
 
-    def load(self) -> None:
+    def __init__(self, use_demo_data: bool = True):
+        if use_demo_data:
+            self.cities = self._load_data_from_file(file=DEMODATA_CITIES)
+            self.countries = self._load_data_from_file(file=DEMODATA_COUNTRIES)
 
-        self.cities = self._load_data_dict(file=DEMODATA_CITIES)
-        self.countries = self._load_data_dict(file=DEMODATA_COUNTRIES)
-
-    def _load_data_dict(self, file: str) -> dict:
+    def _load_data_from_file(self, file: str) -> dict:
         with open(file, "r", encoding="utf-8") as f:
             return json.loads(f.read())
 
 
-class Extractor:
-    cities: KeywordProcessor = KeywordProcessor(case_sensitive=True)
-    countries: KeywordProcessor = KeywordProcessor(case_sensitive=True)
+class Extractor(object):
+    cities_processor: KeywordProcessor = KeywordProcessor(case_sensitive=True)
+    countries_processor: KeywordProcessor = KeywordProcessor(case_sensitive=True)
 
-    def __init__(self, demo_data: bool = False):
+    def __init__(self):
+        self.build_cities_processor()
+        self.build_countries_processor()
 
-        if demo_data:
-            demodata = DemoData()
-            self.cities.add_keywords_from_dict(keyword_dict=demodata.cities)
-            self.countries.add_keywords_from_dict(keyword_dict=demodata.countries)
+    def build_cities_processor(self):
+        raise NotImplementedError
+
+    def build_countries_processor(self):
+        raise NotImplementedError

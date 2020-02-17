@@ -1,5 +1,5 @@
-from flashgeotext.extractor import DemoData
 from flashgeotext.extractor import Extractor
+from flashgeotext.extractor import LookupData
 
 
 def test_extractor_import():
@@ -9,16 +9,15 @@ def test_extractor_import():
     assert hasattr(ext, "countries")
 
 
-def test_demodata_content():
-    demodata = DemoData()
+def test_lookupdata_content():
+    lookupdata = LookupData()
 
-    assert hasattr(demodata, "cities")
-    assert hasattr(demodata, "countries")
+    assert hasattr(lookupdata, "cities")
+    assert hasattr(lookupdata, "countries")
 
 
-def test_demodata_load_data():
-    demodata = DemoData()
-    demodata.load()
+def test_lookupdata_load_data():
+    lookupdata = LookupData(use_demo_data=True)
 
-    assert demodata.cities
-    assert demodata.countries
+    assert lookupdata.cities
+    assert lookupdata.countries
