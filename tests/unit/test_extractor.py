@@ -14,3 +14,11 @@ def test_demodata_content():
 
     assert hasattr(demodata, "cities")
     assert hasattr(demodata, "countries")
+
+
+def test_demodata_load_data():
+    demodata = DemoData()
+    demodata.load()
+
+    assert demodata.cities
+    assert demodata.countries
