@@ -14,10 +14,10 @@ class Extractor(object):
     _cities_processor: KeywordProcessor = KeywordProcessor(case_sensitive=True)
     _countries_processor: KeywordProcessor = KeywordProcessor(case_sensitive=True)
 
-    def extract(self, input_text: str):
+    def extract(self, input_text: str, span_info: bool = True):
         return (
-            self._cities_processor.extract_keywords(input_text),
-            self._countries_processor.extract_keywords(input_text),
+            self._cities_processor.extract_keywords(input_text, span_info=span_info),
+            self._countries_processor.extract_keywords(input_text, span_info=span_info),
         )
 
 
@@ -34,20 +34,20 @@ class GeoText(Extractor):
             self.build_cities_processor()
             self.build_countries_processor()
 
-    def build(self):
+    def build(self) -> None:
         self._flush_processor()
         self.build_cities_processor()
         self.build_countries_processor()
 
-    def build_cities_processor(self):
+    def build_cities_processor(self) -> None:
         if self.cities:
             self._cities_processor.add_keywords_from_dict(self.cities)
 
-    def build_countries_processor(self):
+    def build_countries_processor(self) -> None:
         if self.countries:
             self._countries_processor.add_keywords_from_dict(self.countries)
 
-    def _flush_processor(self):
+    def _flush_processor(self) -> None:
         self._cities_processor.keyword_trie_dict = dict()
         self._cities_processor._terms_in_trie = 0
         self._countries_processor.keyword_trie_dict = dict()

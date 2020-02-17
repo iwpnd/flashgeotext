@@ -2,7 +2,12 @@ Extractor:
     ✔ write extractor class with KeywordProcessor globals for now @done(20-02-17 13:49)
     ✔ write test for extract method in Extractor @done(20-02-17 14:29)
     ✔ add extract method to Extractor @done(20-02-17 14:29)
-    ☐ refactor, so extract actually extracts content
+    ✔ refactor, so extract actually extracts content @done(20-02-17 15:45)
+    ☐ write test to check if extract returns counts and span_info properly
+    ☐ refactor extract so it returns counts and span_info properly
+
+Dataclass:
+    ☐ maybe have a Class per KeywordProcessor to pass around?
 
 
 GeoLookup:
