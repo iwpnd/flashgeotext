@@ -1,23 +1,24 @@
+import pytest
+
 from flashgeotext.extractor import Extractor
-from flashgeotext.extractor import LookupData
+from flashgeotext.extractor import GeoLookup
 
 
 def test_extractor_import():
-    ext = Extractor()
-    assert ext
-    assert hasattr(ext, "cities")
-    assert hasattr(ext, "countries")
+    with pytest.raises(NotImplementedError):
+        ext = Extractor()
+        assert ext
 
 
 def test_lookupdata_content():
-    lookupdata = LookupData()
+    lookupdata = GeoLookup()
 
     assert hasattr(lookupdata, "cities")
     assert hasattr(lookupdata, "countries")
 
 
 def test_lookupdata_load_data():
-    lookupdata = LookupData(use_demo_data=True)
+    lookupdata = GeoLookup()
 
     assert lookupdata.cities
     assert lookupdata.countries
