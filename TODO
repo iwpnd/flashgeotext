@@ -1,5 +1,9 @@
 Extractor:
     ✔ write extractor class with KeywordProcessor globals for now @done(20-02-17 13:49)
+    ✔ write test for extract method in Extractor @done(20-02-17 14:29)
+    ✔ add extract method to Extractor @done(20-02-17 14:29)
+    ☐ refactor, so extract actually extracts content
+
 
 GeoLookup:
     ✔ build keywordprocessors with demo data by default @done(20-02-17 13:49)

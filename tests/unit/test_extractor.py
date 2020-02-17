@@ -14,7 +14,7 @@ def test_extractor_init():
 def test_extractor_extract(geotext_demodata):
     geotext = geotext_demodata
 
-    assert geotext.extract("I love Berlin")
+    assert geotext.extract("I love Berlin, Germany") == (["Berlin"], ["Germany"])
 
 
 def test_geolookup_demo_data(geotext_demodata):

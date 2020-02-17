@@ -15,7 +15,10 @@ class Extractor(object):
     _countries_processor: KeywordProcessor = KeywordProcessor(case_sensitive=True)
 
     def extract(self, input_text: str):
-        return "works"
+        return (
+            self._cities_processor.extract_keywords(input_text),
+            self._countries_processor.extract_keywords(input_text),
+        )
 
 
 class GeoText(Extractor):
