@@ -7,8 +7,8 @@ from flashgeotext.extractor import GeoText
 def test_extractor_init():
     ext = Extractor()
 
-    assert hasattr(ext, "cities_processor")
-    assert hasattr(ext, "countries_processor")
+    assert hasattr(ext, "_cities_processor")
+    assert hasattr(ext, "_countries_processor")
 
 
 def test_extractor_extract(geotext_demodata):
@@ -21,9 +21,9 @@ def test_geolookup_demo_data(geotext_demodata):
     geotext = geotext_demodata
 
     assert geotext.cities
-    assert geotext.cities_processor
+    assert geotext._cities_processor
     assert geotext.countries
-    assert geotext.countries_processor
+    assert geotext._countries_processor
 
 
 def test_geolookup_no_demo_data_and_empty_processor():
@@ -31,8 +31,8 @@ def test_geolookup_no_demo_data_and_empty_processor():
 
     assert not geolookup_empty.cities
     assert not geolookup_empty.countries
-    assert len(geolookup_empty.countries_processor) == 0
-    assert len(geolookup_empty.cities_processor) == 0
+    assert len(geolookup_empty._countries_processor) == 0
+    assert len(geolookup_empty._cities_processor) == 0
 
 
 @pytest.mark.parametrize(
@@ -68,5 +68,5 @@ def test_geolookup_manual_data(
 
     geolookup.build()
 
-    assert len(geolookup.cities_processor) == len_cities_processor
-    assert len(geolookup.countries_processor) == len_countries_processor
+    assert len(geolookup._cities_processor) == len_cities_processor
+    assert len(geolookup._countries_processor) == len_countries_processor

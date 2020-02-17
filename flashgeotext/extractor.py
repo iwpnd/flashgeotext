@@ -11,8 +11,8 @@ class Alphabets(object):
 
 
 class Extractor(object):
-    cities_processor: KeywordProcessor = KeywordProcessor(case_sensitive=True)
-    countries_processor: KeywordProcessor = KeywordProcessor(case_sensitive=True)
+    _cities_processor: KeywordProcessor = KeywordProcessor(case_sensitive=True)
+    _countries_processor: KeywordProcessor = KeywordProcessor(case_sensitive=True)
 
     def extract(self, input_text: str):
         return "works"
@@ -38,17 +38,17 @@ class GeoText(Extractor):
 
     def build_cities_processor(self):
         if self.cities:
-            self.cities_processor.add_keywords_from_dict(self.cities)
+            self._cities_processor.add_keywords_from_dict(self.cities)
 
     def build_countries_processor(self):
         if self.countries:
-            self.countries_processor.add_keywords_from_dict(self.countries)
+            self._countries_processor.add_keywords_from_dict(self.countries)
 
     def _flush_processor(self):
-        self.cities_processor.keyword_trie_dict = dict()
-        self.cities_processor._terms_in_trie = 0
-        self.countries_processor.keyword_trie_dict = dict()
-        self.countries_processor._terms_in_trie = 0
+        self._cities_processor.keyword_trie_dict = dict()
+        self._cities_processor._terms_in_trie = 0
+        self._countries_processor.keyword_trie_dict = dict()
+        self._countries_processor._terms_in_trie = 0
 
 
 def load_data_from_file(file: str) -> dict:
