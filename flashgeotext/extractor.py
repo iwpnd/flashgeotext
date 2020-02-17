@@ -14,8 +14,11 @@ class Extractor(object):
     cities_processor: KeywordProcessor = KeywordProcessor(case_sensitive=True)
     countries_processor: KeywordProcessor = KeywordProcessor(case_sensitive=True)
 
+    def extract(self, input_text: str):
+        return "works"
 
-class GeoLookup(Extractor):
+
+class GeoText(Extractor):
     cities: dict = {}
     countries: dict = {}
 

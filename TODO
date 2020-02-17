@@ -1,0 +1,7 @@
+Extractor:
+    ✔ write extractor class with KeywordProcessor globals for now @done(20-02-17 13:49)
+
+GeoLookup:
+    ✔ build keywordprocessors with demo data by default @done(20-02-17 13:49)
+    ✔ make sure that user can also add her own data @done(20-02-17 13:49)
+    ✔ test init with multiple inputs using pytest.mark.parametrize @done(20-02-17 13:49)
