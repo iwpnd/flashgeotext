@@ -1,6 +1,11 @@
+import json
+
 from flashtext import KeywordProcessor
 from loguru import logger
 from pydantic import BaseModel
+
+from flashgeotext.settings import DEMODATA_CITIES
+from flashgeotext.settings import DEMODATA_COUNTRIES
 
 
 class LookupDuplicateError(Exception):
@@ -12,7 +17,7 @@ class LookupData(BaseModel):
     data: dict
 
 
-class LookupDataProcessor:
+class LookupDataPool:
     """
     """
 
@@ -34,7 +39,18 @@ class LookupDataProcessor:
             del self.pool[lookup_to_remove]
             logger.debug(f"{lookup_to_remove} removed from pool")
 
+    def _add_demo_data(self):
+        cities = LookupData(
+            name="cities", data=load_data_from_file(file=DEMODATA_CITIES)
+        )
+        countries = LookupData(
+            name="countries", data=load_data_from_file(file=DEMODATA_COUNTRIES)
+        )
+        self.add(cities)
+        self.add(countries)
+        logger.debug(f"demo data loaded for: {list(self.pool.keys())}")
 
-class GeoText(LookupDataProcessor):
-    def __init__(self):
-        pass
+
+def load_data_from_file(file: str) -> dict:
+    with open(file, "r", encoding="utf-8") as f:
+        return json.loads(f.read())

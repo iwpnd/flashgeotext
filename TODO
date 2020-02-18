@@ -3,5 +3,6 @@ DataclassApproach:
     ✔ LookupData processor with .add() method to add LookupData instances to a dictionary of KeywordProcessors @done(20-02-18 08:54)
     ✔ validate if LookupData has already been added to LookupDataProcessor.pool, add update flag to let the user update the pool @done(20-02-18 08:55)
     ✔ add remove method to LookupDataProcessor @done(20-02-18 13:27)
+    ☐ add demo data method
     ☐ Extractor to extract LookupData from an input text
     ☐ Extractor should count the occurances, add span_info and update a result dictionary to be returned
