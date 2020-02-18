@@ -12,6 +12,10 @@ class LookupDuplicateError(Exception):
     pass
 
 
+class MissingLookupDataError(Exception):
+    pass
+
+
 class LookupData(BaseModel):
     name: str
     data: dict

@@ -1,5 +1,7 @@
 import pytest
 
+from flashgeotext.geotext import GeoText
+
 
 @pytest.fixture
 def test_data_cities():
@@ -12,3 +14,8 @@ def test_data_countries():
         "Germany": ["Germany", "Deutschland"],
         "Netherlands": ["The Netherlands", "Netherlands", "Holland"],
     }
+
+
+@pytest.fixture
+def geotext():
+    return GeoText(use_demo_data=True)
