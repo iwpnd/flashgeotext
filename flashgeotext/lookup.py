@@ -29,6 +29,9 @@ class LookupDataPool:
         self.pool: dict = {}
 
     def add(self, lookup: LookupData, update: bool = False) -> None:
+        if not isinstance(lookup, LookupData):
+            raise TypeError(f"lookup has to be instance of LookupData")
+
         if lookup.name in self.pool and not update:
             raise LookupDuplicateError(
                 f"'{lookup.name}' has already been added. Set update=True to update"

@@ -9,7 +9,7 @@ class GeoText(LookupDataPool):
         if use_demo_data:
             self._add_demo_data()
 
-    def extract(self, input_text: str, span_info: bool = True):
+    def extract(self, input_text: str, span_info: bool = True) -> dict:
         if not self.pool:
             raise MissingLookupDataError(
                 "Empty LookupDataPool. use .add(LookupData) to add data."

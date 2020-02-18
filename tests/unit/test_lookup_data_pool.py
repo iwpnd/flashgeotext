@@ -43,6 +43,15 @@ def test_lookup_data_pool_duplicate_data(test_data_cities):
         processor.add(lookup)
 
 
+def test_lookup_data_pool_add_invalid_lookup(test_data_cities):
+    lookup = {"test": ["test", "test2"]}
+
+    processor = LookupDataPool()
+
+    with pytest.raises(TypeError):
+        processor.add(lookup)
+
+
 def test_lookup_data_pool_duplicate_data_update_true(test_data_cities):
     lookup = LookupData(name="cities", data=test_data_cities)
 
