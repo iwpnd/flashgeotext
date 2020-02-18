@@ -1,10 +1,14 @@
 import pytest
 
-from flashgeotext.extractor import GeoText
+
+@pytest.fixture
+def test_data_cities():
+    return {"Berlin": ["Berlin", "Dickes B"], "Hamburg": ["Hamburg", "Dickes H"]}
 
 
 @pytest.fixture
-def geotext_demodata():
-    geotext_demodata = GeoText()
-
-    return geotext_demodata
+def test_data_countries():
+    return {
+        "Germany": ["Germany", "Deutschland"],
+        "Netherlands": ["The Netherlands", "Netherlands", "Holland"],
+    }
