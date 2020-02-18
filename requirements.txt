@@ -1,1 +1,2 @@
-flashtext
+flashtext==2.7
+loguru==0.4.1
