@@ -3,6 +3,7 @@ from pydantic import ValidationError
 
 from flashgeotext.lookup import LookupData
 from flashgeotext.lookup import LookupDataProcessor
+from flashgeotext.lookup import LookupDuplicateError
 
 
 def test_lookup_data(test_data_cities):
@@ -38,3 +39,13 @@ def test_lookup_data_processor_pool(test_data_cities):
     processor.add(lookup)
 
     assert processor.pool[lookup.name]
+
+
+def test_lookup_data_processor_pool_duplicate_data(test_data_cities):
+    lookup = LookupData(name="cities", data=test_data_cities)
+
+    processor = LookupDataProcessor()
+    processor.add(lookup)
+
+    with pytest.raises(LookupDuplicateError):
+        processor.add(lookup)
