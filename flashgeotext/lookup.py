@@ -7,4 +7,5 @@ class LookupData(BaseModel):
 
 
 class LookupDataProcessor:
-    pass
+    def add(self, data: LookupData) -> None:
+        pass

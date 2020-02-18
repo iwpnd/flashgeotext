@@ -1,16 +1,5 @@
-Extractor:
-    ✔ write extractor class with KeywordProcessor globals for now @done(20-02-17 13:49)
-    ✔ write test for extract method in Extractor @done(20-02-17 14:29)
-    ✔ add extract method to Extractor @done(20-02-17 14:29)
-    ✔ refactor, so extract actually extracts content @done(20-02-17 15:45)
-    ☐ write test to check if extract returns counts and span_info properly
-    ☐ refactor extract so it returns counts and span_info properly
-
-Dataclass:
-    ☐ maybe have a Class per KeywordProcessor to pass around?
-
-
-GeoLookup:
-    ✔ build keywordprocessors with demo data by default @done(20-02-17 13:49)
-    ✔ make sure that user can also add her own data @done(20-02-17 13:49)
-    ✔ test init with multiple inputs using pytest.mark.parametrize @done(20-02-17 13:49)
+DataclassApproach:
+    ☐ LookupData class with .name and .data, validated with pydantic
+    ☐ LookupData processor with .add() method to add LookupData instances to a dictionary of KeywordProcessors
+    ☐ Extractor to extract LookupData from an input text
+    ☐ Extractor should count the occurances, add span_info and update a result dictionary to be returned
