@@ -3,6 +3,7 @@ import json
 from flashtext import KeywordProcessor
 from loguru import logger
 from pydantic import BaseModel
+from pydantic import StrictStr
 
 from flashgeotext.settings import DEMODATA_CITIES
 from flashgeotext.settings import DEMODATA_COUNTRIES
@@ -17,7 +18,7 @@ class MissingLookupDataError(Exception):
 
 
 class LookupData(BaseModel):
-    name: str
+    name: StrictStr
     data: dict
 
 
