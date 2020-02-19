@@ -86,6 +86,15 @@ def test_geotext_extract_with_count_span_info_false(geotext):
             ["Porto Alegre", "Rio Grande", "Santa Catarina", "Curitiba", "Paraná"],
             id="south brazil",
         ),
+        pytest.param(
+            6,
+            """A high-speed passenger train derailed in the early hours of Thursday morning near Milan, northern Italy.
+            Officials said that the train was traveling at 180 mph when the engine car derailed,
+            separated from the train, and slammed into a railroad building. The train was travelling to
+            Bologna, with 33 people on board. Two railway workers were killed, and 27 people were injured.""",
+            ["Milano", "Bologna"],
+            id="english1-synonym",
+        ),
     ],
 )
 def test_geotext_extract_cities(nr, text, expected_cities, geotext):
@@ -103,7 +112,7 @@ def test_geotext_extract_cities(nr, text, expected_cities, geotext):
             to decrease by 3 percent this year. This amounts to the
             total coal use by Germany, UK, and Spain combined.""",
             ["Germany", "United Kingdom", "Spain"],
-            id="english1",
+            id="english1-synonym",
         ),
         pytest.param(
             2,
@@ -111,7 +120,17 @@ def test_geotext_extract_cities(nr, text, expected_cities, geotext):
             to cut tariffs on $75 billion worth of goods that the country
             imports from the US.""",
             ["China", "United States"],
-            id="english2",
+            id="english2-synonym",
+        ),
+        pytest.param(
+            2,
+            """Israel wants to take a part of Palestine’s area. Palestine is not happy about it.
+            It is not good for the power of Palestine. People in Palestine are angry.
+            Palestine is inside Israel if Israel takes the area.
+            The US makes a new plan for peace for Israel and Palestine.
+            The US agrees with Israel. The US supports Israel´s plan to take a part of Palestine.""",
+            ["Palestine", "United States", "Israel"],
+            id="english3-synonym",
         ),
     ],
 )
