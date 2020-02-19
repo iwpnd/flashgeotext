@@ -30,3 +30,19 @@ def test_lookup_data_raises(id, name, data, expectation):
         lookup = LookupData(name=name, data=data)
 
         assert isinstance(lookup, LookupData)
+
+
+@pytest.mark.parametrize(
+    "id, name, data, error_count",
+    [
+        (1, "cities", {"Berlin": "Berlin"}, 1),
+        (2, "cities", {"Berlin": ["Dickes B"]}, 1),
+        (2, "cities", {"Berlin": "Hamburg"}, 2),
+    ],
+)
+def test_lookup_data_validate(id, name, data, error_count):
+    lookup = LookupData(name=name, data=data)
+
+    validation = lookup.validate()
+
+    assert validation["error_count"] == error_count

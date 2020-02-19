@@ -1,15 +1,27 @@
-DataclassApproach:
-    ✔ LookupData class with .name and .data, validated with pydantic @done(20-02-18 08:54)
-    ✔ LookupData processor with .add() method to add LookupData instances to a dictionary of KeywordProcessors @done(20-02-18 08:54)
-    ✔ validate if LookupData has already been added to LookupDataProcessor.pool, add update flag to let the user update the pool @done(20-02-18 08:55)
-    ✔ add remove method to LookupDataProcessor @done(20-02-18 13:27)
-    ✔ add demo data method @done(20-02-18 14:30)
-    ✔ Extractor to extract LookupData from an input text @done(20-02-18 15:36)
-    ✔ Extractor should count the occurances, add span_info and update a result dictionary to be returned @done(20-02-18 15:49)
-        ✔ optionally be able to set, whether span_info is returned or not @done(20-02-18 15:49)
-    ☐ handle alphabets
+LookupData:
+✔ LookupData class with .name and .data, validated with pydantic @done(20-02-18 08:54)
+✔ see if pytest.raises(ValidationError) @done(20-02-19 09:13)
+✘ use custom validator to check .data @cancelled(20-02-19 09:13)
+☐ since a pydantic validator on the input would be too expensive, add an optional validate method
+☐ use .validate() to write tests to validate demo_data
 
+LookupDataPool:
+✔ LookupDataPool with .add() method to add LookupData instances to a dictionary of KeywordProcessors @done(20-02-18 08:54)
+✔ validate if LookupData has already been added to LookupDataPool.pool, add update flag to let the user update the pool @done(20-02-18 08:55)
+✔ add remove method to LookupDataPool @done(20-02-18 13:27)
+
+GeoText:
+✔ add demo data method @done(20-02-18 14:30)
+✔ Extractor to extract LookupData from an input text @done(20-02-18 15:36)
+✔ Extractor should count the occurances, add span_info and update a result dictionary to be returned @done(20-02-18 15:49)
+    ✔ optionally be able to set, whether span_info is returned or not @done(20-02-18 15:49)
+☐ handle different alphabets as non_word_boundaries
+    ☐ maybe add toponym?
+
+General:
 ☐ docs
 ☐ readme
 ☐ version
-☐ travis.yml
+☐ travis.yml or github actions
+☐ release to testpypi
+☐ release to pypi

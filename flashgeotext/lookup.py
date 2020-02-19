@@ -21,6 +21,32 @@ class LookupData(BaseModel):
     name: StrictStr
     data: dict
 
+    def validate(self) -> dict:
+        validation = {}
+        validation["status"] = "No errors detected"
+        validation["error_count"] = 0
+        validation["errors"] = {}
+
+        for key, value in self.data.items():
+            if not isinstance(value, list):
+                validation["errors"][key] = [f"data[{key}] is not a list of synonyms"]
+                validation["error_count"] = validation["error_count"] + 1
+
+            if key not in value:
+                if key in validation["errors"]:
+                    validation["errors"][key] = validation["errors"][key] + [
+                        f"{key} missing in list of synonyms"
+                    ]
+                else:
+                    validation["errors"][key] = [f"{key} missing in list of synonyms"]
+
+                validation["error_count"] = validation["error_count"] + 1
+
+        if validation["error_count"] > 0:
+            validation["status"] = f"Found {validation['error_count']} errors"
+
+        return validation
+
 
 class LookupDataPool:
     """
