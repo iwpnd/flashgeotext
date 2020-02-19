@@ -3,7 +3,7 @@ LookupData:
 ✔ see if pytest.raises(ValidationError) @done(20-02-19 09:13)
 ✘ use custom validator to check .data @cancelled(20-02-19 09:13)
 ☐ since a pydantic validator on the input would be too expensive, add an optional validate method
-☐ use .validate() to write tests to validate demo_data
+☐ use .validate() to write tests to validate demo_data (cities, countries)
 
 LookupDataPool:
 ✔ LookupDataPool with .add() method to add LookupData instances to a dictionary of KeywordProcessors @done(20-02-18 08:54)
