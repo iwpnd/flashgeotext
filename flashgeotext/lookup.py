@@ -92,6 +92,12 @@ class LookupData(BaseModel):
     data: dict
 
     def validate(self) -> dict:
+        """Validate if data attribute has appropiate structure.
+
+        returns:
+            LookupValidation
+        """
+
         validation = LookupValidation()
 
         for key, value in self.data.items():
