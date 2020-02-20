@@ -1,12 +1,28 @@
 import pytest
 
+from flashgeotext.geotext import GeoText
+from flashgeotext.lookup import MissingLookupDataError
 
 text = "Berlin ist die Hauptstadt von Deutschland. Berlin ist nicht haesslich, aber auch nicht sonderlich schoen."
+
+
+def test_geotext_demo_data():
+    geotext = GeoText(use_demo_data=True)
+
+    assert geotext.pool["cities"]
+    assert geotext.pool["countries"]
 
 
 def test_geotext_extract(geotext):
     output = geotext.extract(text)
     assert "Berlin" in output["cities"]
+
+
+def test_geotext_raises_on_empty_pool():
+    output = GeoText(use_demo_data=False)
+
+    with pytest.raises(MissingLookupDataError):
+        output.extract(text)
 
 
 def test_geotext_extract_with_count_span_info_true(geotext):

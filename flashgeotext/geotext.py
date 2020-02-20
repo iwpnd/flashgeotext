@@ -3,13 +3,73 @@ from flashgeotext.lookup import MissingLookupDataError
 
 
 class GeoText(LookupDataPool):
+    """Extract LookupData from input text
+
+    GeoText inherits from LookupDataPool. It iterates through
+    a LookupDataPool and interfaces flashtext.KeywordProcessor
+    to extract keywords from an input text. It parses the result of
+    flashtext.KeywordProcessor.extract_keywords() by counting the
+    occurances of a LookupData point and optionally lists the
+    span info.
+
+    Example:
+
+        from flashgeotext.geotext import GeoText
+
+        geotext = GeoText(use_demo_data=True)
+
+        input_text = '''Shanghai. The Chinese Ministry of Finance in Shanghai said that China plans
+                        to cut tariffs on $75 billion worth of goods that the country
+                        imports from the US. Washington welcomes the decision.'''
+
+        geotext.extract(input_text=input_text, span_info=True)
+        >> {
+            'cities': {
+                'Shanghai': {
+                    'count': 2,
+                    'span_info': [(0, 8), (45, 53)]
+                    },
+                'Washington, D.C.': {
+                    'count': 1,
+                    'span_info': [(175, 185)]
+                    }
+                },
+            'countries': {
+                'China': {
+                    'count': 1,
+                    'span_info': [(64, 69)]
+                    },
+                'United States': {
+                    'count': 1,
+                    'span_info': [(171, 173)]
+                    }
+                }
+            }
+    """
+
     def __init__(self, use_demo_data: bool = True) -> None:
+        """ instantiate an empty LookupDataPool, optionally/by default with demo data
+
+        Args:
+            use_demo_data (bool): optionally use demo data, defaults to True.
+        """
         self.pool: dict = {}
 
         if use_demo_data:
             self._add_demo_data()
 
     def extract(self, input_text: str, span_info: bool = True) -> dict:
+        """Extract LookupData from an input_text
+
+        Arguments:
+            input_text (str): String to extract LookupData from.
+            span_info (bool): Optionally, return span_info. Defaults to True.
+
+        Returns:
+            extract_ouput (dict): dictionary of extracted LookupData entities with count
+                                  and optionally with listed span info.
+
+        """
         if not self.pool:
             raise MissingLookupDataError(
                 "Empty LookupDataPool. use .add(LookupData) to add data."
@@ -26,6 +86,18 @@ class GeoText(LookupDataPool):
         return output
 
     def _parse_extract(self, extract_data: list, span_info: bool = True) -> dict:
+        """Parse flashtext.KeywordProcessor.extract_keywords() output to count occurances
+
+        Parse flashtext.KeywordProcessor.extract_keywords() output to count occurances,
+        and optionally span_info.
+
+        Arguments:
+            extract_data (list): flashtext.KeywordProcessor.extract_keywords() return value
+            span_info (bool): optionally, parse span_info
+
+        Returns:
+            parsed_extract (dict): parsed extract_data to include count, optionally span_info
+        """
         parsed_extract: dict = {}
 
         if span_info:
