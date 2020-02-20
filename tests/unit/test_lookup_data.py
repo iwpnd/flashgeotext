@@ -48,16 +48,19 @@ def test_lookup_data_validate(id, name, data, error_count):
 
     validation = lookup.validate()
 
-    assert validation["error_count"] == error_count
+    assert validation.error_count == error_count
 
 
 @pytest.mark.parametrize(
     "id, name, demodata",
-    [(1, "cities", DEMODATA_CITIES), (2, "countries", DEMODATA_COUNTRIES)],
+    [
+        pytest.param(1, "cities", DEMODATA_CITIES, id="demodata_cities"),
+        pytest.param(2, "countries", DEMODATA_COUNTRIES, id="demodata_countries"),
+    ],
 )
 def test_lookup_data_demo_data(id, name, demodata):
     lookup = LookupData(name=name, data=load_data_from_file(demodata))
 
-    validation_result = lookup.validate()
+    validation = lookup.validate()
 
-    assert validation_result["error_count"] == 0
+    assert validation.error_count == 0

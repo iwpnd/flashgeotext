@@ -2,8 +2,10 @@ LookupData:
 ✔ LookupData class with .name and .data, validated with pydantic @done(20-02-18 08:54)
 ✔ see if pytest.raises(ValidationError) @done(20-02-19 09:13)
 ✘ use custom validator to check .data @cancelled(20-02-19 09:13)
-☐ since a pydantic validator on the input would be too expensive, add an optional validate method
-☐ use .validate() to write tests to validate demo_data (cities, countries)
+✔ since a pydantic validator on the input would be too expensive, add an optional validate method @done(20-02-19 11:15)
+✔ use .validate() to write tests to validate demo_data (cities, countries) @done(20-02-19 15:27)
+✔ rewrite GeoText unit test in pytest for flashgeotext and compare @done(20-02-19 16:30)
+☐ build more test cases in different languages (?)
 
 LookupDataPool:
 ✔ LookupDataPool with .add() method to add LookupData instances to a dictionary of KeywordProcessors @done(20-02-18 08:54)
@@ -18,8 +20,11 @@ GeoText:
 ☐ handle different alphabets as non_word_boundaries
     ☐ maybe add toponym?
 
+    GeoTextParsedOutput:
+        ☐ maybe add a Class to handle the Output?
+
 General:
-☐ docs
+✔ docstrings @done(20-02-20 10:18)
 ☐ readme
 ☐ version
 ☐ travis.yml or github actions
