@@ -47,7 +47,7 @@ I was approached with the question if I could extract a given set of city names 
 3. if you happen to want to find synonyms of your city names you have to come up with a data structure to match the city name to its synonyms and vice versa
 4. you're not allowed to use elasticsearch :frowning:
 
-Let's see if there are already solution out there.
+Let's see if there are already solution out there. I will try to evaluate some libraries against my use-case. My puny judgement doesn't mean that some are bad in general, just that they do not 100% fit my use case, that's all.
 
 ## GeoText
 
