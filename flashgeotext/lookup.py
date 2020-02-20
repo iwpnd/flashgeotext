@@ -10,16 +10,37 @@ from flashgeotext.settings import DEMODATA_COUNTRIES
 
 
 class LookupDuplicateError(Exception):
+    """Exception is raised if LookupData is already in LookupDataPool
+
+    Args:
+        message (str): Human readable string describing the exception.
+
+    Attributes:
+        message (str): Human readable string describing the exception.
+    """
+
     def __init__(self, message: str):
         self.message = message
 
 
 class MissingLookupDataError(Exception):
+    """Exception is raised if GeoText.extract() is used on empty LookupDataPool
+
+    Args:
+        message (str): Human readable string describing the exception.
+
+    Attributes:
+        message (str): Human readable string describing the exception.
+    """
+
     def __init__(self, message: str):
         self.message = message
 
 
 class LookupData(BaseModel):
+    """
+    """
+
     name: StrictStr
     data: dict
 
