@@ -48,7 +48,7 @@ def test_lookup_data_validate(id, name, data, error_count):
 
     validation = lookup.validate()
 
-    assert validation["error_count"] == error_count
+    assert validation.error_count == error_count
 
 
 @pytest.mark.parametrize(
@@ -58,6 +58,6 @@ def test_lookup_data_validate(id, name, data, error_count):
 def test_lookup_data_demo_data(id, name, demodata):
     lookup = LookupData(name=name, data=load_data_from_file(demodata))
 
-    validation_result = lookup.validate()
+    validation = lookup.validate()
 
-    assert validation_result["error_count"] == 0
+    assert validation.error_count == 0

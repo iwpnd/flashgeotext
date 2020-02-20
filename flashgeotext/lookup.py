@@ -37,36 +37,80 @@ class MissingLookupDataError(Exception):
         self.message = message
 
 
-class LookupData(BaseModel):
+class LookupValidation:
+    """Data validation container object
+
+    Args:
+        status (str): Humanreadible string containing the Error status.
+        error_count (int): Error count in validation data.
+        errors (dict):
+
+        Example: {
+            "Berlin": [
+                "Berlin missing in list of synonyms",
+                "data['Berlin'] is not a list of synonyms"
+                ]
+            }
+
+    Arguments:
+        status (str): Humanreadible string containing the Error status.
+        error_count (int): Error count in validation data.
+        errors (dict):
+
+        Example: {
+            "Berlin": [
+                "Berlin missing in list of synonyms",
+                "data['Berlin'] is not a list of synonyms"
+                ]
+            }
     """
+
+    def __init__(
+        self,
+        status: str = "No errors detected",
+        error_count: int = 0,
+        errors: dict = {},
+    ):
+        self.status = status
+        self.error_count = error_count
+        self.errors = {}
+
+
+class LookupData(BaseModel):
+    """Data that is supposed to be looked up in a text
+
+    Args:
+        name (pydantic.StrictStr): Human readable name as string describing the data.
+        data (dict): dictionary containing data to lookup and their synonyms
+
+    Attributes:
+        name (pydantic.StrictStr): Human readable name as string describing the data.
+        data (dict): dictionary containing data to lookup and their synonyms
     """
 
     name: StrictStr
     data: dict
 
     def validate(self) -> dict:
-        validation = {}
-        validation["status"] = "No errors detected"
-        validation["error_count"] = 0
-        validation["errors"] = {}
+        validation = LookupValidation()
 
         for key, value in self.data.items():
             if not isinstance(value, list):
-                validation["errors"][key] = [f"data[{key}] is not a list of synonyms"]
-                validation["error_count"] = validation["error_count"] + 1
+                validation.errors[key] = [f"data[{key}] is not a list of synonyms"]
+                validation.error_count = validation.error_count + 1
 
             if key not in value:
-                if key in validation["errors"]:
-                    validation["errors"][key] = validation["errors"][key] + [
+                if key in validation.errors:
+                    validation.errors[key] = validation.errors[key] + [
                         f"{key} missing in list of synonyms"
                     ]
                 else:
-                    validation["errors"][key] = [f"{key} missing in list of synonyms"]
+                    validation.errors[key] = [f"{key} missing in list of synonyms"]
 
-                validation["error_count"] = validation["error_count"] + 1
+                validation.error_count = validation.error_count + 1
 
-        if validation["error_count"] > 0:
-            validation["status"] = f"Found {validation['error_count']} errors"
+        if validation.error_count > 0:
+            validation.status = f"Found {validation.error_count} errors"
 
         return validation
 
