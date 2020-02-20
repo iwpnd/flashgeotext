@@ -10,11 +10,13 @@ from flashgeotext.settings import DEMODATA_COUNTRIES
 
 
 class LookupDuplicateError(Exception):
-    pass
+    def __init__(self, message: str):
+        self.message = message
 
 
 class MissingLookupDataError(Exception):
-    pass
+    def __init__(self, message: str):
+        self.message = message
 
 
 class LookupData(BaseModel):
