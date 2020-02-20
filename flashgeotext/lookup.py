@@ -122,13 +122,34 @@ class LookupData(BaseModel):
 
 
 class LookupDataPool:
-    """
+    """Collection of KeywordProcessors from LookupData
+
+    Args:
+        pool (dict): Collection of LookupData.
+
+    Attributes:
+        pool (dict): Collection of LookupData.
+
+    Example:
+        pool = {
+            LookupData.name: flashtext.KeywordProcessor.add_keywords_from_dict(LookupData.data)
+            }
     """
 
     def __init__(self) -> None:
         self.pool: dict = {}
 
     def add(self, lookup: LookupData, update: bool = False) -> None:
+        """Add LookupData to LookupDataPool
+
+        Add LookupData to LookupDataPool.
+        Raises flashgeotext.lookup.LookupDuplicateError if lookup
+        is already in pool unless update == True.
+
+        Args:
+            lookup (LookupData): LookupData to add to pool
+            update (bool): Allow update of an existing entry in LookupDataPool
+        """
         if not isinstance(lookup, LookupData):
             raise TypeError(f"lookup has to be instance of LookupData")
 
@@ -142,11 +163,26 @@ class LookupDataPool:
             logger.debug(f"{lookup.name} added to pool")
 
     def remove(self, lookup_to_remove: str) -> None:
+        """Remove LookupData from LookupDataPool
+
+        Args:
+            lookup_to_remove (str): LookupData to remove from pool
+        """
         if lookup_to_remove in self.pool:
             del self.pool[lookup_to_remove]
             logger.debug(f"{lookup_to_remove} removed from pool")
 
+    def remove_all(self):
+        """Remove all LookupData from LookupDataPool
+        """
+
+        self.pool = {}
+
     def _add_demo_data(self):
+        """(private) Add demo data to pool
+
+        Adds DEMODATA_CITIES and DEMODATA_COUNTRIES to LookupDataPool
+        """
         cities = LookupData(
             name="cities", data=load_data_from_file(file=DEMODATA_CITIES)
         )
@@ -159,5 +195,16 @@ class LookupDataPool:
 
 
 def load_data_from_file(file: str) -> dict:
+    """Load data from json file
+
+    Load data from json file. Raises TypeError if not json
+
+    Args:
+        file (str): path to file
+    """
+
+    if not file.endswith(".json"):
+        raise TypeError("File has to be Filetype .json")
+
     with open(file, "r", encoding="utf-8") as f:
         return json.loads(f.read())

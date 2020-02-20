@@ -1,9 +1,10 @@
 import pytest
 
-from flashgeotext.geotext import GeoText
+from flashgeotext.lookup import load_data_from_file
 from flashgeotext.lookup import LookupData
 from flashgeotext.lookup import LookupDataPool
 from flashgeotext.lookup import LookupDuplicateError
+from flashgeotext.settings import DEMODATA_CITIES
 
 
 def test_lookup_data_pool(test_data_cities):
@@ -56,8 +57,23 @@ def test_lookup_data_pool_remove_lookup_from_pool(test_data_cities):
         assert processor.pool["cities"]
 
 
-def test_lookup_data_pool_with_test_data():
-    geotext = GeoText(use_demo_data=True)
+def test_lookup_data_pool_remove_all_from_pool(test_data_cities):
+    lookup = LookupData(name="cities", data=test_data_cities)
 
-    assert geotext.pool["cities"]
-    assert geotext.pool["countries"]
+    processor = LookupDataPool()
+    processor.add(lookup)
+
+    processor.remove_all()
+
+    assert not processor.pool
+
+
+def test_load_data_from_file():
+    cities = load_data_from_file(DEMODATA_CITIES)
+    assert cities
+
+
+def test_load_data_from_file_raises():
+    with pytest.raises(TypeError):
+        cities = load_data_from_file("demodata_cities.txt")
+        assert cities
