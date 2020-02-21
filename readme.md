@@ -1,4 +1,4 @@
-[![](https://github.com/iwpnd/flashgeotext/workflows/build/badge.svg)
+![](https://github.com/iwpnd/flashgeotext/workflows/build/badge.svg)
 
 # flashgeotext :zap::earth_africa:
 
