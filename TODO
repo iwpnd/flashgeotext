@@ -19,14 +19,15 @@ GeoText:
     ✔ optionally be able to set, whether span_info is returned or not @done(20-02-18 15:49)
 ☐ handle different alphabets as non_word_boundaries
     ☐ maybe add toponym?
+☐ pool should be an instance of LookupDataPool, and GeoText should not inherite LookupDataPool but use it
 
     GeoTextParsedOutput:
         ☐ maybe add a Class to handle the Output?
 
 General:
 ✔ docstrings @done(20-02-20 10:18)
-☐ readme
+✔ readme @done(20-02-21 07:53)
 ☐ version
-☐ travis.yml or github actions
+☐ github actions
 ☐ release to testpypi
 ☐ release to pypi
