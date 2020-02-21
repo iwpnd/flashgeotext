@@ -1,5 +1,3 @@
-![](https://github.com/iwpnd/flashgeotext/workflows/build/badge.svg)
-
 <p align="center">
 <a href="https://github.com/iwpnd/flashgeotext/workflows/build" target="_blank">
     <img src="https://github.com/iwpnd/flashgeotext/workflows/build/badge.svg?branch=master" alt="Build Status">
