@@ -1,4 +1,4 @@
-[![Actions Status](https://github.com/iwpnd/flashgeotext/workflows/python_build_test/badge.svg)](https://github.com/iwpnd/flashgeotext/actions)
+[![](https://github.com/iwpnd/flashgeotext/workflows/build/badge.svg)
 
 # flashgeotext :zap::earth_africa:
 
