@@ -7,7 +7,7 @@ flash-geotext.code-workspace
 scripts/
 .DS_Store
 .vscode/
-todo.txt
+TODO
 
 
 # C extensions
