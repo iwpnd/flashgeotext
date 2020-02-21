@@ -3,6 +3,7 @@ repos:
         rev: v2.3.0
         hooks:
         -   id: check-yaml
+            exclude: mkdocs.yml
         -   id: end-of-file-fixer
         -   id: trailing-whitespace
         -   id: check-json
