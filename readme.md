@@ -1,5 +1,14 @@
 ![](https://github.com/iwpnd/flashgeotext/workflows/build/badge.svg)
 
+<p align="center">
+<a href="https://github.com/iwpnd/flashgeotext/workflows/build" target="_blank">
+    <img src="https://github.com/iwpnd/flashgeotext/workflows/build/badge.svg?branch=master" alt="Build Status">
+</a>
+<a href="https://codecov.io/gh/iwpnd/flashgeotext" target="_blank">
+    <img src="https://codecov.io/gh/iwpnd/flashgeotext/branch/master/graph/badge.svg" alt="Coverage">
+</a>
+
+---
 # flashgeotext :zap::earth_africa:
 
 Extract and count countries and cities (+their synonoms) from text, like [GeoText](https://github.com/elyase/geotext) on steroids using [FlashText](https://github.com/vi3k6i5/flashtext/), a Aho-Corasick implementation. Flashgeotext is a fast, batteries-included (and BYOD) and native python library that extracts one or more sets of given city and country names (+ synonyms) from an input text.
