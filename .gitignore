@@ -3,7 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 flash-geotext.code-workspace
-*.ipynb
+_scribbles.ipynb
 scripts/
 .DS_Store
 .vscode/
