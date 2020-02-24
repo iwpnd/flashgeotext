@@ -58,19 +58,20 @@ These instructions will get you a copy of the project up and running on your loc
 
 for usage:
 ```bash
-pip install git+https://github.com/iwpnd/flashgeotext.git
+pip install flashgeotext
 ```
 
 for development:
 ```bash
 git clone https://github.com/iwpnd/flashgeotext.git
-pip install -e flashgeotext/
+pip install flit
+flit install
 ```
 
 ### Running the tests
 
 ```bash
-python -m pytest flashgeotext/tests -v
+pytest flashgeotext/tests -v
 ```
 
 ## Authors
