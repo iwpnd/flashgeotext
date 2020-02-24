@@ -12,6 +12,8 @@
 
 Extract and count countries and cities (+their synonyms) from text, like [GeoText](https://github.com/elyase/geotext) on steroids using [FlashText](https://github.com/vi3k6i5/flashtext/), a Aho-Corasick implementation. Flashgeotext is a fast, batteries-included (and BYOD) and native python library that extracts one or more sets of given city and country names (+ synonyms) from an input text.
 
+**documentation**: [https://flashgeotext.iwpnd.pw/](https://flashgeotext.iwpnd.pw/)
+
 ## Usage
 
 ```python
