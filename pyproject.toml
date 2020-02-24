@@ -41,7 +41,8 @@ doc = [
     "awscli",
     "mkdocs",
     "mkdocs-material",
-    "markdown-include"
+    "markdown-include",
+    "pydoc-markdown"
 ]
 
 dev = []
