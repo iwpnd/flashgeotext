@@ -20,7 +20,10 @@ google_analytics:
 nav:
     - flashgeotext: 'index.md'
     - usage: 'usage.md'
-    - api: 'api.md'
+    - reference:
+        - geotext: 'geotext.md'
+        - lookup: 'lookup.md'
+    - discussion: 'discussion.md'
 
 markdown_extensions:
     - toc:
