@@ -5,10 +5,10 @@ site_url: https://flashgeotext.iwpnd.pw/
 theme:
     name: 'material'
     palette:
-        primary: 'teal'
-        accent: 'amber'
-    logo: 'img/icon-white.svg'
-    favicon: 'img/favicon.png'
+        primary: 'indigo'
+        accent: 'indigo'
+    logo: 'img/logo.png'
+    favicon: 'img/ms-icon-310x310.png'
 
 repo_name: iwpnd/flashgeotext
 repo_url: https://github.com/iwpnd/flashgeotext
