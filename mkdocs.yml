@@ -1,0 +1,60 @@
+site_name: flashgeotext
+site_description: Extract city and country mentions from Text like GeoText without regex, but FlashText, a Aho-Corasick implementation.
+site_url: https://flashgeotext.iwpnd.pw/
+
+theme:
+    name: 'material'
+    palette:
+        primary: 'white'
+        accent: 'yellow'
+    logo: 'img/logo.png'
+    favicon: 'img/ms-icon-310x310.png'
+
+repo_name: iwpnd/flashgeotext
+repo_url: https://github.com/iwpnd/flashgeotext
+edit_uri: ''
+google_analytics:
+    - 'UA-xx'
+    - 'auto'
+
+nav:
+    - flashgeotext: 'index.md'
+    - usage: 'usage.md'
+    - reference:
+        - geotext: 'geotext.md'
+        - lookup: 'lookup.md'
+    - discussion: 'discussion.md'
+
+markdown_extensions:
+    - toc:
+        permalink: true
+    - markdown.extensions.codehilite:
+        guess_lang: false
+    - markdown_include.include:
+        base_path: docs
+    - admonition
+    - codehilite
+    - extra
+    - pymdownx.superfences:
+        custom_fences:
+            - name: mermaid
+              class: mermaid
+              format: !!python/name:pymdownx.superfences.fence_div_format
+    - pymdownx.emoji:
+        emoji_index: !!python/name:pymdownx.emoji.twemoji
+        emoji_generator: !!python/name:pymdownx.emoji.to_png
+
+extra:
+    social:
+        - type: 'github'
+          link: 'https://github.com/iwpnd/'
+        - type: 'twitter'
+          link: 'https://twitter.com/imwithpanda'
+        - type: 'linkedin'
+          link: 'https://www.linkedin.com/in/benjamin-ramser'
+
+extra_css:
+    - 'css/custom.css'
+
+extra_javascript:
+    - 'https://unpkg.com/mermaid@8.4.6/dist/mermaid.min.js'

@@ -1,3 +1,0 @@
-flashtext==2.7
-loguru==0.4.1
-pydantic==1.4
