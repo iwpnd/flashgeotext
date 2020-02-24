@@ -12,7 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: jakejarvis/s3-sync-action@master
       - name: Set up Python
         uses: actions/setup-python@v1
         with:
@@ -27,6 +26,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
       - name: deploy to S3
+        uses: jakejarvis/s3-sync-action@master
         with:
             args: --acl public-read --follow-symlinks --delete
         env:
