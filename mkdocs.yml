@@ -5,8 +5,8 @@ site_url: https://flashgeotext.iwpnd.pw/
 theme:
     name: 'material'
     palette:
-        primary: 'indigo'
-        accent: 'indigo'
+        primary: 'white'
+        accent: 'yellow'
     logo: 'img/logo.png'
     favicon: 'img/ms-icon-310x310.png'
 
