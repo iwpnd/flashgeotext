@@ -75,8 +75,11 @@ class LookupValidation:
         self.error_count = error_count
         self.errors = {}
 
+    def __repr__(self):
+        return f"<LookupValidation: {self.__dict__}>"
 
-class LookupData(BaseModel):
+
+class LookupData(BaseModel, object):
     """Data that is supposed to be looked up in a text
 
     Args:
@@ -118,7 +121,7 @@ class LookupData(BaseModel):
         if validation.error_count > 0:
             validation.status = f"Found {validation.error_count} errors"
 
-        return validation
+        return validation.__dict__
 
 
 class LookupDataPool:

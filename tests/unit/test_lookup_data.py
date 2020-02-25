@@ -3,6 +3,7 @@ from pydantic import ValidationError
 
 from flashgeotext.lookup import load_data_from_file
 from flashgeotext.lookup import LookupData
+from flashgeotext.lookup import LookupValidation
 from flashgeotext.settings import DEMODATA_CITIES
 from flashgeotext.settings import DEMODATA_COUNTRIES
 
@@ -48,7 +49,7 @@ def test_lookup_data_validate(id, name, data, error_count):
 
     validation = lookup.validate()
 
-    assert validation.error_count == error_count
+    assert validation["error_count"] == error_count
 
 
 @pytest.mark.parametrize(
@@ -63,4 +64,19 @@ def test_lookup_data_demo_data(id, name, demodata):
 
     validation = lookup.validate()
 
-    assert validation.error_count == 0
+    assert validation["error_count"] == 0
+
+
+def test_lookup_data_validate_repr():
+    lookup = LookupData(name="countries", data=load_data_from_file(DEMODATA_COUNTRIES))
+
+    assert isinstance(lookup.validate(), dict)
+
+
+def test_lookupvalidation_repr():
+    validation = LookupValidation()
+
+    assert (
+        repr(validation)
+        == "<LookupValidation: {'status': 'No errors detected', 'error_count': 0, 'errors': {}}>"
+    )
