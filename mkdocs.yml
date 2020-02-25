@@ -21,6 +21,7 @@ nav:
     - flashgeotext: 'index.md'
     - usage: 'usage.md'
     - reference:
+        - overview: 'overview.md'
         - geotext: 'geotext.md'
         - lookup: 'lookup.md'
     - discussion: 'discussion.md'

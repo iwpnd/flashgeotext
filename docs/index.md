@@ -14,10 +14,6 @@ Extract and count countries and cities (+their synonyms) from text, like [GeoTex
 
 **documentation**: [https://flashgeotext.iwpnd.pw/](https://flashgeotext.iwpnd.pw/)
 
-## Overview
-
-<img src="./img/flashgeotext-diagram-notext.png" alt="drawio diagram">
-
 ## Usage
 
 ```python
