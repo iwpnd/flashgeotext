@@ -22,9 +22,6 @@ jobs:
         run: python3.7 -m flit install --extras doc
       - name: Build MkDocs
         run: bash scripts/build-docs.sh
-      - name: Upload docs to S3
-        run: |
-          python -m pip install --upgrade pip
       - name: deploy to S3
         uses: jakejarvis/s3-sync-action@master
         with:
