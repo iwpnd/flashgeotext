@@ -16,7 +16,7 @@ Extract and count countries and cities (+their synonyms) from text, like [GeoTex
 
 ## Overview
 
-<img src="./img/flashgeotext-diagram-notext.png" alt="drawio diagram">
+<img src="./docs/img/flashgeotext-diagram-notext.png" alt="drawio diagram">
 
 ## Usage
 
