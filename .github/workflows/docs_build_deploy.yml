@@ -1,4 +1,4 @@
-name: Build and Deploy to AWS S3
+name: docs
 on:
   push:
     branches:
