@@ -76,7 +76,7 @@ class LookupValidation:
         self.errors = {}
 
     def __repr__(self):
-        return f"{self.__dict__}"
+        return f"<LookupValidation: {self.__dict__}>"
 
 
 class LookupData(BaseModel, object):
