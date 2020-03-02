@@ -1,3 +1,5 @@
+from contextlib import nullcontext
+
 import pytest
 from pydantic import ValidationError
 
@@ -32,6 +34,34 @@ def test_lookup_data_raises(id, name, data, expectation):
 
     with expectation:
         lookup = LookupData(name=name, data=data)
+
+        assert isinstance(lookup, LookupData)
+
+
+@pytest.mark.parametrize(
+    "id, name, data,, script, expectation",
+    [
+        (
+            1,
+            "cities",
+            {"Нижневартовск": ["Нижневартовск"]},
+            "german",
+            pytest.raises(ValidationError),
+        ),
+        (
+            2,
+            "cities",
+            {"Нижневартовск": ["Нижневартовск"]},
+            "default",
+            pytest.raises(ValidationError),
+        ),
+        (3, "cities", {"Нижневартовск": ["Нижневартовск"]}, "cyrillic", nullcontext()),
+    ],
+)
+def test_lookup_data_script_raises(id, name, data, script, expectation):
+
+    with expectation:
+        lookup = LookupData(name=name, data=data, script=script)
 
         assert isinstance(lookup, LookupData)
 

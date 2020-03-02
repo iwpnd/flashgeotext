@@ -5,6 +5,7 @@ from flashgeotext.lookup import LookupData
 from flashgeotext.lookup import LookupDataPool
 from flashgeotext.lookup import LookupDuplicateError
 from flashgeotext.settings import DEMODATA_CITIES
+from flashgeotext.settings import SCRIPTS
 
 
 def test_lookup_data_pool(test_data_cities):
@@ -66,6 +67,20 @@ def test_lookup_data_pool_remove_all_from_pool(test_data_cities):
     processor.remove_all()
 
     assert not processor.pool
+
+
+def test_lookup_data_pool_script_non_word_boundaries(test_data_cities):
+    lookup = LookupData(name="cities", data=test_data_cities, script="latin")
+
+    processor = LookupDataPool()
+    processor.add(lookup)
+
+    assert all(
+        [
+            char in processor.pool["cities"].non_word_boundaries
+            for char in SCRIPTS["latin"]["chars"]
+        ]
+    )
 
 
 def test_load_data_from_file():

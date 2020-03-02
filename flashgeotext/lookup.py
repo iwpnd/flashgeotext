@@ -4,9 +4,11 @@ from flashtext import KeywordProcessor
 from loguru import logger
 from pydantic import BaseModel
 from pydantic import StrictStr
+from pydantic import validator
 
 from flashgeotext.settings import DEMODATA_CITIES
 from flashgeotext.settings import DEMODATA_COUNTRIES
+from flashgeotext.settings import SCRIPTS
 
 
 class LookupDuplicateError(Exception):
@@ -82,17 +84,34 @@ class LookupValidation:
 class LookupData(BaseModel, object):
     """Data that is supposed to be looked up in a text
 
+    Setting a script here would add characters of that script (see resources/scripts.json)
+    to the set of non_word_boundaries's default of:
+    >> {'k', '6', 's', 'M', 'i', 'S', 'm', 'E', 'r', 'W', 'v', 'l',
+        'R', 'f', 'e', 'X', '7', '3', 'q', 'w', '0', 'x', 'V', 'C', 'n',
+        'I', '4', 'D', 'z', 'G', 'L', '2', 'T', 'U', '_', 'B', 't', 'Q',
+        'd', '9', 'h', 'o', 'c', 'u', 'P', 'K', 'Y', 'p', 'A', 'J', 'O',
+        'N', 'H', 'j', 'a', 'Z', '5', '1', 'b', 'y', 'F', '8', 'g'}
+
     Args:
         name (pydantic.StrictStr): Human readable name as string describing the data.
         data (dict): dictionary containing data to lookup and their synonyms
+        script: (pydantic.StrictStr): what scripts characters to add to non_word_boundaries
 
     Attributes:
         name (pydantic.StrictStr): Human readable name as string describing the data.
         data (dict): dictionary containing data to lookup and their synonyms
+        script: (pydantic.StrictStr): what scripts characters to add to non_word_boundaries
     """
 
     name: StrictStr
     data: dict
+    script: StrictStr = "default"
+
+    @validator("script")
+    def script_must_be_in_scripts(cls, value):
+        if value not in SCRIPTS:
+            raise ValueError("must be supported script")
+        return value
 
     def validate(self) -> dict:
         """Validate if data attribute has appropiate structure.
@@ -163,6 +182,15 @@ class LookupDataPool:
         else:
             self.pool[lookup.name] = KeywordProcessor(case_sensitive=True)
             self.pool[lookup.name].add_keywords_from_dict(lookup.data)
+
+            # if there is a script specified, then update non word boundaries with
+            # characters from script
+
+            if lookup.script != "default":
+                self.pool[lookup.name].non_word_boundaries.update(
+                    SCRIPTS[lookup.script]["chars"]
+                )
+
             logger.debug(f"{lookup.name} added to pool")
 
     def remove(self, lookup_to_remove: str) -> None:
