@@ -1,6 +1,7 @@
 import pytest
 
 from flashgeotext.geotext import GeoText
+from flashgeotext.lookup import LookupData
 from flashgeotext.lookup import MissingLookupDataError
 
 text = "Berlin ist die Hauptstadt von Deutschland. Berlin ist nicht haesslich, aber auch nicht sonderlich schoen."
@@ -154,3 +155,26 @@ def test_geotext_extract_countries(nr, text, expected_countries, geotext):
     output = geotext.extract(input_text=text, span_info=False)
 
     assert all([country in output["countries"] for country in expected_countries])
+
+
+def test_geotext_with_script_added_to_non_word_boundaries():
+    cyrillic = LookupData(
+        name="test_1", data={"Нижневартовск": ["Нижневартовск"]}, script="cyrillic"
+    )
+    geotext = GeoText(use_demo_data=False)
+    geotext.add(cyrillic)
+
+    text = """
+    В Нижневартовском районе ограничили грузоподъемность на ледовых переправах
+    Проехать по ледовой переправе сможет только транспорт весом не более 5 тонн.
+    В связи с потеплением в Нижневартовском районе введено ограничение грузоподъемности на ледовых переправах.
+    По направлению Нижневартовск - Вампугол – Былино, а также Белорусский - Ларьяк , Ларьяк -
+    Чехломей - Большой Ларьяк, Былино - Зайцева Речка снижена грузоподъемность до 5 тонн.
+    Лед на реках еще вполне толстый и переправа пригодна для эксплуатации, однако зимник начал подтаивать,
+    орогу развезло. Потому принято решение снизить грузоподъемность на нём до 5 тонн, сообщает ОТРК «Югра».
+    Всего на реках Югры работают 89 ледовых переправ. Их обычная грузоподъемность от 15 до 30 тонн. Отметим,
+    что традиционно в середине апреля закрываются для движения автотранспорта все ледовые переправы.
+    """
+
+    result = geotext.extract(text, span_info=False)
+    result["test_1"]["Нижневартовск"]["count"] == 1

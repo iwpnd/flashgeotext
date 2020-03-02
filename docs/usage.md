@@ -42,7 +42,7 @@ geotext.extract(input_text=input_text, span_info=True)
     }
 ```
 
-### Bring your own data
+### Bring your own data (default script)
 
 ```python
 from flashgeotext.geotext import GeoText
@@ -87,6 +87,52 @@ geotext.extract(text, span_info=False)
     }
 }
 ```
+
+### Bring your own data (with script)
+
+```python
+from flashgeotext.geotext import GeoText
+from flashgeotext.lookup import LookupData
+
+cyrillic_city = {"Нижневартовск": ["Нижневартовск"]}
+
+text = """
+    В Нижневартовском районе ограничили грузоподъемность
+    на ледовых переправах Проехать по ледовой переправе
+    сможет только транспорт весом не более 5 тонн.
+    В связи с потеплением в Нижневартовском районе
+    введено ограничение грузоподъемности на ледовых переправах.
+    По направлению Нижневартовск - Вампугол – Былино, а
+    также Белорусский - Ларьяк , Ларьяк - Чехломей - Большой Ларьяк,
+    Былино - Зайцева Речка снижена грузоподъемность до 5 тонн.
+    Лед на реках еще вполне толстый и переправа пригодна для
+    эксплуатации, однако зимник начал подтаивать,
+    орогу развезло. Потому принято решение снизить грузоподъемность
+    на нём до 5 тонн, сообщает ОТРК «Югра».
+    Всего на реках Югры работают 89 ледовых переправ.
+    Их обычная грузоподъемность от 15 до 30 тонн. Отметим,
+    что традиционно в середине апреля закрываются для движения
+    автотранспорта все ледовые переправы.
+    """
+
+lookup_cyrillic_city = LookupData(
+    name="cyrillic",
+    data=cyrillic_city,
+    script="cyrillic"
+    )
+
+geotext = GeoText(use_demo_data=False)
+geotext.add(lookup_cyrillic_city)
+
+print(len(geotext.pool))
+>> 1
+
+geotext.extract(text, span_info=False)
+
+>> {'cyrillic': {'Нижневартовск': {'count': 1}}}
+```
+
+Actually the city `Нижневартовск` is present three times in the text, but we did not specify `Нижневартовском` to be the same as `Нижневартовск`.
 
 ### Data handling
 

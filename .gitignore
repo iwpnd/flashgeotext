@@ -8,6 +8,8 @@ untitled.txt
 .DS_Store
 .vscode/
 TODO
+.jekyll-cache/
+_site/
 
 
 # C extensions
