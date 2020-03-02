@@ -39,10 +39,10 @@ test = [
 ]
 doc = [
     "awscli",
-    "mkdocs",
-    "mkdocs-material",
+    "mkdocs==1.0.4",
+    "mkdocs-material==4.6.3",
     "markdown-include",
-    "pydoc-markdown"
+    "pydoc-markdown==2.0.5"
 ]
 
 dev = []
