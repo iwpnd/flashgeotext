@@ -9,6 +9,8 @@ theme:
         accent: 'yellow'
     logo: 'img/logo.png'
     favicon: 'img/ms-icon-310x310.png'
+    features:
+        - tabs
 
 repo_name: iwpnd/flashgeotext
 repo_url: https://github.com/iwpnd/flashgeotext
@@ -19,7 +21,10 @@ google_analytics:
 
 nav:
     - flashgeotext: 'index.md'
-    - usage: 'usage.md'
+    - examples:
+        - usage: 'usage.md'
+    - tutorials:
+        - extract city mentions with toponym: 'tut_toponym.md'
     - reference:
         - overview: 'overview.md'
         - geotext: 'geotext.md'
@@ -47,11 +52,11 @@ markdown_extensions:
 
 extra:
     social:
-        - type: 'github'
+        - icon: fontawesome/brands/github-alt
           link: 'https://github.com/iwpnd/'
-        - type: 'twitter'
+        - icon: fontawesome/brands/twitter
           link: 'https://twitter.com/imwithpanda'
-        - type: 'linkedin'
+        - icon: fontawesome/brands/linkedin
           link: 'https://www.linkedin.com/in/benjamin-ramser'
 
 extra_css:
