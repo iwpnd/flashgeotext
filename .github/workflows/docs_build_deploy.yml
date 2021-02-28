@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  codecov:
+  docs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -23,7 +23,12 @@ jobs:
     - name: Install library
       run: poetry install --no-interaction
     - name: Build MkDocs
-      run: bash scripts/build-docs.sh
+      run: |
+        echo "Building docs"
+        poetry run mkdocs build
+        poetry run pydocmd simple flashgeotext.geotext++ > docs/geotext.md
+        poetry run pydocmd simple flashgeotext.lookup++ > docs/lookup.md
+        echo "Finished"
     - name: deploy to S3
       uses: jakejarvis/s3-sync-action@master
       with:
