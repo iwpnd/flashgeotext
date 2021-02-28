@@ -16,7 +16,7 @@
 # flashgeotext.lookup
 
 <a name="flashgeotext.lookup.LookupDuplicateError"></a>
-## LookupDuplicateError
+## LookupDuplicateError Objects
 
 ```python
 class LookupDuplicateError(Exception)
@@ -34,7 +34,7 @@ Exception is raised if LookupData is already in LookupDataPool
 - `message` _str_ - Human readable string describing the exception.
 
 <a name="flashgeotext.lookup.MissingLookupDataError"></a>
-## MissingLookupDataError
+## MissingLookupDataError Objects
 
 ```python
 class MissingLookupDataError(Exception)
@@ -52,7 +52,7 @@ Exception is raised if GeoText.extract() is used on empty LookupDataPool
 - `message` _str_ - Human readable string describing the exception.
 
 <a name="flashgeotext.lookup.LookupValidation"></a>
-## LookupValidation
+## LookupValidation Objects
 
 ```python
 class LookupValidation()
@@ -88,7 +88,7 @@ Data validation container object
   }
 
 <a name="flashgeotext.lookup.LookupData"></a>
-## LookupData
+## LookupData Objects
 
 ```python
 class LookupData(BaseModel,  object)
@@ -130,7 +130,7 @@ returns:
     LookupValidation
 
 <a name="flashgeotext.lookup.LookupDataPool"></a>
-## LookupDataPool
+## LookupDataPool Objects
 
 ```python
 class LookupDataPool()

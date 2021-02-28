@@ -9,7 +9,7 @@
 # flashgeotext.geotext
 
 <a name="flashgeotext.geotext.GeoText"></a>
-## GeoText
+## GeoText Objects
 
 ```python
 class GeoText(LookupDataPool)
