@@ -13,7 +13,7 @@ class GeoText(LookupDataPool):
     span info.
 
     Example:
-
+    ```python
         from flashgeotext.geotext import GeoText
 
         geotext = GeoText(use_demo_data=True)
@@ -45,6 +45,9 @@ class GeoText(LookupDataPool):
                     }
                 }
             }
+
+    ```
+
     """
 
     def __init__(self, use_demo_data: bool = True) -> None:

@@ -1,9 +1,20 @@
+# Table of Contents
+
+* [flashgeotext.geotext](#flashgeotext.geotext)
+  * [GeoText](#flashgeotext.geotext.GeoText)
+    * [\_\_init\_\_](#flashgeotext.geotext.GeoText.__init__)
+    * [extract](#flashgeotext.geotext.GeoText.extract)
+
+<a name="flashgeotext.geotext"></a>
 # flashgeotext.geotext
 
+<a name="flashgeotext.geotext.GeoText"></a>
 ## GeoText
+
 ```python
-GeoText(self, use_demo_data: bool = True) -> None
+class GeoText(LookupDataPool)
 ```
+
 Extract LookupData from input text
 
 GeoText inherits from LookupDataPool. It iterates through
@@ -13,8 +24,9 @@ flashtext.KeywordProcessor.extract_keywords() by counting the
 occurances of a LookupData point and optionally lists the
 span info.
 
-Example:
+**Example**:
 
+```python
     from flashgeotext.geotext import GeoText
 
     geotext = GeoText(use_demo_data=True)
@@ -47,16 +59,37 @@ Example:
             }
         }
 
-### extract
-```python
-GeoText.extract(self, input_text: str, span_info: bool = True) -> dict
 ```
+
+<a name="flashgeotext.geotext.GeoText.__init__"></a>
+#### \_\_init\_\_
+
+```python
+ | __init__(use_demo_data: bool = True) -> None
+```
+
+instantiate an empty LookupDataPool, optionally/by default with demo data
+
+**Arguments**:
+
+- `use_demo_data` _bool_ - optionally use demo data, defaults to True.
+
+<a name="flashgeotext.geotext.GeoText.extract"></a>
+#### extract
+
+```python
+ | extract(input_text: str, span_info: bool = True) -> dict
+```
+
 Extract LookupData from an input_text
 
-Arguments:
-    input_text (str): String to extract LookupData from.
-    span_info (bool): Optionally, return span_info. Defaults to True.
+**Arguments**:
 
-Returns:
-    extract_ouput (dict): dictionary of extracted LookupData entities with count
-                          and optionally with listed span info.
+- `input_text` _str_ - String to extract LookupData from.
+- `span_info` _bool_ - Optionally, return span_info. Defaults to True.
+
+
+**Returns**:
+
+- `extract_ouput` _dict_ - dictionary of extracted LookupData entities with count
+  and optionally with listed span info.
