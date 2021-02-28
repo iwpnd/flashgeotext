@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.3.0] - 2021-02-29
 ### Added
 - removed flit. now using poetry
+- added optional case_sensitive option to look for lower case city names
 ## [0.2.0] - 2020-03-02
 ### Added
 - `script` argument to LookupData to specify from what script the characters in the lookup will be, see [usage](https://flashgeotext.iwpnd.pw/usage), this will make sure that flashgeotext works with different character sets accordingly

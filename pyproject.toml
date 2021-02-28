@@ -3,6 +3,28 @@ name = "flashgeotext"
 version = "0.3.0"
 description = "Extract and count countries and cities (+their synonyms) from text"
 authors = ["Benjamin Ramser <ahoi@iwpnd.pw>"]
+license = "MIT"
+readme = "readme.md"
+homepage = "https://flashgeotext.iwpnd.pw"
+repository = "https://github.com/iwpnd/flashgeotext"
+keywords = ["geonames", "nlp", "text extraction"]
+classifiers = [
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Libraries",
+    "Typing :: Typed",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+]
+include = [
+    "LICENSE",
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
