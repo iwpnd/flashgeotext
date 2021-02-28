@@ -33,7 +33,7 @@ loguru = "^0.5.3"
 pydantic = "^1.8"
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.2"
+pytest = "^6.2"
 pytest-cov = "^2.11.1"
 awscli = "^1.19.17"
 mkdocs = "^1.1.2"
