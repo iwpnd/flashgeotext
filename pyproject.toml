@@ -1,49 +1,24 @@
+[tool.poetry]
+name = "flashgeotext"
+version = "0.3.0"
+description = "Extract and count countries and cities (+their synonyms) from text"
+authors = ["Benjamin Ramser <ahoi@iwpnd.pw>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+flashtext = "^2.7"
+loguru = "^0.5.3"
+pydantic = "^1.8"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+pytest-cov = "^2.11.1"
+awscli = "^1.19.17"
+mkdocs = "^1.1.2"
+mkdocs-material = "^7.0.3"
+markdown-include = "^0.6.0"
+pydoc-markdown = "^3.10.0"
+
 [build-system]
-requires = ["flit"]
-build-backend = "flit.buildapi"
-
-[tool.flit.metadata]
-module = "flashgeotext"
-author = "Benjamin Ramser"
-author-email = "ahoi@iwpnd.pw"
-home-page = "https://github.com/iwpnd/flashgeotext"
-classifiers = [
-    "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python",
-    "Topic :: Software Development :: Libraries :: Python Modules",
-    "Topic :: Software Development :: Libraries",
-    "Typing :: Typed",
-    "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
-    "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.6",
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
-]
-requires = [
-    "flashtext==2.7",
-    "loguru==0.4.1",
-    "pydantic==1.4"
-]
-description-file = "readme.md"
-requires-python = ">=3.6"
-
-[tool.flit.metadata.urls]
-Documentation = "https://flashgeotext.iwpnd.pw/"
-
-[tool.flit.metadata.requires-extra]
-test = [
-    "pytest >=4.0.0",
-    "pytest-cov"
-]
-doc = [
-    "awscli",
-    "mkdocs==1.1",
-    "mkdocs-material==5.1.3",
-    "markdown-include",
-    "pydoc-markdown==2.1.3"
-]
-
-dev = []
-all = []
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

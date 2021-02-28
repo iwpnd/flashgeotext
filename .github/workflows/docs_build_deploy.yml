@@ -1,31 +1,33 @@
-name: docs
+name: build-upload-docs
+
 on:
   push:
     branches:
-        - master
-  pull_request:
-    branches:
-        - master
+      - master
 
 jobs:
-  build:
+  codecov:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v1
-        with:
-          python-version: "3.7"
-      - name: Install Flit
-        run: python3.7 -m pip install flit
-      - name: Install docs extras
-        run: python3.7 -m flit install --extras doc
-      - name: Build MkDocs
-        run: bash scripts/build-docs.sh
-      - name: deploy to S3
-        uses: jakejarvis/s3-sync-action@master
-        with:
-            args: --acl public-read --follow-symlinks --delete
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install Poetry
+      uses: snok/install-poetry@v1.1.1
+      with:
+        virtualenvs-create: true
+        virtualenvs-in-project: true
+    - name: Install dependencies
+      run: poetry install --no-interaction --no-root
+    - name: Install library
+      run: poetry install --no-interaction
+    - name: Build MkDocs
+      run: bash scripts/build-docs.sh
+    - name: deploy to S3
+      uses: jakejarvis/s3-sync-action@master
+      with:
+        args: --acl public-read --follow-symlinks --delete
         env:
             AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
             AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
