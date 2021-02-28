@@ -65,14 +65,14 @@ pip install flashgeotext
 for development:
 ```bash
 git clone https://github.com/iwpnd/flashgeotext.git
-pip install flit
-flit install
+cd flashgeotext/
+poetry install
 ```
 
 ### Running the tests
 
 ```bash
-pytest flashgeotext/tests -v
+poetry run pytest . -v
 ```
 
 ## Authors
