@@ -20,7 +20,7 @@ Extract and count countries and cities (+their synonyms) from text, like [GeoTex
 ```python
 from flashgeotext.geotext import GeoText
 
-geotext = GeoText(use_demo_data=True)
+geotext = GeoText()
 
 input_text = '''Shanghai. The Chinese Ministry of Finance in Shanghai said that China plans
                 to cut tariffs on $75 billion worth of goods that the country

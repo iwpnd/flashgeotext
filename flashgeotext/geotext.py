@@ -1,5 +1,21 @@
+from typing import Optional
+
+from pydantic import BaseModel
+
 from flashgeotext.lookup import LookupDataPool
 from flashgeotext.lookup import MissingLookupDataError
+
+
+class GeoTextConfiguration(BaseModel):
+    """GeoText configuration
+
+    Args:
+    use_demo_data (bool): load demo data or not, default True
+    case_sensitive (bool): case sensitive lookup, default True
+    """
+
+    use_demo_data: Optional[bool] = True
+    case_sensitive: Optional[bool] = True
 
 
 class GeoText(LookupDataPool):
@@ -16,7 +32,7 @@ class GeoText(LookupDataPool):
     ```python
         from flashgeotext.geotext import GeoText
 
-        geotext = GeoText(use_demo_data=True)
+        geotext = GeoText()
 
         input_text = '''Shanghai. The Chinese Ministry of Finance in Shanghai said that China plans
                         to cut tariffs on $75 billion worth of goods that the country
@@ -50,21 +66,23 @@ class GeoText(LookupDataPool):
 
     """
 
-    def __init__(self, use_demo_data: bool = True) -> None:
+    def __init__(
+        self, config: GeoTextConfiguration = GeoTextConfiguration().dict()
+    ) -> None:
         """ instantiate an empty LookupDataPool, optionally/by default with demo data
 
         Args:
-            use_demo_data (bool): optionally use demo data, defaults to True.
+            config: GeoTextConfiguration = { use_demo_data: True, case_sensitive: True }.
         """
         self.pool: dict = {}
 
-        if use_demo_data:
-            self._add_demo_data()
+        if config["use_demo_data"]:
+            self._add_demo_data(case_sensitive=config["case_sensitive"])
 
     def extract(self, input_text: str, span_info: bool = True) -> dict:
         """Extract LookupData from an input_text
 
-        Arguments:
+        Args:
             input_text (str): String to extract LookupData from.
             span_info (bool): Optionally, return span_info. Defaults to True.
 
@@ -94,7 +112,7 @@ class GeoText(LookupDataPool):
         Parse flashtext.KeywordProcessor.extract_keywords() output to count occurances,
         and optionally span_info.
 
-        Arguments:
+        Args:
             extract_data (list): flashtext.KeywordProcessor.extract_keywords() return value
             span_info (bool): optionally, parse span_info
 

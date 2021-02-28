@@ -53,18 +53,6 @@ class LookupValidation:
                 "data['Berlin'] is not a list of synonyms"
                 ]
             }
-
-    Arguments:
-        status (str): Humanreadible string containing the Error status.
-        error_count (int): Error count in validation data.
-        errors (dict):
-
-        Example: {
-            "Berlin": [
-                "Berlin missing in list of synonyms",
-                "data['Berlin'] is not a list of synonyms"
-                ]
-            }
     """
 
     def __init__(
@@ -161,7 +149,9 @@ class LookupDataPool:
     def __init__(self) -> None:
         self.pool: dict = {}
 
-    def add(self, lookup: LookupData, update: bool = False) -> None:
+    def add(
+        self, lookup: LookupData, update: bool = False, case_sensitive: bool = True
+    ) -> None:
         """Add LookupData to LookupDataPool
 
         Add LookupData to LookupDataPool.
@@ -170,17 +160,18 @@ class LookupDataPool:
 
         Args:
             lookup (LookupData): LookupData to add to pool
-            update (bool): Allow update of an existing entry in LookupDataPool
+            update (bool): Allow update of an existing entry in LookupDataPool, default False
+            case_sensitive (bool): Allow case-sensitive lookup, default True
         """
         if not isinstance(lookup, LookupData):
-            raise TypeError(f"lookup has to be instance of LookupData")
+            raise TypeError("lookup has to be instance of LookupData")
 
         if lookup.name in self.pool and not update:
             raise LookupDuplicateError(
                 f"'{lookup.name}' has already been added. Set update=True to update"
             )
         else:
-            self.pool[lookup.name] = KeywordProcessor(case_sensitive=True)
+            self.pool[lookup.name] = KeywordProcessor(case_sensitive=case_sensitive)
             self.pool[lookup.name].add_keywords_from_dict(lookup.data)
 
             # if there is a script specified, then update non word boundaries with
@@ -209,7 +200,7 @@ class LookupDataPool:
 
         self.pool = {}
 
-    def _add_demo_data(self):
+    def _add_demo_data(self, case_sensitive: bool = True):
         """(private) Add demo data to pool
 
         Adds DEMODATA_CITIES and DEMODATA_COUNTRIES to LookupDataPool
@@ -220,8 +211,8 @@ class LookupDataPool:
         countries = LookupData(
             name="countries", data=load_data_from_file(file=DEMODATA_COUNTRIES)
         )
-        self.add(cities)
-        self.add(countries)
+        self.add(cities, case_sensitive=case_sensitive)
+        self.add(countries, case_sensitive=case_sensitive)
         logger.debug(f"demo data loaded for: {list(self.pool.keys())}")
 
 

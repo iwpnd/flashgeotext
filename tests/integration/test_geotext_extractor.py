@@ -8,7 +8,7 @@ text = "Berlin ist die Hauptstadt von Deutschland. Berlin ist nicht haesslich, a
 
 
 def test_geotext_demo_data():
-    geotext = GeoText(use_demo_data=True)
+    geotext = GeoText()
 
     assert geotext.pool["cities"]
     assert geotext.pool["countries"]
@@ -20,7 +20,7 @@ def test_geotext_extract(geotext):
 
 
 def test_geotext_raises_on_empty_pool():
-    output = GeoText(use_demo_data=False)
+    output = GeoText(config={"use_demo_data": False})
 
     with pytest.raises(MissingLookupDataError):
         output.extract(text)
@@ -37,6 +37,16 @@ def test_geotext_extract_with_count_span_info_false(geotext):
 
     with pytest.raises(KeyError):
         assert output["cities"]["Berlin"]["span_info"] == [(0, 6), (43, 49)]
+
+
+def test_geotext_case_sensitive_demo_data():
+    geotext = GeoText(config={"use_demo_data": True, "case_sensitive": False})
+    text = "berlin ist ne tolle stadt"
+    output = geotext.extract(input_text=text, span_info=True)
+
+    print(output)
+
+    assert output["cities"]["Berlin"]["span_info"] == [(0, 6)]
 
 
 # tests used in geotext (https://github.com/elyase/geotext)
@@ -161,7 +171,7 @@ def test_geotext_with_script_added_to_non_word_boundaries():
     cyrillic = LookupData(
         name="test_1", data={"Нижневартовск": ["Нижневартовск"]}, script="cyrillic"
     )
-    geotext = GeoText(use_demo_data=False)
+    geotext = GeoText(config={"use_demo_data": False})
     geotext.add(cyrillic)
 
     text = """

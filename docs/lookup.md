@@ -158,7 +158,7 @@ Collection of KeywordProcessors from LookupData
 #### add
 
 ```python
- | add(lookup: LookupData, update: bool = False) -> None
+ | add(lookup: LookupData, update: bool = False, case_sensitive: bool = True) -> None
 ```
 
 Add LookupData to LookupDataPool

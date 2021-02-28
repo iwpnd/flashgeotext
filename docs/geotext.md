@@ -1,12 +1,27 @@
 # Table of Contents
 
 * [flashgeotext.geotext](#flashgeotext.geotext)
+  * [GeoTextConfiguration](#flashgeotext.geotext.GeoTextConfiguration)
   * [GeoText](#flashgeotext.geotext.GeoText)
     * [\_\_init\_\_](#flashgeotext.geotext.GeoText.__init__)
     * [extract](#flashgeotext.geotext.GeoText.extract)
 
 <a name="flashgeotext.geotext"></a>
 # flashgeotext.geotext
+
+<a name="flashgeotext.geotext.GeoTextConfiguration"></a>
+## GeoTextConfiguration Objects
+
+```python
+class GeoTextConfiguration(BaseModel)
+```
+
+GeoText configuration
+
+**Arguments**:
+
+- `use_demo_data` _bool_ - load demo data or not, default True
+- `case_sensitive` _bool_ - case sensitive lookup, default True
 
 <a name="flashgeotext.geotext.GeoText"></a>
 ## GeoText Objects
@@ -29,7 +44,7 @@ span info.
 ```python
     from flashgeotext.geotext import GeoText
 
-    geotext = GeoText(use_demo_data=True)
+    geotext = GeoText()
 
     input_text = '''Shanghai. The Chinese Ministry of Finance in Shanghai said that China plans
                     to cut tariffs on $75 billion worth of goods that the country
@@ -65,14 +80,14 @@ span info.
 #### \_\_init\_\_
 
 ```python
- | __init__(use_demo_data: bool = True) -> None
+ | __init__(config: GeoTextConfiguration = GeoTextConfiguration().dict()) -> None
 ```
 
 instantiate an empty LookupDataPool, optionally/by default with demo data
 
 **Arguments**:
 
-- `use_demo_data` _bool_ - optionally use demo data, defaults to True.
+- `config` - GeoTextConfiguration = { use_demo_data: True, case_sensitive: True }.
 
 <a name="flashgeotext.geotext.GeoText.extract"></a>
 #### extract

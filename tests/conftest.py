@@ -18,4 +18,4 @@ def test_data_countries():
 
 @pytest.fixture
 def geotext():
-    return GeoText(use_demo_data=True)
+    return GeoText()
