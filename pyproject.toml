@@ -35,7 +35,7 @@ pydantic = "^1.8"
 [tool.poetry.dev-dependencies]
 pytest = "^6.2"
 pytest-cov = "^2.11.1"
-awscli = "^1.19.17"
+awscli = "^1.19.39"
 mkdocs = "^1.1.2"
 mkdocs-material = "^7.0.3"
 markdown-include = "^0.6.0"
