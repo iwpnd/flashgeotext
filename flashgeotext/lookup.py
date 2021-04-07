@@ -1,4 +1,5 @@
 import json
+import sys
 
 from flashtext import KeywordProcessor
 from loguru import logger
@@ -6,9 +7,10 @@ from pydantic import BaseModel
 from pydantic import StrictStr
 from pydantic import validator
 
-from flashgeotext.settings import DEMODATA_CITIES
-from flashgeotext.settings import DEMODATA_COUNTRIES
-from flashgeotext.settings import SCRIPTS
+from flashgeotext import settings
+
+logger.remove()
+logger.add(sys.stderr, level=settings.LOGLEVEL)
 
 
 class LookupDuplicateError(Exception):
@@ -97,7 +99,7 @@ class LookupData(BaseModel, object):
 
     @validator("script")
     def script_must_be_in_scripts(cls, value):
-        if value not in SCRIPTS:
+        if value not in settings.SCRIPTS:
             raise ValueError("must be supported script")
         return value
 
@@ -179,7 +181,7 @@ class LookupDataPool:
 
             if lookup.script != "default":
                 self.pool[lookup.name].non_word_boundaries.update(
-                    SCRIPTS[lookup.script]["chars"]
+                    settings.SCRIPTS[lookup.script]["chars"]
                 )
 
             logger.debug(f"{lookup.name} added to pool")
@@ -195,8 +197,7 @@ class LookupDataPool:
             logger.debug(f"{lookup_to_remove} removed from pool")
 
     def remove_all(self):
-        """Remove all LookupData from LookupDataPool
-        """
+        """Remove all LookupData from LookupDataPool"""
 
         self.pool = {}
 
@@ -206,10 +207,10 @@ class LookupDataPool:
         Adds DEMODATA_CITIES and DEMODATA_COUNTRIES to LookupDataPool
         """
         cities = LookupData(
-            name="cities", data=load_data_from_file(file=DEMODATA_CITIES)
+            name="cities", data=load_data_from_file(file=settings.DEMODATA_CITIES)
         )
         countries = LookupData(
-            name="countries", data=load_data_from_file(file=DEMODATA_COUNTRIES)
+            name="countries", data=load_data_from_file(file=settings.DEMODATA_COUNTRIES)
         )
         self.add(cities, case_sensitive=case_sensitive)
         self.add(countries, case_sensitive=case_sensitive)

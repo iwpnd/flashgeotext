@@ -44,8 +44,6 @@ def test_geotext_case_sensitive_demo_data():
     text = "berlin ist ne tolle stadt"
     output = geotext.extract(input_text=text, span_info=True)
 
-    print(output)
-
     assert output["cities"]["Berlin"]["span_info"] == [(0, 6)]
 
 
