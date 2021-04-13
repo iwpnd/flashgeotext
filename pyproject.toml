@@ -27,7 +27,7 @@ include = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.7"
 flashtext = "^2.7"
 loguru = "^0.5.3"
 pydantic = "^1.8"
@@ -41,7 +41,17 @@ mkdocs-material = "^7.1.1"
 markdown-include = "^0.6.0"
 pydoc-markdown = "^3.10.0"
 pre-commit = "^2.12.0"
+black = "^20.8b1"
+gitlint = "^0.15.0"
+isort = "^5.8.0"
+flake8 = "^3.9.0"
+poethepoet = "^0.10.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poe.tasks]
+test     = "poetry run pytest -vv -s tests/"
+test-cov = "poetry run pytest -vv -s --cov=flashgeotext/ tests/"
+lint     = "flake8 ."
