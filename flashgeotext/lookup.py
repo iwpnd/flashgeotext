@@ -3,9 +3,7 @@ import sys
 
 from flashtext import KeywordProcessor
 from loguru import logger
-from pydantic import BaseModel
-from pydantic import StrictStr
-from pydantic import validator
+from pydantic import BaseModel, StrictStr, validator
 
 from flashgeotext import settings
 

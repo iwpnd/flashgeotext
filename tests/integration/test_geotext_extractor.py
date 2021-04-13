@@ -1,8 +1,7 @@
 import pytest
 
 from flashgeotext.geotext import GeoText
-from flashgeotext.lookup import LookupData
-from flashgeotext.lookup import MissingLookupDataError
+from flashgeotext.lookup import LookupData, MissingLookupDataError
 
 text = "Berlin ist die Hauptstadt von Deutschland. Berlin ist nicht haesslich, aber auch nicht sonderlich schoen."
 

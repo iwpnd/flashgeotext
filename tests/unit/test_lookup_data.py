@@ -3,11 +3,8 @@ from contextlib import nullcontext
 import pytest
 from pydantic import ValidationError
 
-from flashgeotext.lookup import load_data_from_file
-from flashgeotext.lookup import LookupData
-from flashgeotext.lookup import LookupValidation
-from flashgeotext.settings import DEMODATA_CITIES
-from flashgeotext.settings import DEMODATA_COUNTRIES
+from flashgeotext.lookup import LookupData, LookupValidation, load_data_from_file
+from flashgeotext.settings import DEMODATA_CITIES, DEMODATA_COUNTRIES
 
 
 def test_lookup_data(test_data_cities):

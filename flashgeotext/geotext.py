@@ -2,8 +2,7 @@ from typing import Optional
 
 from pydantic import BaseModel
 
-from flashgeotext.lookup import LookupDataPool
-from flashgeotext.lookup import MissingLookupDataError
+from flashgeotext.lookup import LookupDataPool, MissingLookupDataError
 
 
 class GeoTextConfiguration(BaseModel):

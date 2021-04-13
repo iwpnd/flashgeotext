@@ -1,11 +1,12 @@
 import pytest
 
-from flashgeotext.lookup import load_data_from_file
-from flashgeotext.lookup import LookupData
-from flashgeotext.lookup import LookupDataPool
-from flashgeotext.lookup import LookupDuplicateError
-from flashgeotext.settings import DEMODATA_CITIES
-from flashgeotext.settings import SCRIPTS
+from flashgeotext.lookup import (
+    LookupData,
+    LookupDataPool,
+    LookupDuplicateError,
+    load_data_from_file,
+)
+from flashgeotext.settings import DEMODATA_CITIES, SCRIPTS
 
 
 def test_lookup_data_pool(test_data_cities):
