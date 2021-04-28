@@ -1,0 +1,21 @@
+version: 2
+updates:
+- package-ecosystem: pip
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: awscli
+    versions:
+    - 1.19.22
+    - 1.19.27
+    - 1.19.33
+    - 1.19.39
+    - 1.19.53
+  - dependency-name: mkdocs-material
+    versions:
+    - 7.0.5
+    - 7.0.6
+    - 7.0.7
