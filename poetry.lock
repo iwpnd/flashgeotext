@@ -149,32 +149,50 @@ toml = ["toml"]
 
 [[package]]
 name = "databind.core"
-version = "1.0.1"
+version = "1.2.0"
 description = "Databind is a library inspired by jackson-databind to de-/serialize Python dataclasses. Compatible with Python 3.7 and newer."
 category = "dev"
 optional = false
 python-versions = ">=3.7.0,<4.0.0"
 
 [package.dependencies]
+Deprecated = ">=1.2.12,<2.0.0"
 "nr.optional" = ">=0.1.1,<1.0.0"
 "nr.parsing.date" = ">=1.0.1,<2.0.0"
 "nr.preconditions" = ">=0.0.4,<1.0.0"
 "nr.stream" = ">=0.1.1,<1.0.0"
 typing-extensions = ">=3.10.0,<4.0.0"
 
+[package.extras]
+test = ["types-dataclasses", "types-deprecated", "types-pkg-resources"]
+
 [[package]]
 name = "databind.json"
-version = "1.0.1"
+version = "1.2.0"
 description = "De-/serialize Python dataclasses to or from JSON payloads. Compatible with Python 3.7 and newer."
 category = "dev"
 optional = false
 python-versions = ">=3.7.0,<4.0.0"
 
 [package.dependencies]
-"databind.core" = ">=1.0.1,<2.0.0"
+"databind.core" = ">=1.2.0,<2.0.0"
 "nr.parsing.date" = ">=1.0.1,<2.0.0"
 "nr.preconditions" = ">=0.0.4,<1.0.0"
 typing-extensions = ">=3.10.0,<4.0.0"
+
+[[package]]
+name = "deprecated"
+version = "1.2.12"
+description = "Python @deprecated decorator to deprecate old python classes, functions or methods."
+category = "dev"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+
+[package.dependencies]
+wrapt = ">=1.10,<2"
+
+[package.extras]
+dev = ["tox", "bump2version (<1)", "sphinx (<2)", "importlib-metadata (<3)", "importlib-resources (<4)", "configparser (<5)", "sphinxcontrib-websupport (<2)", "zipp (<2)", "PyTest (<5)", "PyTest-Cov (<2.6)", "pytest", "pytest-cov"]
 
 [[package]]
 name = "distlib"
@@ -481,18 +499,6 @@ optional = false
 python-versions = "*"
 
 [[package]]
-name = "nr.collections"
-version = "0.1.1"
-description = "Useful container datatypes for Python 2 and 3."
-category = "dev"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-"nr.metaclass" = ">=0.0.1,<0.1.0"
-six = ">=1.11.0,<2.0.0"
-
-[[package]]
 name = "nr.fs"
 version = "1.6.3"
 description = "Filesystem and path manipulation tools."
@@ -502,14 +508,6 @@ python-versions = "*"
 
 [package.dependencies]
 six = ">=1.11.0,<2.0.0"
-
-[[package]]
-name = "nr.metaclass"
-version = "0.0.6"
-description = "Metaclass utilities."
-category = "dev"
-optional = false
-python-versions = "*"
 
 [[package]]
 name = "nr.optional"
@@ -676,7 +674,7 @@ email = ["email-validator (>=1.0.3)"]
 
 [[package]]
 name = "pydoc-markdown"
-version = "4.1.3"
+version = "4.2.0"
 description = "Create Python API documentation in Markdown format."
 category = "dev"
 optional = false
@@ -684,11 +682,10 @@ python-versions = ">=3.7.0,<4.0.0"
 
 [package.dependencies]
 click = ">=7.0.0,<8.0.0"
-"databind.core" = ">=1.0.0,<2.0.0"
-"databind.json" = ">=1.0.0,<2.0.0"
+"databind.core" = ">=1.1.2,<2.0.0"
+"databind.json" = ">=1.1.2,<2.0.0"
 docspec = ">=1.0.0,<2.0.0"
 docspec-python = ">=1.0.0,<2.0.0"
-"nr.collections" = ">=0.1.1,<0.2.0"
 "nr.fs" = ">=1.6.0,<2.0.0"
 "nr.pylang.utils" = ">=0.1.1,<1.0.0"
 "nr.stream" = ">=0.1.2,<1.0.0"
@@ -963,6 +960,14 @@ python-versions = ">=3.5"
 dev = ["pytest (>=4.6.2)", "black (>=19.3b0)"]
 
 [[package]]
+name = "wrapt"
+version = "1.12.1"
+description = "Module for decorators, wrappers and monkey patching."
+category = "dev"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "zipp"
 version = "3.4.1"
 description = "Backport of pathlib-compatible object wrapper for zip files"
@@ -977,7 +982,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pyt
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "eaba6e1d2fe21b20cd9d4ce5291b091f3fbd755f91b8b0ca79478db43e2440e2"
+content-hash = "888cb80f172dae3c4049734107760db6ebabb7997bb8ac268f3b7dcc5ead3b64"
 
 [metadata.files]
 appdirs = [
@@ -1083,12 +1088,16 @@ coverage = [
     {file = "coverage-5.5.tar.gz", hash = "sha256:ebe78fe9a0e874362175b02371bdfbee64d8edc42a044253ddf4ee7d3c15212c"},
 ]
 "databind.core" = [
-    {file = "databind.core-1.0.1-py3-none-any.whl", hash = "sha256:e6a16f3d1fc7fc330e765b17702b83bf29c72112e99920f306630afcdd17033c"},
-    {file = "databind.core-1.0.1.tar.gz", hash = "sha256:48d4b2f1540c7c6af079bd2c33a42232d198a77dff1de8458ba987d3901d669a"},
+    {file = "databind.core-1.2.0-py3-none-any.whl", hash = "sha256:88dde016d784161d79540413446b3952d6fae3c54c77d0da8c0119d6c72617e7"},
+    {file = "databind.core-1.2.0.tar.gz", hash = "sha256:f065d239507f0aa01eadcb3d734d0e5b4aa7c223518bbba1bd0e497a755d7753"},
 ]
 "databind.json" = [
-    {file = "databind.json-1.0.1-py3-none-any.whl", hash = "sha256:0200cdeaab076674fe85626d596b0cb038e42fb0678265e5a1c09e1475ade80c"},
-    {file = "databind.json-1.0.1.tar.gz", hash = "sha256:bcd5b2bbda557071d4bb40c0d4e3e9ed4a6e4d50854d3e6f4cfcf5e359b8d10a"},
+    {file = "databind.json-1.2.0-py3-none-any.whl", hash = "sha256:06053e03ad732c6887f315e71d9aa5eaf655cf036560a9011c65918405b58647"},
+    {file = "databind.json-1.2.0.tar.gz", hash = "sha256:311f2f3a9033fac2173d6a3ac34af31e0de907dc8d24cc47feceda541f1f2a5b"},
+]
+deprecated = [
+    {file = "Deprecated-1.2.12-py2.py3-none-any.whl", hash = "sha256:08452d69b6b5bc66e8330adde0a4f8642e969b9e1702904d137eeb29c8ffc771"},
+    {file = "Deprecated-1.2.12.tar.gz", hash = "sha256:6d2de2de7931a968874481ef30208fd4e08da39177d61d3d4ebdf4366e7dbca1"},
 ]
 distlib = [
     {file = "distlib-0.3.1-py2.py3-none-any.whl", hash = "sha256:8c09de2c67b3e7deef7184574fc060ab8a793e7adbb183d942c389c8b13c52fb"},
@@ -1246,17 +1255,9 @@ nodeenv = [
     {file = "nodeenv-1.5.0-py2.py3-none-any.whl", hash = "sha256:5304d424c529c997bc888453aeaa6362d242b6b4631e90f3d4bf1b290f1c84a9"},
     {file = "nodeenv-1.5.0.tar.gz", hash = "sha256:ab45090ae383b716c4ef89e690c41ff8c2b257b85b309f01f3654df3d084bd7c"},
 ]
-"nr.collections" = [
-    {file = "nr.collections-0.1.1-py2.py3-none-any.whl", hash = "sha256:13d916c53282895245760aff2b3ecad1f3e8cbc4d4914344d54473ee896f653e"},
-    {file = "nr.collections-0.1.1.tar.gz", hash = "sha256:645b5d3a6de3fd4e8e638a63dd47cf7d8838ce72ec0603bf3f4db822c0bd9a4e"},
-]
 "nr.fs" = [
     {file = "nr.fs-1.6.3-py2.py3-none-any.whl", hash = "sha256:64108c168ea2e8077fdf5f0c5417459d1a145fe34cb305fe90faeb75b4e8b421"},
     {file = "nr.fs-1.6.3.tar.gz", hash = "sha256:788aa0a04c4143f95c5245bc8ccc0c0872e932be533bd37780fbb55afcdf124a"},
-]
-"nr.metaclass" = [
-    {file = "nr.metaclass-0.0.6-py2.py3-none-any.whl", hash = "sha256:d458eb1bddd93373cc74e19981214e7d478c92c9b08fc9732bd430225698a8f0"},
-    {file = "nr.metaclass-0.0.6.tar.gz", hash = "sha256:3d52f8e603e3c2944b9135e5a09593c3c36191f26cf1c29a7c71efb192552b10"},
 ]
 "nr.optional" = [
     {file = "nr.optional-0.1.1-py3-none-any.whl", hash = "sha256:d451cabe8a5a8c92267f01a82db0d601ace6dfe88eded89c6297b59b52d19015"},
@@ -1354,8 +1355,8 @@ pydantic = [
     {file = "pydantic-1.8.2.tar.gz", hash = "sha256:26464e57ccaafe72b7ad156fdaa4e9b9ef051f69e175dbbb463283000c05ab7b"},
 ]
 pydoc-markdown = [
-    {file = "pydoc-markdown-4.1.3.tar.gz", hash = "sha256:8fafaef455c2c46515f323e549d820d355c2228bb929057cb8c04b0659fe9a53"},
-    {file = "pydoc_markdown-4.1.3-py3-none-any.whl", hash = "sha256:a8af22fbbf007066e5fdc987553effec82e14c95f61938d9bae2aeefcbbe5e07"},
+    {file = "pydoc-markdown-4.2.0.tar.gz", hash = "sha256:772300a9fd95d931bac1aff955b109479aebe81b03fd5587d6947de7e967db4b"},
+    {file = "pydoc_markdown-4.2.0-py3-none-any.whl", hash = "sha256:c69ed22c63e84cfed45bdcd69104524e5508bedf63f0587557dd3afd1aa4092a"},
 ]
 pyflakes = [
     {file = "pyflakes-2.3.1-py2.py3-none-any.whl", hash = "sha256:7893783d01b8a89811dd72d7dfd4d84ff098e5eed95cfa8905b22bbffe52efc3"},
@@ -1568,6 +1569,9 @@ watchdog = [
 win32-setctime = [
     {file = "win32_setctime-1.0.3-py3-none-any.whl", hash = "sha256:dc925662de0a6eb987f0b01f599c01a8236cb8c62831c22d9cada09ad958243e"},
     {file = "win32_setctime-1.0.3.tar.gz", hash = "sha256:4e88556c32fdf47f64165a2180ba4552f8bb32c1103a2fafd05723a0bd42bd4b"},
+]
+wrapt = [
+    {file = "wrapt-1.12.1.tar.gz", hash = "sha256:b62ffa81fb85f4332a4f609cab4ac40709470da05643a082ec1eb88e6d9b97d7"},
 ]
 zipp = [
     {file = "zipp-3.4.1-py3-none-any.whl", hash = "sha256:51cb66cc54621609dd593d1787f286ee42a5c0adbb4b29abea5a63edc3e03098"},
