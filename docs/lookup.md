@@ -12,11 +12,13 @@
     * [remove\_all](#flashgeotext.lookup.LookupDataPool.remove_all)
   * [load\_data\_from\_file](#flashgeotext.lookup.load_data_from_file)
 
-<a name="flashgeotext.lookup"></a>
+<a id="flashgeotext.lookup"></a>
+
 # flashgeotext.lookup
 
-<a name="flashgeotext.lookup.LookupDuplicateError"></a>
-## LookupDuplicateError Objects
+<a id="flashgeotext.lookup.LookupDuplicateError"></a>
+
+## LookupDuplicateError
 
 ```python
 class LookupDuplicateError(Exception)
@@ -33,8 +35,9 @@ Exception is raised if LookupData is already in LookupDataPool
 
 - `message` _str_ - Human readable string describing the exception.
 
-<a name="flashgeotext.lookup.MissingLookupDataError"></a>
-## MissingLookupDataError Objects
+<a id="flashgeotext.lookup.MissingLookupDataError"></a>
+
+## MissingLookupDataError
 
 ```python
 class MissingLookupDataError(Exception)
@@ -51,8 +54,9 @@ Exception is raised if GeoText.extract() is used on empty LookupDataPool
 
 - `message` _str_ - Human readable string describing the exception.
 
-<a name="flashgeotext.lookup.LookupValidation"></a>
-## LookupValidation Objects
+<a id="flashgeotext.lookup.LookupValidation"></a>
+
+## LookupValidation
 
 ```python
 class LookupValidation()
@@ -73,22 +77,9 @@ Data validation container object
   ]
   }
 
+<a id="flashgeotext.lookup.LookupData"></a>
 
-**Arguments**:
-
-- `status` _str_ - Humanreadible string containing the Error status.
-- `error_count` _int_ - Error count in validation data.
-  errors (dict):
-
-- `Example` - {
-- `"Berlin"` - [
-  "Berlin missing in list of synonyms",
-  "data['Berlin'] is not a list of synonyms"
-  ]
-  }
-
-<a name="flashgeotext.lookup.LookupData"></a>
-## LookupData Objects
+## LookupData
 
 ```python
 class LookupData(BaseModel,  object)
@@ -117,11 +108,12 @@ to the set of non_word_boundaries's default of:
 - `data` _dict_ - dictionary containing data to lookup and their synonyms
 - `script` - (pydantic.StrictStr): what scripts characters to add to non_word_boundaries
 
-<a name="flashgeotext.lookup.LookupData.validate"></a>
+<a id="flashgeotext.lookup.LookupData.validate"></a>
+
 #### validate
 
 ```python
- | validate() -> dict
+def validate() -> dict
 ```
 
 Validate if data attribute has appropiate structure.
@@ -129,8 +121,9 @@ Validate if data attribute has appropiate structure.
 returns:
     LookupValidation
 
-<a name="flashgeotext.lookup.LookupDataPool"></a>
-## LookupDataPool Objects
+<a id="flashgeotext.lookup.LookupDataPool"></a>
+
+## LookupDataPool
 
 ```python
 class LookupDataPool()
@@ -154,11 +147,12 @@ Collection of KeywordProcessors from LookupData
 - `LookupData.name` - flashtext.KeywordProcessor.add_keywords_from_dict(LookupData.data)
   }
 
-<a name="flashgeotext.lookup.LookupDataPool.add"></a>
+<a id="flashgeotext.lookup.LookupDataPool.add"></a>
+
 #### add
 
 ```python
- | add(lookup: LookupData, update: bool = False, case_sensitive: bool = True) -> None
+def add(lookup: LookupData, update: bool = False, case_sensitive: bool = True) -> None
 ```
 
 Add LookupData to LookupDataPool
@@ -170,13 +164,15 @@ is already in pool unless update == True.
 **Arguments**:
 
 - `lookup` _LookupData_ - LookupData to add to pool
-- `update` _bool_ - Allow update of an existing entry in LookupDataPool
+- `update` _bool_ - Allow update of an existing entry in LookupDataPool, default False
+- `case_sensitive` _bool_ - Allow case-sensitive lookup, default True
 
-<a name="flashgeotext.lookup.LookupDataPool.remove"></a>
+<a id="flashgeotext.lookup.LookupDataPool.remove"></a>
+
 #### remove
 
 ```python
- | remove(lookup_to_remove: str) -> None
+def remove(lookup_to_remove: str) -> None
 ```
 
 Remove LookupData from LookupDataPool
@@ -185,20 +181,22 @@ Remove LookupData from LookupDataPool
 
 - `lookup_to_remove` _str_ - LookupData to remove from pool
 
-<a name="flashgeotext.lookup.LookupDataPool.remove_all"></a>
+<a id="flashgeotext.lookup.LookupDataPool.remove_all"></a>
+
 #### remove\_all
 
 ```python
- | remove_all()
+def remove_all()
 ```
 
 Remove all LookupData from LookupDataPool
 
-<a name="flashgeotext.lookup.load_data_from_file"></a>
+<a id="flashgeotext.lookup.load_data_from_file"></a>
+
 #### load\_data\_from\_file
 
 ```python
-load_data_from_file(file: str) -> dict
+def load_data_from_file(file: str) -> dict
 ```
 
 Load data from json file

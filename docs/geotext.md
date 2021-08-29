@@ -6,11 +6,13 @@
     * [\_\_init\_\_](#flashgeotext.geotext.GeoText.__init__)
     * [extract](#flashgeotext.geotext.GeoText.extract)
 
-<a name="flashgeotext.geotext"></a>
+<a id="flashgeotext.geotext"></a>
+
 # flashgeotext.geotext
 
-<a name="flashgeotext.geotext.GeoTextConfiguration"></a>
-## GeoTextConfiguration Objects
+<a id="flashgeotext.geotext.GeoTextConfiguration"></a>
+
+## GeoTextConfiguration
 
 ```python
 class GeoTextConfiguration(BaseModel)
@@ -23,8 +25,9 @@ GeoText configuration
 - `use_demo_data` _bool_ - load demo data or not, default True
 - `case_sensitive` _bool_ - case sensitive lookup, default True
 
-<a name="flashgeotext.geotext.GeoText"></a>
-## GeoText Objects
+<a id="flashgeotext.geotext.GeoText"></a>
+
+## GeoText
 
 ```python
 class GeoText(LookupDataPool)
@@ -76,11 +79,12 @@ span info.
 
 ```
 
-<a name="flashgeotext.geotext.GeoText.__init__"></a>
+<a id="flashgeotext.geotext.GeoText.__init__"></a>
+
 #### \_\_init\_\_
 
 ```python
- | __init__(config: GeoTextConfiguration = GeoTextConfiguration().dict()) -> None
+def __init__(config: GeoTextConfiguration = GeoTextConfiguration().dict()) -> None
 ```
 
 instantiate an empty LookupDataPool, optionally/by default with demo data
@@ -89,11 +93,12 @@ instantiate an empty LookupDataPool, optionally/by default with demo data
 
 - `config` - GeoTextConfiguration = { use_demo_data: True, case_sensitive: True }.
 
-<a name="flashgeotext.geotext.GeoText.extract"></a>
+<a id="flashgeotext.geotext.GeoText.extract"></a>
+
 #### extract
 
 ```python
- | extract(input_text: str, span_info: bool = True) -> dict
+def extract(input_text: str, span_info: bool = True) -> dict
 ```
 
 Extract LookupData from an input_text

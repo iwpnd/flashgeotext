@@ -26,8 +26,8 @@ jobs:
       run: |
         echo "Building docs"
         poetry run mkdocs build
-        poetry run pydoc-markdown -m flashgeotext.lookup > docs/lookup.md --render-toc
-        poetry run pydoc-markdown -m flashgeotext.geotext > docs/geotext.md --render-toc
+        poetry run pydoc-markdown -m flashgeotext.lookup '{renderer:{type:markdown,descriptive_class_title:false,render_toc:true}}' > docs/lookup.md
+        poetry run pydoc-markdown -m flashgeotext.geotext '{renderer:{type:markdown,descriptive_class_title:false,render_toc:true}}' > docs/geotext.md
         echo "Finished"
     - name: deploy to S3
       uses: jakejarvis/s3-sync-action@master
