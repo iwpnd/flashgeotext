@@ -29,26 +29,22 @@ jobs:
         echo "Finished"
     - name: build geotext
       run: |
-        echo "Building geotext"
-        poetry run pydoc-markdown -I flashgeotext -m flashgeotext.geotext '{ \
-          renderer: { \
-            type: markdown, \
-            descriptive_class_title: false, \
-            render_toc: true \
-            } \
-          }' > docs/geotext.md
-        echo "finished"
+        poetry run pydoc-markdown -I flashgeotext -m flashgeotext.geotext "{
+          renderer: {
+            type: markdown,
+            descriptive_class_title: false,
+            render_toc: true
+            }
+          }" > docs/geotext.md
     - name: build lookup
       run: |
-        echo "Building lookup"
-        poetry run pydoc-markdown -I flashgeotext -m flashgeotext.lookup '{ \
-          renderer: { \
-            type: markdown, \
-            descriptive_class_title: false, \
-            render_toc: true \
-            } \
-          }' > docs/lookup.md
-        echo "finished"
+        poetry run pydoc-markdown -I flashgeotext -m flashgeotext.lookup "{
+          renderer: {
+            type: markdown,
+            descriptive_class_title: false,
+            render_toc: true
+            }
+          }" > docs/lookup.md
     - name: deploy to S3
       uses: jakejarvis/s3-sync-action@master
       with:
