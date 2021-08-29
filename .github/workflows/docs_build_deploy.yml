@@ -24,13 +24,12 @@ jobs:
       run: poetry install --no-interaction
     - name: Build MkDocs
       run: |
-        echo "Building docs"
+        echo "Building mkdocs"
         poetry run mkdocs build
-        poetry run pydoc-markdown -I flashgeotext -m flashgeotext.lookup --render-toc > docs/lookup.md
-        poetry run pydoc-markdown -I flashgeotext -m flashgeotext.geotext --render-toc > docs/geotext.md
         echo "Finished"
     - name: build geotext
       run: |
+        echo "Building geotext"
         poetry run pydoc-markdown -m flashgeotext.geotext '{ \
           renderer: { \
             type: markdown, \
@@ -38,8 +37,10 @@ jobs:
             render_toc: true \
             } \
           }' > docs/geotext.md- name: build lookup
+        echo "finished"
     - name: build lookup
       run: |
+        echo "Building lookup"
         poetry run pydoc-markdown -m flashgeotext.lookup '{ \
           renderer: { \
             type: markdown, \
@@ -47,6 +48,7 @@ jobs:
             render_toc: true \
             } \
           }' > docs/lookup.md
+        echo "finished"
     - name: deploy to S3
       uses: jakejarvis/s3-sync-action@master
       with:
