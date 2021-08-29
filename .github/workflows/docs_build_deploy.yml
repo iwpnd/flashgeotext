@@ -30,18 +30,18 @@ jobs:
     - name: build geotext
       run: |
         echo "Building geotext"
-        poetry run pydoc-markdown -m flashgeotext.geotext '{ \
+        poetry run pydoc-markdown -I flashgeotext -m flashgeotext.geotext '{ \
           renderer: { \
             type: markdown, \
             descriptive_class_title: false, \
             render_toc: true \
             } \
-          }' > docs/geotext.md- name: build lookup
+          }' > docs/geotext.md
         echo "finished"
     - name: build lookup
       run: |
         echo "Building lookup"
-        poetry run pydoc-markdown -m flashgeotext.lookup '{ \
+        poetry run pydoc-markdown -I flashgeotext -m flashgeotext.lookup '{ \
           renderer: { \
             type: markdown, \
             descriptive_class_title: false, \
