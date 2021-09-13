@@ -1,6 +1,6 @@
 import pytest
 
-from flashgeotext.geotext import GeoText
+from flashgeotext.geotext import GeoText, GeoTextConfiguration
 from flashgeotext.lookup import LookupData, MissingLookupDataError
 
 text = "Berlin ist die Hauptstadt von Deutschland. Berlin ist nicht haesslich, aber auch nicht sonderlich schoen."
@@ -19,7 +19,8 @@ def test_geotext_extract(geotext):
 
 
 def test_geotext_raises_on_empty_pool():
-    output = GeoText(config={"use_demo_data": False})
+    config = GeoTextConfiguration(**{"use_demo_data": False, "case_sensitive": True})
+    output = GeoText(config)
 
     with pytest.raises(MissingLookupDataError):
         output.extract(text)
@@ -39,7 +40,8 @@ def test_geotext_extract_with_count_span_info_false(geotext):
 
 
 def test_geotext_case_sensitive_demo_data():
-    geotext = GeoText(config={"use_demo_data": True, "case_sensitive": False})
+    config = GeoTextConfiguration(**{"use_demo_data": True, "case_sensitive": False})
+    geotext = GeoText(config)
     text = "berlin ist ne tolle stadt"
     output = geotext.extract(input_text=text, span_info=True)
 
@@ -168,7 +170,8 @@ def test_geotext_with_script_added_to_non_word_boundaries():
     cyrillic = LookupData(
         name="test_1", data={"Нижневартовск": ["Нижневартовск"]}, script="cyrillic"
     )
-    geotext = GeoText(config={"use_demo_data": False})
+    config = GeoTextConfiguration(**{"use_demo_data": False})
+    geotext = GeoText(config)
     geotext.add(cyrillic)
 
     text = """

@@ -1,5 +1,3 @@
-from typing import Optional
-
 from pydantic import BaseModel
 
 from flashgeotext.lookup import LookupDataPool, MissingLookupDataError
@@ -13,8 +11,11 @@ class GeoTextConfiguration(BaseModel):
     case_sensitive (bool): case sensitive lookup, default True
     """
 
-    use_demo_data: Optional[bool] = True
-    case_sensitive: Optional[bool] = True
+    use_demo_data: bool = True
+    case_sensitive: bool = True
+
+
+CONFIG = GeoTextConfiguration()
 
 
 class GeoText(LookupDataPool):
@@ -65,18 +66,16 @@ class GeoText(LookupDataPool):
 
     """
 
-    def __init__(
-        self, config: GeoTextConfiguration = GeoTextConfiguration().dict()
-    ) -> None:
-        """ instantiate an empty LookupDataPool, optionally/by default with demo data
+    def __init__(self, config: GeoTextConfiguration = CONFIG) -> None:
+        """instantiate an empty LookupDataPool, optionally/by default with demo data
 
         Args:
             config: GeoTextConfiguration = { use_demo_data: True, case_sensitive: True }.
         """
         self.pool: dict = {}
 
-        if config["use_demo_data"]:
-            self._add_demo_data(case_sensitive=config["case_sensitive"])
+        if config.use_demo_data:
+            self._add_demo_data(case_sensitive=config.case_sensitive)
 
     def extract(self, input_text: str, span_info: bool = True) -> dict:
         """Extract LookupData from an input_text
