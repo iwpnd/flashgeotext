@@ -45,7 +45,7 @@ gitlint = "^0.15.1"
 isort = "^5.9.3"
 flake8 = "^3.9.2"
 poethepoet = "^0.10.0"
-pydoc-markdown = "^4.3.0"
+pydoc-markdown = "^4.3.2"
 python-semantic-release = "^7.19.2"
 
 [tool.semantic_release]
