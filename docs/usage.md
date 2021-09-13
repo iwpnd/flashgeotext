@@ -23,20 +23,24 @@ geotext.extract(input_text=input_text, span_info=True)
         'Shanghai': {
             'count': 2,
             'span_info': [(0, 8), (45, 53)]
+						'found_as': ['Shanghai', 'Shanghai']
             },
         'Washington, D.C.': {
             'count': 1,
             'span_info': [(175, 185)]
+						'found_as': ['Washington']
             }
         },
     'countries': {
         'China': {
             'count': 1,
             'span_info': [(64, 69)]
+						'found_as': ['China']
             },
         'United States': {
             'count': 1,
             'span_info': [(171, 173)]
+						'found_as': ['US']
             }
         }
     }
@@ -45,7 +49,7 @@ geotext.extract(input_text=input_text, span_info=True)
 ### Bring your own data (default script)
 
 ```python
-from flashgeotext.geotext import GeoText
+from flashgeotext.geotext import GeoText, GeoTextConfiguration
 from flashgeotext.lookup import LookupData
 
 districts = {
@@ -71,27 +75,37 @@ lookup_districts = LookupData(
     name="berlin_districts",
     data=districts)
 
-geotext = GeoText(use_demo_data=False)
+config = GeoTextConfiguration(**{"use_demo_data":False})
+geotext = GeoText(config)
 geotext.add(lookup_districts)
 
 print(len(geotext.pool))
->> 1
 
-geotext.extract(text, span_info=False)
+
+extract = geotext.extract(text)geotext.extract(text)
 
 >> {
-    "berlin_districts": {
-        "Friedrichshain-Kreuzberg: {
-            "count": 3
-        }
+  "berlin_districts": {
+    "Friedrichshain-Kreuzberg": {
+      "count": 3,
+      "span_info": [
+        [1,25],
+        [119,133],
+        [172,181]
+      ],
+      "found_as": [
+        "Friedrichshain-Kreuzberg",
+        "Friedrichshain",
+        "Kreuzberg"
+      ]
     }
-}
-```
+  }
+}```
 
 ### Bring your own data (with script)
 
 ```python
-from flashgeotext.geotext import GeoText
+from flashgeotext.geotext import GeoText, GeoTextConfiguration
 from flashgeotext.lookup import LookupData
 
 cyrillic_city = {"Нижневартовск": ["Нижневартовск"]}
@@ -121,16 +135,28 @@ lookup_cyrillic_city = LookupData(
     script="cyrillic"
     )
 
-geotext = GeoText(use_demo_data=False)
-geotext.add(lookup_cyrillic_city)
+config = GeoTextConfiguration(**{"use_demo_data":False})
+geotext = GeoText(config)
+geotext.add(lookup_cyrillic_city)print(len(geotext.pool))
 
 print(len(geotext.pool))
 >> 1
 
-geotext.extract(text, span_info=False)
+geotext.extract(text)
 
->> {'cyrillic': {'Нижневартовск': {'count': 1}}}
-```
+>> {
+  "cyrillic": {
+    "Нижневартовск": {
+      "count": 1,
+      "span_info": [
+        [281,294]
+      ],
+      "found_as": [
+        "Нижневартовск"
+      ]
+    }
+  }
+}```
 
 Actually the city `Нижневартовск` is present three times in the text, but we did not specify `Нижневартовском` to be the same as `Нижневартовск`.
 

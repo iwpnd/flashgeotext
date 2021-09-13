@@ -58,21 +58,25 @@ span info.
         'cities': {
             'Shanghai': {
                 'count': 2,
-                'span_info': [(0, 8), (45, 53)]
+                'span_info': [(0, 8), (45, 53)],
+                'found_as': ['Shanghai', 'Shanghai'],
                 },
             'Washington, D.C.': {
                 'count': 1,
-                'span_info': [(175, 185)]
+                'span_info': [(175, 185)],
+                'found_as': ['Washington'],
                 }
             },
         'countries': {
             'China': {
                 'count': 1,
-                'span_info': [(64, 69)]
+                'span_info': [(64, 69)],
+                'found_as': ['China'],
                 },
             'United States': {
                 'count': 1,
-                'span_info': [(171, 173)]
+                'span_info': [(171, 173)],
+                'found_as': ['US'],
                 }
             }
         }

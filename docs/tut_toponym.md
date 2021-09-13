@@ -125,25 +125,27 @@ city_lookup = LookupData(name="city_names", data=lookup, script="cyrillic")
 By default `LookupData` will expect you to look for words with latin characters. So we have to specificly add `cyrillic` characters here. Then we instantiate an instance of `GeoText` while explicitly not using the demo data that comes with it, but with our own data lookup.
 
 ```python
-from flashgeotext.geotext import GeoText
+from flashgeotext.geotext import GeoText, GeoTextConfiguration
 
-geotext = GeoText(use_demo_data=False)
+config = GeoTextConfiguration(**{"use_demo_data": False})
+geotext = GeoText(config)
 geotext.add(lookup_city)
 ```
 
 Now we use the `extract` method of `GeoText` to extract city mentions from a newspaper article.
 
 ```python
-geotext.extract(text, span_info=True)
+geotext.extract(text)
 
 >> {
     'city_names': {
         'Москва': {
-            'count': 3,
-            'span_info': [(2, 8), (204, 210), (826, 832)]
+            'count': 2,
+            'span_info': [(2, 8), (204, 210)]
+						'found_as': ['Москве','Москвы']
             }
         }
     }
 ```
 
-And there you have it. Moscow is mention three times in the article. Flashgeotext scales pretty great with increasing number of cities to look up ([read here](https://iwpnd.pw/articles/2020-02/flashgeotext-library)). So you could create a pipeline that would extract city mentions from a stream of newspaper articles in your framework of choice.
+And there you have it. Moscow is mention two times in the article. Flashgeotext scales pretty great with increasing number of cities to look up ([read here](https://iwpnd.pw/articles/2020-02/flashgeotext-library)). So you could create a pipeline that would extract city mentions from a stream of newspaper articles in your framework of choice.
