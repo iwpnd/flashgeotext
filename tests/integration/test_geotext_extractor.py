@@ -27,25 +27,20 @@ def test_geotext_raises_on_empty_pool():
 
 
 def test_geotext_extract_with_count_span_info_true(geotext):
-    output = geotext.extract(input_text=text, span_info=True)
+    output = geotext.extract(input_text=text)
     assert output["cities"]["Berlin"]["count"] == 2
     assert output["cities"]["Berlin"]["span_info"] == [(0, 6), (43, 49)]
-
-
-def test_geotext_extract_with_count_span_info_false(geotext):
-    output = geotext.extract(input_text=text, span_info=False)
-
-    with pytest.raises(KeyError):
-        assert output["cities"]["Berlin"]["span_info"] == [(0, 6), (43, 49)]
+    assert output["cities"]["Berlin"]["found_as"] == ["Berlin", "Berlin"]
 
 
 def test_geotext_case_sensitive_demo_data():
     config = GeoTextConfiguration(**{"use_demo_data": True, "case_sensitive": False})
     geotext = GeoText(config)
     text = "berlin ist ne tolle stadt"
-    output = geotext.extract(input_text=text, span_info=True)
+    output = geotext.extract(input_text=text)
 
     assert output["cities"]["Berlin"]["span_info"] == [(0, 6)]
+    assert output["cities"]["Berlin"]["found_as"] == ["berlin"]
 
 
 # tests used in geotext (https://github.com/elyase/geotext)
@@ -124,7 +119,7 @@ def test_geotext_case_sensitive_demo_data():
     ],
 )
 def test_geotext_extract_cities(nr, text, expected_cities, geotext):
-    output = geotext.extract(input_text=text, span_info=False)
+    output = geotext.extract(input_text=text)
 
     assert all([city in output["cities"] for city in expected_cities])
 
@@ -161,7 +156,7 @@ def test_geotext_extract_cities(nr, text, expected_cities, geotext):
     ],
 )
 def test_geotext_extract_countries(nr, text, expected_countries, geotext):
-    output = geotext.extract(input_text=text, span_info=False)
+    output = geotext.extract(input_text=text)
 
     assert all([country in output["countries"] for country in expected_countries])
 
@@ -186,5 +181,5 @@ def test_geotext_with_script_added_to_non_word_boundaries():
     что традиционно в середине апреля закрываются для движения автотранспорта все ледовые переправы.
     """
 
-    result = geotext.extract(text, span_info=False)
+    result = geotext.extract(text)
     result["test_1"]["Нижневартовск"]["count"] == 1

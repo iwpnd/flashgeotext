@@ -38,26 +38,30 @@ class GeoText(LookupDataPool):
                         to cut tariffs on $75 billion worth of goods that the country
                         imports from the US. Washington welcomes the decision.'''
 
-        geotext.extract(input_text=input_text, span_info=True)
+        geotext.extract(input_text=input_text)
         >> {
             'cities': {
                 'Shanghai': {
                     'count': 2,
                     'span_info': [(0, 8), (45, 53)]
+                    'found_as': ['Shanghai', 'Shanghai']
                     },
                 'Washington, D.C.': {
                     'count': 1,
                     'span_info': [(175, 185)]
+                    'found_as': ['Washington']
                     }
                 },
             'countries': {
                 'China': {
                     'count': 1,
                     'span_info': [(64, 69)]
+                    'found_as': ['China']
                     },
                 'United States': {
                     'count': 1,
                     'span_info': [(171, 173)]
+                    'found_as': ['US']
                     }
                 }
             }
@@ -100,11 +104,11 @@ class GeoText(LookupDataPool):
             extract = self.pool[lookup].extract_keywords(
                 input_text, span_info=span_info
             )
-            output[lookup] = self._parse_extract(extract, span_info=span_info)
+            output[lookup] = self._parse_extract(extract, input_text)
 
         return output
 
-    def _parse_extract(self, extract_data: list, span_info: bool = True) -> dict:
+    def _parse_extract(self, extract_data: list, input_text: str) -> dict:
         """Parse flashtext.KeywordProcessor.extract_keywords() output to count occurances
 
         Parse flashtext.KeywordProcessor.extract_keywords() output to count occurances,
@@ -112,33 +116,31 @@ class GeoText(LookupDataPool):
 
         Args:
             extract_data (list): flashtext.KeywordProcessor.extract_keywords() return value
-            span_info (bool): optionally, parse span_info
+            input_text (str): input text
 
         Returns:
             parsed_extract (dict): parsed extract_data to include count, optionally span_info
         """
         parsed_extract: dict = {}
 
-        if span_info:
-            for entry in extract_data:
-                if entry[0] not in parsed_extract:
-                    parsed_extract[entry[0]] = {
-                        "count": 1,
-                        "span_info": [(entry[1], entry[2])],
-                    }
-                else:
-                    parsed_extract[entry[0]]["count"] = (
-                        parsed_extract[entry[0]]["count"] + 1
-                    )
-                    parsed_extract[entry[0]]["span_info"] = parsed_extract[entry[0]][
-                        "span_info"
-                    ] + [(entry[1], entry[2])]
+        for entry in extract_data:
+            keyword = entry[0]
+            span_start = entry[1]
+            span_end = entry[2]
 
-        else:
-            for entry in extract_data:
-                if entry not in parsed_extract:
-                    parsed_extract[entry] = {"count": 1}
-                else:
-                    parsed_extract[entry]["count"] = parsed_extract[entry]["count"] + 1
+            if keyword not in parsed_extract:
+                parsed_extract[keyword] = {
+                    "count": 1,
+                    "span_info": [(span_start, span_end)],
+                    "found_as": [input_text[span_start:span_end]],
+                }
+            else:
+                parsed_extract[keyword]["count"] = parsed_extract[keyword]["count"] + 1
+                parsed_extract[keyword]["span_info"] = parsed_extract[keyword][
+                    "span_info"
+                ] + [(span_start, span_end)]
+                parsed_extract[keyword]["found_as"] = parsed_extract[keyword][
+                    "found_as"
+                ] + [input_text[span_start:span_end]]
 
         return parsed_extract
