@@ -46,6 +46,20 @@ isort = "^5.9.3"
 flake8 = "^3.9.2"
 poethepoet = "^0.10.0"
 pydoc-markdown = "^4.3.0"
+python-semantic-release = "^7.19.2"
+
+[tool.semantic_release]
+version_variable = [
+    "flashgeotext/__init__.py:__version__",
+    "pyproject.toml:version"
+]
+commit_subject = "ci: release v{version}"
+branch = "master"
+upload_to_pypi = true
+upload_to_release = true
+build_command = "pip install poetry && poetry build"
+
+
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -55,3 +69,4 @@ build-backend = "poetry.core.masonry.api"
 test     = "poetry run pytest -vv -s tests/"
 test-cov = "poetry run pytest -vv -s --cov=flashgeotext/ tests/"
 lint     = "flake8 ."
+publish    = "poetry run semantic-release publish"
