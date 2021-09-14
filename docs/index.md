@@ -26,26 +26,30 @@ input_text = '''Shanghai. The Chinese Ministry of Finance in Shanghai said that 
                 to cut tariffs on $75 billion worth of goods that the country
                 imports from the US. Washington welcomes the decision.'''
 
-geotext.extract(input_text=input_text, span_info=True)
+geotext.extract(input_text=input_text)
 >> {
     'cities': {
         'Shanghai': {
             'count': 2,
-            'span_info': [(0, 8), (45, 53)]
+            'span_info': [(0, 8), (45, 53)],
+						'found_as': ['Shanghai', 'Shanghai']
             },
         'Washington, D.C.': {
             'count': 1,
             'span_info': [(175, 185)]
+						'found_as': ['Washington']
             }
         },
     'countries': {
         'China': {
             'count': 1,
-            'span_info': [(64, 69)]
+            'span_info': [(64, 69)],
+						'found_as': ['China']
             },
         'United States': {
             'count': 1,
-            'span_info': [(171, 173)]
+            'span_info': [(171, 173)],
+						'found_as': ['US']
             }
         }
     }
@@ -60,13 +64,17 @@ These instructions will get you a copy of the project up and running on your loc
 for usage:
 ```bash
 pip install flashgeotext
+
+# or
+
+conda install flashgeotext
 ```
 
 for development:
 ```bash
 git clone https://github.com/iwpnd/flashgeotext.git
-pip install flit
-flit install
+pip install poetry
+poetry install
 ```
 
 ### Running the tests

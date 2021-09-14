@@ -8,7 +8,7 @@ see also: [flashgeotext/examples](https://github.com/iwpnd/flashgeotext/tree/doc
 ```python
 from flashgeotext.geotext import GeoText
 
-geotext = GeoText(use_demo_data=True)
+geotext = GeoText()
 
 input_text = '''Shanghai. The Chinese Ministry
                 of Finance in Shanghai said that
@@ -17,30 +17,30 @@ input_text = '''Shanghai. The Chinese Ministry
                 the country imports from the US.
                 Washington welcomes the decision.'''
 
-geotext.extract(input_text=input_text, span_info=True)
+geotext.extract(input_text=input_text)
 >> {
     'cities': {
         'Shanghai': {
             'count': 2,
-            'span_info': [(0, 8), (45, 53)]
+            'span_info': [(0, 8), (45, 53)],  
 						'found_as': ['Shanghai', 'Shanghai']
             },
         'Washington, D.C.': {
             'count': 1,
-            'span_info': [(175, 185)]
+            'span_info': [(175, 185)],  
 						'found_as': ['Washington']
             }
         },
     'countries': {
         'China': {
             'count': 1,
-            'span_info': [(64, 69)]
+            'span_info': [(64, 69)],  
 						'found_as': ['China']
             },
         'United States': {
             'count': 1,
-            'span_info': [(171, 173)]
-						'found_as': ['US']
+            'span_info': [(171, 173)],  
+						'found_as': ['US'],
             }
         }
     }
@@ -81,8 +81,7 @@ geotext.add(lookup_districts)
 
 print(len(geotext.pool))
 
-
-extract = geotext.extract(text)geotext.extract(text)
+extract = geotext.extract(text)
 
 >> {
   "berlin_districts": {
@@ -180,7 +179,7 @@ lookup_districts = LookupData(
     name="berlin_districts",
     data=districts)
 
-geotext = GeoText(use_demo_data=True)
+geotext = GeoText()
 geotext.add(lookup_districts)
 
 print(len(geotext.pool))
