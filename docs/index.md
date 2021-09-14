@@ -20,7 +20,7 @@ Extract and count countries and cities (+their synonyms) from text, like [GeoTex
 ```python
 from flashgeotext.geotext import GeoText
 
-geotext = GeoText(use_demo_data=True)
+geotext = GeoText()
 
 input_text = '''Shanghai. The Chinese Ministry of Finance in Shanghai said that China plans
                 to cut tariffs on $75 billion worth of goods that the country
@@ -31,24 +31,24 @@ geotext.extract(input_text=input_text)
     'cities': {
         'Shanghai': {
             'count': 2,
-            'span_info': [(0, 8), (45, 53)],
-						'found_as': ['Shanghai', 'Shanghai']
+            'span_info': [(0, 8), (45, 53)],  
+						'found_as': ['Shanghai', 'Shanghai'],  
             },
         'Washington, D.C.': {
             'count': 1,
-            'span_info': [(175, 185)]
-						'found_as': ['Washington']
+            'span_info': [(175, 185)],  
+						'found_as': ['Washington'],  
             }
         },
     'countries': {
         'China': {
             'count': 1,
-            'span_info': [(64, 69)],
-						'found_as': ['China']
+            'span_info': [(64, 69)],  
+						'found_as': ['China'],  
             },
         'United States': {
             'count': 1,
-            'span_info': [(171, 173)],
+            'span_info': [(171, 173)],  
 						'found_as': ['US']
             }
         }
