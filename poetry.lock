@@ -34,14 +34,14 @@ tests_no_zope = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>
 
 [[package]]
 name = "awscli"
-version = "1.20.44"
+version = "1.20.48"
 description = "Universal Command Line Environment for AWS."
 category = "dev"
 optional = false
 python-versions = ">= 3.6"
 
 [package.dependencies]
-botocore = "1.21.44"
+botocore = "1.21.48"
 colorama = ">=0.2.5,<0.4.4"
 docutils = ">=0.10,<0.16"
 PyYAML = ">=3.10,<5.5"
@@ -106,7 +106,7 @@ webencodings = "*"
 
 [[package]]
 name = "botocore"
-version = "1.21.44"
+version = "1.21.48"
 description = "Low-level, data-driven core of boto 3."
 category = "dev"
 optional = false
@@ -369,7 +369,7 @@ python-versions = "*"
 python-dateutil = ">=2.8.1"
 
 [package.extras]
-dev = ["twine", "markdown", "flake8"]
+dev = ["twine", "markdown", "flake8", "wheel"]
 
 [[package]]
 name = "gitdb"
@@ -1350,7 +1350,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "20ce132863208aaaffa409a252a352bb3f83a377522705e912369d7ebbaa67db"
+content-hash = "f02a07e684fad18adcd3ff0d0921ba2f2d17af846f5f36221cae8c73be9c7641"
 
 [metadata.files]
 arrow = [
@@ -1366,8 +1366,8 @@ attrs = [
     {file = "attrs-21.2.0.tar.gz", hash = "sha256:ef6aaac3ca6cd92904cdd0d83f629a15f18053ec84e6432106f7a4d04ae4f5fb"},
 ]
 awscli = [
-    {file = "awscli-1.20.44-py3-none-any.whl", hash = "sha256:5ca49a62bd18884c9161a42f393f3d1d142d4df57d87041eafe4353d20f66e64"},
-    {file = "awscli-1.20.44.tar.gz", hash = "sha256:1a1d878c4f2fa229f773befbedce977c4cf12554c8bd49b8d200640ce41dc033"},
+    {file = "awscli-1.20.48-py3-none-any.whl", hash = "sha256:d852c42e52b44ea1b82256831546355be2f60688ebe89312d13fbe31c25c0435"},
+    {file = "awscli-1.20.48.tar.gz", hash = "sha256:5b2956a362858cee4355d3b0a42a294ef254044e931076323b006b085d2ed44a"},
 ]
 "backports.entry-points-selectable" = [
     {file = "backports.entry_points_selectable-1.1.0-py2.py3-none-any.whl", hash = "sha256:a6d9a871cde5e15b4c4a53e3d43ba890cc6861ec1332c9c2428c92f977192acc"},
@@ -1382,8 +1382,8 @@ bleach = [
     {file = "bleach-4.1.0.tar.gz", hash = "sha256:0900d8b37eba61a802ee40ac0061f8c2b5dee29c1927dd1d233e075ebf5a71da"},
 ]
 botocore = [
-    {file = "botocore-1.21.44-py3-none-any.whl", hash = "sha256:c7640cb49c0e009bea4ad767715acbe0d305b7007235f52422bf31b5d23be8f1"},
-    {file = "botocore-1.21.44.tar.gz", hash = "sha256:2e134c9f799015e448086ed2b809fe50cc776f6600f093d1a44772288e61260f"},
+    {file = "botocore-1.21.48-py3-none-any.whl", hash = "sha256:9d5b70be2f417d0aa30788049fd20473ad27218eccd05e71f545b4b4e09c79a0"},
+    {file = "botocore-1.21.48.tar.gz", hash = "sha256:2c25a76f09223b2f00ad578df34492b7b84cd4828fc90c08ccbdd1d70abbd7eb"},
 ]
 certifi = [
     {file = "certifi-2021.5.30-py2.py3-none-any.whl", hash = "sha256:50b1e4f8446b06f41be7dd6338db18e0990601dce795c2b1686458aa7e8fa7d8"},
@@ -1580,6 +1580,7 @@ flashtext = [
 ]
 ghp-import = [
     {file = "ghp-import-2.0.1.tar.gz", hash = "sha256:753de2eace6e0f7d4edfb3cce5e3c3b98cd52aadb80163303d1d036bda7b4483"},
+    {file = "ghp_import-2.0.1-py3-none-any.whl", hash = "sha256:8241a8e9f8dd3c1fafe9696e6e081b57a208ef907e9939c44e7415e407ab40ea"},
 ]
 gitdb = [
     {file = "gitdb-4.0.7-py3-none-any.whl", hash = "sha256:6c4cc71933456991da20917998acbe6cf4fb41eeaab7d6d67fbc05ecd4c865b0"},
