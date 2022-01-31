@@ -29,7 +29,7 @@ include = [
 [tool.poetry.dependencies]
 python = "^3.7"
 flashtext = "^2.7"
-loguru = "^0.5.3"
+loguru = ">=0.5.3,<0.7.0"
 pydantic = "^1.8"
 
 [tool.poetry.dev-dependencies]
