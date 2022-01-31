@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "flashgeotext"
-version = "0.4.0"
+version = "0.4.1"
 description = "Extract and count countries and cities (+their synonyms) from text"
 authors = ["Benjamin Ramser <ahoi@iwpnd.pw>"]
 license = "MIT"
