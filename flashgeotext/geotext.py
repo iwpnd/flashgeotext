@@ -104,11 +104,13 @@ class GeoText(LookupDataPool):
             extract = self.pool[lookup].extract_keywords(
                 input_text, span_info=span_info
             )
-            output[lookup] = self._parse_extract(extract, input_text)
+            output[lookup] = self.__parse_extract(extract, input_text, span_info)
 
         return output
 
-    def _parse_extract(self, extract_data: list, input_text: str) -> dict:
+    def __parse_extract(
+        self, extract_data: list, input_text: str, span_info: bool
+    ) -> dict:
         """Parse flashtext.KeywordProcessor.extract_keywords() output to count occurances
 
         Parse flashtext.KeywordProcessor.extract_keywords() output to count occurances,
@@ -121,26 +123,40 @@ class GeoText(LookupDataPool):
         Returns:
             parsed_extract (dict): parsed extract_data to include count, optionally span_info
         """
-        parsed_extract: dict = {}
+
+        if span_info:
+            parsed_extract = {}
+            for entry in extract_data:
+                keyword = entry[0]
+                span_start = entry[1]
+                span_end = entry[2]
+
+                if keyword not in parsed_extract:
+                    parsed_extract[keyword] = {
+                        "count": 1,
+                        "span_info": [(span_start, span_end)],
+                        "found_as": [input_text[span_start:span_end]],
+                    }
+                else:
+                    parsed_extract[keyword]["count"] = (
+                        parsed_extract[keyword]["count"] + 1
+                    )
+                    parsed_extract[keyword]["span_info"] = parsed_extract[keyword][
+                        "span_info"
+                    ] + [(span_start, span_end)]
+                    parsed_extract[keyword]["found_as"] = parsed_extract[keyword][
+                        "found_as"
+                    ] + [input_text[span_start:span_end]]
+
+            return parsed_extract
+
+        parsed_extract = {}
 
         for entry in extract_data:
-            keyword = entry[0]
-            span_start = entry[1]
-            span_end = entry[2]
-
+            keyword = entry
             if keyword not in parsed_extract:
-                parsed_extract[keyword] = {
-                    "count": 1,
-                    "span_info": [(span_start, span_end)],
-                    "found_as": [input_text[span_start:span_end]],
-                }
+                parsed_extract[keyword] = {"count": 1}
             else:
                 parsed_extract[keyword]["count"] = parsed_extract[keyword]["count"] + 1
-                parsed_extract[keyword]["span_info"] = parsed_extract[keyword][
-                    "span_info"
-                ] + [(span_start, span_end)]
-                parsed_extract[keyword]["found_as"] = parsed_extract[keyword][
-                    "found_as"
-                ] + [input_text[span_start:span_end]]
 
         return parsed_extract

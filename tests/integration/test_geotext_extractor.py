@@ -33,6 +33,15 @@ def test_geotext_extract_with_count_span_info_true(geotext):
     assert output["cities"]["Berlin"]["found_as"] == ["Berlin", "Berlin"]
 
 
+def test_geotext_extract_with_count_span_info_false(geotext):
+    output = geotext.extract(input_text=text, span_info=False)
+    assert output["cities"]["Berlin"]["count"] == 2
+    assert output == {
+        "cities": {"Berlin": {"count": 2}},
+        "countries": {"Germany": {"count": 1}},
+    }
+
+
 def test_geotext_case_sensitive_demo_data():
     config = GeoTextConfiguration(**{"use_demo_data": True, "case_sensitive": False})
     geotext = GeoText(config)
@@ -178,7 +187,7 @@ def test_geotext_with_script_added_to_non_word_boundaries():
     Лед на реках еще вполне толстый и переправа пригодна для эксплуатации, однако зимник начал подтаивать,
     орогу развезло. Потому принято решение снизить грузоподъемность на нём до 5 тонн, сообщает ОТРК «Югра».
     Всего на реках Югры работают 89 ледовых переправ. Их обычная грузоподъемность от 15 до 30 тонн. Отметим,
-    что традиционно в середине апреля закрываются для движения автотранспорта все ледовые переправы.
+    что традиционно в середине апреля закрываются д��я движения автотранспорта все ледовые переправы.
     """
 
     result = geotext.extract(text)
