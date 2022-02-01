@@ -29,7 +29,7 @@ include = [
 [tool.poetry.dependencies]
 python = "^3.7"
 flashtext = "^2.7"
-loguru = ">=0.5.3,<0.7.0"
+loguru = ">=0.5.3"
 pydantic = "^1.8"
 
 [tool.poetry.dev-dependencies]
@@ -51,8 +51,10 @@ python-semantic-release = "^7.24.0"
 [tool.semantic_release]
 version_variable = [
     "flashgeotext/__init__.py:__version__",
-    "pyproject.toml:version"
+    "pyproject.toml:version",
 ]
+version_pattern = 'conda/meta.yaml:version = "{version}"(?m)'
+
 commit_subject = "ci: release v{version}"
 branch = "master"
 upload_to_pypi = true
