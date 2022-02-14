@@ -44,7 +44,7 @@ black = "^22.1"
 gitlint = "^0.17.0"
 isort = "^5.10.1"
 flake8 = "^4.0.1"
-poethepoet = "^0.12.2"
+poethepoet = "^0.12.3"
 pydoc-markdown = "^4.5.0"
 python-semantic-release = "^7.24.0"
 
