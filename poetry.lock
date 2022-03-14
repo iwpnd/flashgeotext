@@ -279,33 +279,28 @@ python-versions = "*"
 
 [[package]]
 name = "docspec"
-version = "1.1.0"
+version = "2.0.0"
 description = "Docspec is a JSON object specification for representing API documentation of programming languages."
 category = "dev"
 optional = false
-python-versions = ">=3.7.0,<4.0.0"
+python-versions = ">=3.7,<4.0"
 
 [package.dependencies]
 "databind.core" = ">=1.0.0,<2.0.0"
 "databind.json" = ">=1.0.0,<2.0.0"
 Deprecated = ">=1.2.12,<2.0.0"
 
-[package.extras]
-test = ["types-deprecated", "types-termcolor"]
-
 [[package]]
 name = "docspec-python"
-version = "1.1.0"
+version = "2.0.0"
 description = "A parser based on lib2to3 producing docspec data from Python source code."
 category = "dev"
 optional = false
-python-versions = ">=3.7.0,<4.0.0"
+python-versions = ">=3.7,<4.0"
 
 [package.dependencies]
-docspec = ">=1.1.0,<2.0.0"
-
-[package.extras]
-test = ["types-deprecated"]
+docspec = ">=2.0.0,<3.0.0"
+"nr.util" = ">=0.7.0"
 
 [[package]]
 name = "docstring-parser"
@@ -685,36 +680,6 @@ optional = false
 python-versions = "*"
 
 [[package]]
-name = "nr.fs"
-version = "1.6.3"
-description = "Filesystem and path manipulation tools."
-category = "dev"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-six = ">=1.11.0,<2.0.0"
-
-[[package]]
-name = "nr.pylang.utils"
-version = "0.1.3"
-description = "Package description here."
-category = "dev"
-optional = false
-python-versions = ">=3.6.0,<4.0.0"
-
-[[package]]
-name = "nr.stream"
-version = "0.1.2"
-description = "Use iterators like Java streams."
-category = "dev"
-optional = false
-python-versions = ">=3.5.0,<4.0.0"
-
-[package.dependencies]
-"nr.pylang.utils" = ">=0.1.0,<1.0.0"
-
-[[package]]
 name = "nr.util"
 version = "0.8.4"
 description = "General purpose Python utility library."
@@ -872,7 +837,7 @@ email = ["email-validator (>=1.0.3)"]
 
 [[package]]
 name = "pydoc-markdown"
-version = "4.5.1"
+version = "4.6.3"
 description = "Create Python API documentation in Markdown format."
 category = "dev"
 optional = false
@@ -881,15 +846,17 @@ python-versions = ">=3.7,<4.0"
 [package.dependencies]
 click = ">=7.1,<9.0"
 databind = ">=1.5.0,<2.0.0"
-docspec = ">=1.0.0,<2.0.0"
-docspec-python = ">=1.0.0,<2.0.0"
+docspec = ">=2.0.0a1,<3.0.0"
+docspec-python = ">=2.0.0a1,<3.0.0"
 docstring-parser = ">=0.11,<0.12"
-"nr.fs" = ">=1.6.0,<2.0.0"
-"nr.stream" = ">=0.1.2,<0.2.0"
+jinja2 = ">=3.0.0,<4.0.0"
+"nr.util" = ">=0.7.5,<1.0.0"
 PyYAML = ">=5.3,<6.0"
 requests = ">=2.23.0,<3.0.0"
-toml = ">=0.10.1,<0.11.0"
+tomli = ">=2.0.0,<3.0.0"
+tomli_w = ">=1.0.0,<2.0.0"
 watchdog = "*"
+yapf = ">=0.30.0"
 
 [[package]]
 name = "pyflakes"
@@ -1194,11 +1161,19 @@ python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
 name = "tomli"
-version = "1.2.2"
+version = "2.0.1"
 description = "A lil' TOML parser"
 category = "dev"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
+
+[[package]]
+name = "tomli-w"
+version = "1.0.0"
+description = "A lil' TOML writer"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
 
 [[package]]
 name = "tomlkit"
@@ -1331,6 +1306,14 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "yapf"
+version = "0.32.0"
+description = "A formatter for Python code."
+category = "dev"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "zipp"
 version = "3.5.0"
 description = "Backport of pathlib-compatible object wrapper for zip files"
@@ -1345,7 +1328,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "a5750e6d16e9f8c3907d36adfe413a46b79bf9376741d0b2b7e9b5c5ce8fd86d"
+content-hash = "f4c2a4fb7469a5626b32d066a6d57682f70d3f0464ca8b4fccd90b97c52587a9"
 
 [metadata.files]
 arrow = [
@@ -1557,12 +1540,12 @@ distlib = [
     {file = "distlib-0.3.2.zip", hash = "sha256:106fef6dc37dd8c0e2c0a60d3fca3e77460a48907f335fa28420463a6f799736"},
 ]
 docspec = [
-    {file = "docspec-1.1.0-py3-none-any.whl", hash = "sha256:099912fab615ebcd1ab6f07fb5de99e27268602cada0f1f07a8e7ce553478306"},
-    {file = "docspec-1.1.0.tar.gz", hash = "sha256:c6c70d389885eec0ca8c19ae1413c05c50a31d38667a20ee5bfca976a28295cb"},
+    {file = "docspec-2.0.0-py3-none-any.whl", hash = "sha256:6b55103d7a74302dbb1c73fa6c33d2ce978adbe311126204be469bf60b27474c"},
+    {file = "docspec-2.0.0.tar.gz", hash = "sha256:06b293bc91ed391b0af679d29f03875646204495d28f53c50447c81fc31641b3"},
 ]
 docspec-python = [
-    {file = "docspec-python-1.1.0.tar.gz", hash = "sha256:d3e59f53cf053e5ede8f35e0da75e571cb8667a57b42dc7883f5724fd419d629"},
-    {file = "docspec_python-1.1.0-py3-none-any.whl", hash = "sha256:8f790810de8cc7843dd0af8fde463af92457dbdbcf611b0af3d71c5005fb534b"},
+    {file = "docspec-python-2.0.0.tar.gz", hash = "sha256:2825bba2b1fae47d0470eb33964b635c363365537d46759ff0c7006b45ebc4f4"},
+    {file = "docspec_python-2.0.0-py3-none-any.whl", hash = "sha256:717b5aeff5b2fc8274078c57380ff6643b7f3e03ebf941da8b75408acafcffce"},
 ]
 docstring-parser = [
     {file = "docstring_parser-0.11.tar.gz", hash = "sha256:93b3f8f481c7d24e37c5d9f30293c89e2933fa209421c8abd731dd3ef0715ecb"},
@@ -1757,18 +1740,6 @@ nodeenv = [
     {file = "nodeenv-1.6.0-py2.py3-none-any.whl", hash = "sha256:621e6b7076565ddcacd2db0294c0381e01fd28945ab36bcf00f41c5daf63bef7"},
     {file = "nodeenv-1.6.0.tar.gz", hash = "sha256:3ef13ff90291ba2a4a7a4ff9a979b63ffdd00a464dbe04acf0ea6471517a4c2b"},
 ]
-"nr.fs" = [
-    {file = "nr.fs-1.6.3-py2.py3-none-any.whl", hash = "sha256:64108c168ea2e8077fdf5f0c5417459d1a145fe34cb305fe90faeb75b4e8b421"},
-    {file = "nr.fs-1.6.3.tar.gz", hash = "sha256:788aa0a04c4143f95c5245bc8ccc0c0872e932be533bd37780fbb55afcdf124a"},
-]
-"nr.pylang.utils" = [
-    {file = "nr.pylang.utils-0.1.3-py3-none-any.whl", hash = "sha256:77abdd8494af72b5f79484774684cb4f345296fea788e169dabaccedcc053c10"},
-    {file = "nr.pylang.utils-0.1.3.tar.gz", hash = "sha256:a54beae6288a0befcc8fce4852a341914e0267130c7abc612be38b6478869837"},
-]
-"nr.stream" = [
-    {file = "nr.stream-0.1.2-py3-none-any.whl", hash = "sha256:25fc65e7c6fc610871775d59fc15494d1a9b9e9d0b5822354f8885cd77d95721"},
-    {file = "nr.stream-0.1.2.tar.gz", hash = "sha256:fb4595e60e8a1d3e18f71db7a1257c35e8968b9d06da3a16b1e084a83427b49c"},
-]
 "nr.util" = [
     {file = "nr.util-0.8.4-py3-none-any.whl", hash = "sha256:4239f91d621bf843d0951f354b7e1501ceb19d4ddf0fab0ed60bb7639ef3bda2"},
     {file = "nr.util-0.8.4.tar.gz", hash = "sha256:f37f2afe974cecc07b7e98d0843e25f9107d6a8939a6eedc790aa3126c729240"},
@@ -1870,8 +1841,8 @@ pydantic = [
     {file = "pydantic-1.9.0.tar.gz", hash = "sha256:742645059757a56ecd886faf4ed2441b9c0cd406079c2b4bee51bcc3fbcd510a"},
 ]
 pydoc-markdown = [
-    {file = "pydoc-markdown-4.5.1.tar.gz", hash = "sha256:ff6eedd24d2b140180831ff606a495e82deef593a0f2c0bc4deaae303c575449"},
-    {file = "pydoc_markdown-4.5.1-py3-none-any.whl", hash = "sha256:cf0cf169dcca548bd8e772db8d1bef051cc1e01d4756aba24e3e5200762dca8d"},
+    {file = "pydoc-markdown-4.6.3.tar.gz", hash = "sha256:82aa424de7e390e4a34ac200b189bb011e33be18bb089e83b15af5742cf21dc7"},
+    {file = "pydoc_markdown-4.6.3-py3-none-any.whl", hash = "sha256:b79da5b972be5c24db41ed5ce65fedd0031aa9cd023467d42cd47882a5e92f98"},
 ]
 pyflakes = [
     {file = "pyflakes-2.4.0-py2.py3-none-any.whl", hash = "sha256:3bb3a3f256f4b7968c9c788781e4ff07dce46bdf12339dcda61053375426ee2e"},
@@ -2001,8 +1972,12 @@ toml = [
     {file = "toml-0.10.2.tar.gz", hash = "sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"},
 ]
 tomli = [
-    {file = "tomli-1.2.2-py3-none-any.whl", hash = "sha256:f04066f68f5554911363063a30b108d2b5a5b1a010aa8b6132af78489fe3aade"},
-    {file = "tomli-1.2.2.tar.gz", hash = "sha256:c6ce0015eb38820eaf32b5db832dbc26deb3dd427bd5f6556cf0acac2c214fee"},
+    {file = "tomli-2.0.1-py3-none-any.whl", hash = "sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc"},
+    {file = "tomli-2.0.1.tar.gz", hash = "sha256:de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f"},
+]
+tomli-w = [
+    {file = "tomli_w-1.0.0-py3-none-any.whl", hash = "sha256:9f2a07e8be30a0729e533ec968016807069991ae2fd921a78d42f429ae5f4463"},
+    {file = "tomli_w-1.0.0.tar.gz", hash = "sha256:f463434305e0336248cac9c2dc8076b707d8a12d019dd349f5c1e382dd1ae1b9"},
 ]
 tomlkit = [
     {file = "tomlkit-0.7.0-py2.py3-none-any.whl", hash = "sha256:6babbd33b17d5c9691896b0e68159215a9387ebfa938aa3ac42f4a4beeb2b831"},
@@ -2096,6 +2071,10 @@ win32-setctime = [
 ]
 wrapt = [
     {file = "wrapt-1.12.1.tar.gz", hash = "sha256:b62ffa81fb85f4332a4f609cab4ac40709470da05643a082ec1eb88e6d9b97d7"},
+]
+yapf = [
+    {file = "yapf-0.32.0-py2.py3-none-any.whl", hash = "sha256:8fea849025584e486fd06d6ba2bed717f396080fd3cc236ba10cb97c4c51cf32"},
+    {file = "yapf-0.32.0.tar.gz", hash = "sha256:a3f5085d37ef7e3e004c4ba9f9b3e40c54ff1901cd111f05145ae313a7c67d1b"},
 ]
 zipp = [
     {file = "zipp-3.5.0-py3-none-any.whl", hash = "sha256:957cfda87797e389580cb8b9e3870841ca991e2125350677b2ca83a0e99390a3"},
