@@ -773,7 +773,7 @@ poetry_plugin = ["poetry (>=1.0,<2.0)"]
 
 [[package]]
 name = "pre-commit"
-version = "2.19.0"
+version = "2.20.0"
 description = "A framework for managing and maintaining multi-language pre-commit hooks."
 category = "dev"
 optional = false
@@ -1328,7 +1328,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "079c8def9e7b76bacaa2febd5649195ca5babd35f38bde561ef955cfad0399a0"
+content-hash = "ff74f2049a6cd497a26112f7e4dbc00da65d85ca7ce0b4bbf7d96e669573dec0"
 
 [metadata.files]
 arrow = []
