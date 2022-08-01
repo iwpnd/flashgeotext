@@ -34,14 +34,14 @@ tests_no_zope = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>
 
 [[package]]
 name = "awscli"
-version = "1.25.38"
+version = "1.25.42"
 description = "Universal Command Line Environment for AWS."
 category = "dev"
 optional = false
 python-versions = ">= 3.7"
 
 [package.dependencies]
-botocore = "1.27.38"
+botocore = "1.27.42"
 colorama = ">=0.2.5,<0.4.5"
 docutils = ">=0.10,<0.17"
 PyYAML = ">=3.10,<5.5"
@@ -101,7 +101,7 @@ webencodings = "*"
 
 [[package]]
 name = "botocore"
-version = "1.27.38"
+version = "1.27.42"
 description = "Low-level, data-driven core of boto 3."
 category = "dev"
 optional = false
@@ -1329,7 +1329,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "dcc809ac3f8097a5c7d65b988353cf101cb62ea49d21359bc767d36d3b078347"
+content-hash = "df61f14898fb628150df21237c8338e7515be02462b6e27641c9613f311aef88"
 
 [metadata.files]
 arrow = [
@@ -1345,8 +1345,8 @@ attrs = [
     {file = "attrs-21.2.0.tar.gz", hash = "sha256:ef6aaac3ca6cd92904cdd0d83f629a15f18053ec84e6432106f7a4d04ae4f5fb"},
 ]
 awscli = [
-    {file = "awscli-1.25.38-py3-none-any.whl", hash = "sha256:dd55adadacb863b0af2a9f468801bb2dbd6a3559c737a6b7ae9ae02d4ee5c7c3"},
-    {file = "awscli-1.25.38.tar.gz", hash = "sha256:b928ebe66c562b3e2bc290d5fb4470461b21d42db9b379ec51911e337ce6a630"},
+    {file = "awscli-1.25.42-py3-none-any.whl", hash = "sha256:2b2b289b8b66764743560b53f73badd5cf3e75d8c9e77f3256c1966d7740cbfc"},
+    {file = "awscli-1.25.42.tar.gz", hash = "sha256:e431f7224d031e61df67e5df163982d822f9591a00f44360cc37987c2830b532"},
 ]
 "backports.entry-points-selectable" = [
     {file = "backports.entry_points_selectable-1.1.0-py2.py3-none-any.whl", hash = "sha256:a6d9a871cde5e15b4c4a53e3d43ba890cc6861ec1332c9c2428c92f977192acc"},
@@ -1382,8 +1382,8 @@ bleach = [
     {file = "bleach-4.1.0.tar.gz", hash = "sha256:0900d8b37eba61a802ee40ac0061f8c2b5dee29c1927dd1d233e075ebf5a71da"},
 ]
 botocore = [
-    {file = "botocore-1.27.38-py3-none-any.whl", hash = "sha256:46a0264ff3335496bd9cb404f83ec0d8eb7bfdef8f74a830c13e6a6b9612adea"},
-    {file = "botocore-1.27.38.tar.gz", hash = "sha256:56a7682564ea57ceecfef5648f77b77e0543b9c904212fc9ef4416517d24fa45"},
+    {file = "botocore-1.27.42-py3-none-any.whl", hash = "sha256:f8e6c2f69a9d577fb9c69e4e74f49f4315a48decee0e7dc88b6e470772110884"},
+    {file = "botocore-1.27.42.tar.gz", hash = "sha256:38a180a6666c5a9b069a75ec3cf374ff2a64c3e90c9f24a916858bcdeb04456d"},
 ]
 certifi = [
     {file = "certifi-2021.5.30-py2.py3-none-any.whl", hash = "sha256:50b1e4f8446b06f41be7dd6338db18e0990601dce795c2b1686458aa7e8fa7d8"},
