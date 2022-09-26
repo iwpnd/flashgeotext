@@ -46,7 +46,7 @@ isort = "^5.10.1"
 flake8 = "^5.0.4"
 poethepoet = "^0.16.0"
 pydoc-markdown = "^4.6.3"
-python-semantic-release = "^7.31.4"
+python-semantic-release = "^7.32.0"
 
 [tool.semantic_release]
 version_variable = [
