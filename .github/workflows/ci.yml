@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
   workflow_dispatch:
 
 jobs:
@@ -12,9 +12,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.7, 3.8]
-        poetry-version: [1.1.2]
-        os: [ubuntu-18.04]
+        python-version: [3.8, 3.9, 3.10]
+        poetry-version: [1.2.0]
+        os: [ubuntu-22.04]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
@@ -24,14 +24,14 @@ jobs:
       - name: Install poetry
         uses: snok/install-poetry@v1.3
         with:
-            virtualenvs-create: true
-            virtualenvs-in-project: true
+          virtualenvs-create: true
+          virtualenvs-in-project: true
       - name: Load cached venv
         id: cached-poetry-dependencies
         uses: actions/cache@v3.0.8
         with:
-            path: .venv
-            key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}-${{ matrix.python-version }}
+          path: .venv
+          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}-${{ matrix.python-version }}
       - name: Install dependencies
         run: poetry install
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
@@ -43,9 +43,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.7, 3.8]
-        poetry-version: [1.1.2]
-        os: [ubuntu-18.04]
+        python-version: [3.8, 3.9, 3.10]
+        poetry-version: [1.2.0]
+        os: [ubuntu-22.04]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
@@ -55,14 +55,14 @@ jobs:
       - name: Install poetry
         uses: snok/install-poetry@v1.3
         with:
-            virtualenvs-create: true
-            virtualenvs-in-project: true
+          virtualenvs-create: true
+          virtualenvs-in-project: true
       - name: Load cached venv
         id: cached-poetry-dependencies
         uses: actions/cache@v3.0.8
         with:
-            path: .venv
-            key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}-${{ matrix.python-version }}
+          path: .venv
+          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}-${{ matrix.python-version }}
       - name: Install dependencies
         run: poetry install
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
@@ -73,6 +73,6 @@ jobs:
       - name: Upload coverage to codecov
         uses: codecov/codecov-action@v3.1.0
         with:
-            token: ${{ secrets.CODECOV_TOKEN }}
-            file: coverage.xml
-            fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: coverage.xml
+          fail_ci_if_error: true
