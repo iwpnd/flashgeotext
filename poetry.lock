@@ -844,7 +844,7 @@ email = ["email-validator (>=1.0.3)"]
 
 [[package]]
 name = "pydoc-markdown"
-version = "4.6.3"
+version = "4.6.4"
 description = "Create Python API documentation in Markdown format."
 category = "dev"
 optional = false
@@ -1350,7 +1350,7 @@ testing = ["func-timeout", "jaraco.itertools", "pytest (>=6)", "pytest-black (>=
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "967956c90f22d856f1dcaf4062afadf733353f39707fe0d9fcc57613895a0889"
+content-hash = "9b343b68cdff9d9f5d769381cc7be6d3924f72f9afa7acb437ee3299a6fcc86d"
 
 [metadata.files]
 arrow = [
@@ -1852,8 +1852,8 @@ pydantic = [
     {file = "pydantic-1.10.2.tar.gz", hash = "sha256:91b8e218852ef6007c2b98cd861601c6a09f1aa32bbbb74fab5b1c33d4a1e410"},
 ]
 pydoc-markdown = [
-    {file = "pydoc-markdown-4.6.3.tar.gz", hash = "sha256:82aa424de7e390e4a34ac200b189bb011e33be18bb089e83b15af5742cf21dc7"},
-    {file = "pydoc_markdown-4.6.3-py3-none-any.whl", hash = "sha256:b79da5b972be5c24db41ed5ce65fedd0031aa9cd023467d42cd47882a5e92f98"},
+    {file = "pydoc_markdown-4.6.4-py3-none-any.whl", hash = "sha256:166d384478065f62a0114017fbefdc7fe1fac1d9dc7fa901afed8b1e674328c7"},
+    {file = "pydoc_markdown-4.6.4.tar.gz", hash = "sha256:c3feab1240d397e38b132340dd2310b58a8538eaea78c939e1ca4df9ce098561"},
 ]
 pyflakes = [
     {file = "pyflakes-2.5.0-py2.py3-none-any.whl", hash = "sha256:4579f67d887f804e67edb544428f264b7b24f435b263c4614f384135cea553d2"},
