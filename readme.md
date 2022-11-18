@@ -1,6 +1,6 @@
 <p align="center">
 <a href="https://github.com/iwpnd/flashgeotext/actions" target="_blank">
-    <img src="https://github.com/iwpnd/flashgeotext/workflows/build/badge.svg?branch=master" alt="Build Status">
+    <img src="https://github.com/iwpnd/flashgeotext/workflows/CI/badge.svg?branch=master" alt="Build Status">
 </a>
 <a href="https://codecov.io/gh/iwpnd/flashgeotext" target="_blank">
     <img src="https://codecov.io/gh/iwpnd/flashgeotext/branch/master/graph/badge.svg" alt="Coverage">
