@@ -32,13 +32,13 @@ flashtext = "^2.7"
 loguru = ">=0.5.3"
 pydantic = "^1.8"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
+markdown-include = "^0.8.0"
 pytest = "^7.2"
 pytest-cov = "^4.0.0"
 awscli = "^1.27.13"
 mkdocs = "^1.2.4"
 mkdocs-material = "^8.2.7"
-markdown-include = "^0.7.0"
 pre-commit = "^2.20.0"
 black = "^22.10"
 gitlint = "^0.18.0"
