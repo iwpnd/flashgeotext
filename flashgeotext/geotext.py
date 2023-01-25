@@ -1,21 +1,49 @@
+from typing import Dict, List, Tuple
+
 from pydantic import BaseModel
 
+from flashgeotext.config import GeoTextConfiguration, config
 from flashgeotext.lookup import LookupDataPool, MissingLookupDataError
 
 
-class GeoTextConfiguration(BaseModel):
-    """GeoText configuration
-
-    Args:
-    use_demo_data (bool): load demo data or not, default True
-    case_sensitive (bool): case sensitive lookup, default True
-    """
-
-    use_demo_data: bool = True
-    case_sensitive: bool = True
+class ExtractMeta(BaseModel):
+    count: int
+    span_info: List[Tuple[int, int]]
+    found_as: List[str]
 
 
-CONFIG = GeoTextConfiguration()
+class Extract:
+    data: Dict[str, ExtractMeta] = {}
+
+    def __init__(self) -> None:
+        self.data = {}
+
+    def has_name(self, name: str) -> bool:
+        return name in self.data
+
+    def add(self, name: str, meta: ExtractMeta) -> None:
+        self.data[name] = meta
+
+    def add_span(self, name: str, span: Tuple[int, int]) -> None:
+        if not self.has_name(name):
+            return
+
+        self.data[name].span_info.append(span)
+
+    def add_found_as(self, name: str, found_as: str) -> None:
+        if not self.has_name(name):
+            return
+
+        self.data[name].found_as.append(found_as)
+
+    def increment_count(self, name: str) -> None:
+        if not self.has_name(name):
+            return
+
+        self.data[name].count = self.data[name].count + 1
+
+    def to_dict(self) -> Dict[str, Dict]:
+        return {k: v.dict() for k, v in self.data.items()}
 
 
 class GeoText(LookupDataPool):
@@ -70,7 +98,7 @@ class GeoText(LookupDataPool):
 
     """
 
-    def __init__(self, config: GeoTextConfiguration = CONFIG) -> None:
+    def __init__(self, config: GeoTextConfiguration = config) -> None:
         """instantiate an empty LookupDataPool, optionally/by default with demo data
 
         Args:
@@ -104,13 +132,11 @@ class GeoText(LookupDataPool):
             extract = self.pool[lookup].extract_keywords(
                 input_text, span_info=span_info
             )
-            output[lookup] = self.__parse_extract(extract, input_text, span_info)
+            output[lookup] = self.__parse_extract(extract, input_text)
 
         return output
 
-    def __parse_extract(
-        self, extract_data: list, input_text: str, span_info: bool
-    ) -> dict:
+    def __parse_extract(self, extract_data: list, input_text: str) -> dict:
         """Parse flashtext.KeywordProcessor.extract_keywords() output to count occurances
 
         Parse flashtext.KeywordProcessor.extract_keywords() output to count occurances,
@@ -121,42 +147,30 @@ class GeoText(LookupDataPool):
             input_text (str): input text
 
         Returns:
-            parsed_extract (dict): parsed extract_data to include count, optionally span_info
+            result (dict): parsed extract_data to include count, optionally span_info
         """
 
-        if span_info:
-            parsed_extract = {}
-            for entry in extract_data:
-                keyword = entry[0]
-                span_start = entry[1]
-                span_end = entry[2]
+        result = Extract()
 
-                if keyword not in parsed_extract:
-                    parsed_extract[keyword] = {
-                        "count": 1,
-                        "span_info": [(span_start, span_end)],
-                        "found_as": [input_text[span_start:span_end]],
-                    }
-                else:
-                    parsed_extract[keyword]["count"] = (
-                        parsed_extract[keyword]["count"] + 1
-                    )
-                    parsed_extract[keyword]["span_info"] = parsed_extract[keyword][
-                        "span_info"
-                    ] + [(span_start, span_end)]
-                    parsed_extract[keyword]["found_as"] = parsed_extract[keyword][
-                        "found_as"
-                    ] + [input_text[span_start:span_end]]
+        for extract in extract_data:
+            name = extract[0]
+            span_start: int = extract[1]
+            span_end: int = extract[2]
 
-            return parsed_extract
-
-        parsed_extract = {}
-
-        for entry in extract_data:
-            keyword = entry
-            if keyword not in parsed_extract:
-                parsed_extract[keyword] = {"count": 1}
+            if not result.has_name(name):
+                result.add(
+                    name,
+                    ExtractMeta(
+                        **{
+                            "count": 1,
+                            "span_info": [(span_start, span_end)],
+                            "found_as": [input_text[span_start:span_end]],
+                        }
+                    ),
+                )
             else:
-                parsed_extract[keyword]["count"] = parsed_extract[keyword]["count"] + 1
+                result.increment_count(name)
+                result.add_span(name, (span_start, span_end))
+                result.add_found_as(name, input_text[span_start:span_end])
 
-        return parsed_extract
+        return result.to_dict()

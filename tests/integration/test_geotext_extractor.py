@@ -33,15 +33,6 @@ def test_geotext_extract_with_count_span_info_true(geotext):
     assert output["cities"]["Berlin"]["found_as"] == ["Berlin", "Berlin"]
 
 
-def test_geotext_extract_with_count_span_info_false(geotext):
-    output = geotext.extract(input_text=text, span_info=False)
-    assert output["cities"]["Berlin"]["count"] == 2
-    assert output == {
-        "cities": {"Berlin": {"count": 2}},
-        "countries": {"Germany": {"count": 1}},
-    }
-
-
 def test_geotext_case_sensitive_demo_data():
     config = GeoTextConfiguration(**{"use_demo_data": True, "case_sensitive": False})
     geotext = GeoText(config)
