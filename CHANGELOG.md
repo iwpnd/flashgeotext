@@ -1,4 +1,16 @@
 # Changelog
+
+<!--next-version-placeholder-->
+
+## v0.5.0 (2023-01-25)
+### Feature
+* Drop 3.8 support in favour of >3.10 ([`0a52772`](https://github.com/iwpnd/flashgeotext/commit/0a527729c7c3c54582236703f9be1de6cbdb4645))
+
+### Documentation
+* Update actions badge ([`a83af01`](https://github.com/iwpnd/flashgeotext/commit/a83af01dd04de2b278f1d13680a33980e0e5a01d))
+* Update poetry action ([`b0de497`](https://github.com/iwpnd/flashgeotext/commit/b0de497af354d02ed8cd230eec994fab36936689))
+* Fix docs workflow ([`fc64e76`](https://github.com/iwpnd/flashgeotext/commit/fc64e764f865f1600661ce647e7b577fa2d2ea60))
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
