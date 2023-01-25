@@ -16,6 +16,9 @@ def test_data_countries():
     }
 
 
+g = GeoText()
+
+
 @pytest.fixture
 def geotext():
-    return GeoText()
+    return g
