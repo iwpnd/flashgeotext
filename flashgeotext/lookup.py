@@ -1,5 +1,6 @@
 import json
 import sys
+from typing import Dict, List
 
 from flashtext import KeywordProcessor
 from loguru import logger
@@ -39,6 +40,12 @@ class MissingLookupDataError(Exception):
         self.message = message
 
 
+class ValidationResult(BaseModel):
+    status: str = "No errors detected"
+    error_count: int = 0
+    errors: Dict[str, List[str]] = {}
+
+
 class LookupValidation:
     """Data validation container object
 
@@ -55,18 +62,31 @@ class LookupValidation:
             }
     """
 
-    def __init__(
-        self,
-        status: str = "No errors detected",
-        error_count: int = 0,
-        errors: dict = {},
-    ):
-        self.status = status
-        self.error_count = error_count
-        self.errors = {}
+    data: ValidationResult
 
-    def __repr__(self):
-        return f"<LookupValidation: {self.__dict__}>"
+    def __init__(self):
+        self.data = ValidationResult()
+
+    def has_error(self, name: str) -> bool:
+        return name in self.data.errors
+
+    def get_error_count(self) -> int:
+        return self.data.error_count
+
+    def set_error_status(self) -> None:
+        self.data.status = f"Found {self.data.error_count} errors"
+
+    def add_error(self, name: str, error: str) -> None:
+        if not self.has_error(name):
+            self.data.errors[name] = [error]
+            self.data.error_count = self.data.error_count + 1
+            return
+
+        self.data.errors[name].append(error)
+        self.data.error_count = self.data.error_count + 1
+
+    def to_dict(self):
+        return self.data.dict()
 
 
 class LookupData(BaseModel, object):
@@ -112,23 +132,16 @@ class LookupData(BaseModel, object):
 
         for key, value in self.data.items():
             if not isinstance(value, list):
-                validation.errors[key] = [f"data[{key}] is not a list of synonyms"]
-                validation.error_count = validation.error_count + 1
+                validation.add_error(key, f"{key} is not a list of synonyms")
+                validation.add_error(key, f"{key} missing in list of synonyms")
 
-            if key not in value:
-                if key in validation.errors:
-                    validation.errors[key] = validation.errors[key] + [
-                        f"{key} missing in list of synonyms"
-                    ]
-                else:
-                    validation.errors[key] = [f"{key} missing in list of synonyms"]
+            if isinstance(value, list) and key not in value:
+                validation.add_error(key, f"{key} missing in list of synonyms")
 
-                validation.error_count = validation.error_count + 1
+        if validation.get_error_count() > 0:
+            validation.set_error_status()
 
-        if validation.error_count > 0:
-            validation.status = f"Found {validation.error_count} errors"
-
-        return validation.__dict__
+        return validation.to_dict()
 
 
 class LookupDataPool:

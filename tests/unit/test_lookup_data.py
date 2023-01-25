@@ -3,7 +3,7 @@ from contextlib import nullcontext
 import pytest
 from pydantic import ValidationError
 
-from flashgeotext.lookup import LookupData, LookupValidation, load_data_from_file
+from flashgeotext.lookup import LookupData, load_data_from_file
 from flashgeotext.settings import DEMODATA_CITIES, DEMODATA_COUNTRIES
 
 
@@ -66,16 +66,15 @@ def test_lookup_data_script_raises(id, name, data, script, expectation):
 @pytest.mark.parametrize(
     "id, name, data, error_count",
     [
-        (1, "cities", {"Berlin": "Berlin"}, 1),
+        (1, "cities", {"Berlin": "Berlin"}, 2),
         (2, "cities", {"Berlin": ["Dickes B"]}, 1),
-        (2, "cities", {"Berlin": "Hamburg"}, 2),
+        (3, "cities", {"Berlin": "Hamburg"}, 2),
     ],
 )
 def test_lookup_data_validate(id, name, data, error_count):
     lookup = LookupData(name=name, data=data)
 
     validation = lookup.validate()
-
     assert validation["error_count"] == error_count
 
 
@@ -92,18 +91,24 @@ def test_lookup_data_demo_data(id, name, demodata):
     validation = lookup.validate()
 
     assert validation["error_count"] == 0
+    assert isinstance(validation, dict)
 
 
-def test_lookup_data_validate_repr():
-    lookup = LookupData(name="countries", data=load_data_from_file(DEMODATA_COUNTRIES))
+def test_lookup_data_invalid():
+    districts = {
+        "Friedrichshain-Kreuzberg": ["Friedrichshain", "Kreuzberg", "Fhain"],
+        "Steglitz-Zehlendorf": 1,
+        "Tempelhof-Schoeneberg": ["Tempelhof-Schoeneberg", "THF"],
+    }
+    lookup = LookupData(name="district", data=districts)
 
-    assert isinstance(lookup.validate(), dict)
+    validation = lookup.validate()
 
-
-def test_lookupvalidation_repr():
-    validation = LookupValidation()
-
-    assert (
-        repr(validation)
-        == "<LookupValidation: {'status': 'No errors detected', 'error_count': 0, 'errors': {}}>"
-    )
+    assert validation["error_count"] == 3
+    assert validation["errors"]["Friedrichshain-Kreuzberg"] == [
+        "Friedrichshain-Kreuzberg missing in list of synonyms"
+    ]
+    assert validation["errors"]["Steglitz-Zehlendorf"] == [
+        "Steglitz-Zehlendorf is not a list of synonyms",
+        "Steglitz-Zehlendorf missing in list of synonyms",
+    ]
