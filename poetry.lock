@@ -980,14 +980,14 @@ testing = ["coverage", "pyyaml"]
 
 [[package]]
 name = "markdown-include"
-version = "0.8.0"
+version = "0.8.1"
 description = "A Python-Markdown extension which provides an 'include' function"
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "markdown-include-0.8.0.tar.gz", hash = "sha256:b8f6b6f4e8b506cbe773d7e26c74a97d1354c35f3a3452d3449140a8f578d665"},
-    {file = "markdown_include-0.8.0-py3-none-any.whl", hash = "sha256:d12fb51500c46334a53608635035c78b7d8ad7f772566f70b8a6a9b2ef2ddbf5"},
+    {file = "markdown-include-0.8.1.tar.gz", hash = "sha256:1d0623e0fc2757c38d35df53752768356162284259d259c486b4ab6285cdbbe3"},
+    {file = "markdown_include-0.8.1-py3-none-any.whl", hash = "sha256:32f0635b9cfef46997b307e2430022852529f7a5b87c0075c504283e7cc7db53"},
 ]
 
 [package.dependencies]
