@@ -69,10 +69,10 @@ jobs:
       - name: Test
         run: |
           source .venv/bin/activate
-          poetry run poe test . --cov=flashgeotext/ --cov-report=xml
+          poetry run poe test-cov
       - name: Upload coverage to codecov
-        uses: codecov/codecov-action@v3.1.1
+        uses: codecov/codecov-action@v3.0.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          file: coverage.xml
+          file: /home/runner/coverage.xml
           fail_ci_if_error: true
