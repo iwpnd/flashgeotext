@@ -107,6 +107,6 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poe.tasks]
 test     = "poetry run pytest -vv -s tests/"
-test-cov = "poetry run pytest -vv -s --cov=flashgeotext/ tests/"
+test-cov = "poetry run pytest -vv -s --cov=flashgeotext/ tests/ --cov-report xml:/home/runner/coverage.xml"
 lint     = "ruff ."
 publish    = "poetry run semantic-release publish"
