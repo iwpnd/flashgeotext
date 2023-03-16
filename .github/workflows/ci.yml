@@ -71,8 +71,8 @@ jobs:
           source .venv/bin/activate
           poetry run poe test-cov
       - name: Upload coverage to codecov
-        uses: codecov/codecov-action@v3.0.0
+        uses: codecov/codecov-action@v3.1.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: /home/runner/coverage.xml
-          fail_ci_if_error: true
+          fail_ci_if_error: false
