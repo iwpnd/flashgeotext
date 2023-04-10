@@ -36,18 +36,18 @@ tests-no-zope = ["cloudpickle", "cloudpickle", "hypothesis", "hypothesis", "mypy
 
 [[package]]
 name = "awscli"
-version = "1.27.104"
+version = "1.27.109"
 description = "Universal Command Line Environment for AWS."
 category = "dev"
 optional = false
 python-versions = ">= 3.7"
 files = [
-    {file = "awscli-1.27.104-py3-none-any.whl", hash = "sha256:64c5c7b3ca939bc2e8f92ba8077cf2350b456b3f51b15ee6db7bf41375ed0c65"},
-    {file = "awscli-1.27.104.tar.gz", hash = "sha256:7c8d549c99ce6b4d5508b114d9a991e15d5f01316c9e8b37b4c0e21204ce261a"},
+    {file = "awscli-1.27.109-py3-none-any.whl", hash = "sha256:3ea60e0f046547b2fc03c7f1eac8716b9c79a64a2ed33c57e3dc2bc986659345"},
+    {file = "awscli-1.27.109.tar.gz", hash = "sha256:0ebac3b96a29536644e1427c2a4bedd9109b71a3e74481798c44c174c87e8bd3"},
 ]
 
 [package.dependencies]
-botocore = "1.29.104"
+botocore = "1.29.109"
 colorama = ">=0.2.5,<0.4.5"
 docutils = ">=0.10,<0.17"
 PyYAML = ">=3.10,<5.5"
@@ -124,14 +124,14 @@ css = ["tinycss2 (>=1.1.0,<1.2)"]
 
 [[package]]
 name = "botocore"
-version = "1.29.104"
+version = "1.29.109"
 description = "Low-level, data-driven core of boto 3."
 category = "dev"
 optional = false
 python-versions = ">= 3.7"
 files = [
-    {file = "botocore-1.29.104-py3-none-any.whl", hash = "sha256:932bfbf580a2ae53f471df4bfbebce531985ee27468cf7c37d7ccfb3cf8bc9e4"},
-    {file = "botocore-1.29.104.tar.gz", hash = "sha256:7e7a01cef10b1daa9cb01ec25a15e831e7359fc43d1b591359710f203c3620a8"},
+    {file = "botocore-1.29.109-py3-none-any.whl", hash = "sha256:cf43dddb7e2ba5425fe19fad68b10043307b61d9103d06566f1ab6034e38b8db"},
+    {file = "botocore-1.29.109.tar.gz", hash = "sha256:2e449525f0ccedb31fdb962a77caac48b4c486c23515b84c5989a39a1823a024"},
 ]
 
 [package.dependencies]
