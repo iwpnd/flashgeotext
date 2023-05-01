@@ -44,7 +44,7 @@ isort = "^5.10.1"
 poethepoet = ">=0.16.4,<0.20.0"
 pydoc-markdown = "^4.6.4"
 python-semantic-release = "^7.32.2"
-ruff = ">=0.0.231,<0.0.263"
+ruff = ">=0.0.231,<0.0.264"
 
 [tool.semantic_release]
 version_variable = [
