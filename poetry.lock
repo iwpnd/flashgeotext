@@ -410,37 +410,37 @@ test-randomorder = ["pytest-randomly"]
 
 [[package]]
 name = "databind-core"
-version = "4.3.0"
+version = "4.4.0"
 description = "Databind is a library inspired by jackson-databind to de-/serialize Python dataclasses. Compatible with Python 3.7 and newer."
 optional = false
 python-versions = ">=3.6.3,<4.0.0"
 files = [
-    {file = "databind.core-4.3.0-py3-none-any.whl", hash = "sha256:302ffb0c40a2046668e976993e6bb02849b7703dc30ede45a7702a08f860398e"},
-    {file = "databind.core-4.3.0.tar.gz", hash = "sha256:9dc86f6f3364c2a9ee4702965d4f2da3140d1fcb93d32a7515624b6bc16f3fa3"},
+    {file = "databind.core-4.4.0-py3-none-any.whl", hash = "sha256:3c8a4d9abc93e158af9931d8cec389ddfc0514e02aec03b397948d243db11881"},
+    {file = "databind.core-4.4.0.tar.gz", hash = "sha256:715d485e934c073f819f0250bbfcaf59c1319f83427365bc7cfd4c347f87576d"},
 ]
 
 [package.dependencies]
 Deprecated = ">=1.2.12,<2.0.0"
 nr-date = ">=2.0.0,<3.0.0"
 nr-stream = ">=1.0.0,<2.0.0"
-typeapi = ">=1.4.2,<2.0.0"
+typeapi = ">=2.0.1,<3.0.0"
 typing-extensions = ">=3.10.0"
 
 [[package]]
 name = "databind-json"
-version = "4.3.0"
+version = "4.4.0"
 description = "De-/serialize Python dataclasses to or from JSON payloads. Compatible with Python 3.7 and newer."
 optional = false
 python-versions = ">=3.6.3,<4.0.0"
 files = [
-    {file = "databind.json-4.3.0-py3-none-any.whl", hash = "sha256:b47eead6b1325ed548f26cdad6038abb3d543b22db49ea5ff5885a01ebbb8244"},
-    {file = "databind.json-4.3.0.tar.gz", hash = "sha256:051a6e78c8bee98c7272f73e1e3241448e92992cd15de975ba25fe62c6853645"},
+    {file = "databind.json-4.4.0-py3-none-any.whl", hash = "sha256:df8874118cfba6fd0e77ec3d41a87e04e26034bd545230cab0db1fe904bf1b09"},
+    {file = "databind.json-4.4.0.tar.gz", hash = "sha256:4356afdf0aeefcc053eda0888650c59cc558be2686f08a58324d675ccd023586"},
 ]
 
 [package.dependencies]
-"databind.core" = ">=4.3.0,<5.0.0"
+"databind.core" = ">=4.4.0,<5.0.0"
 nr-date = ">=2.0.0,<3.0.0"
-typeapi = ">=1.4.2,<2.0.0"
+typeapi = ">=2.0.1,<3.0.0"
 typing-extensions = ">=3.10.0"
 
 [[package]]
@@ -1250,19 +1250,19 @@ email = ["email-validator (>=1.0.3)"]
 
 [[package]]
 name = "pydoc-markdown"
-version = "4.8.0"
+version = "4.8.1"
 description = "Create Python API documentation in Markdown format."
 optional = false
 python-versions = ">=3.7,<4.0"
 files = [
-    {file = "pydoc_markdown-4.8.0-py3-none-any.whl", hash = "sha256:8bd177719b112eaf8e74759aea99110cdd72e9f6ae2858fccce721ae2212d157"},
-    {file = "pydoc_markdown-4.8.0.tar.gz", hash = "sha256:b9e0804a8d7611be24919e4852ba54b049594f4936051a0c522ecce0cd91db9c"},
+    {file = "pydoc_markdown-4.8.1-py3-none-any.whl", hash = "sha256:ef7a0f3705c824bd4f9bd6caf3c19039470ce5f866a0b7b0c973a8c937979643"},
+    {file = "pydoc_markdown-4.8.1.tar.gz", hash = "sha256:d185701d045bfb6c35d3566ee2f1be64db48517487aa3502e7c48058feb6cf32"},
 ]
 
 [package.dependencies]
 click = ">=7.1,<9.0"
-"databind.core" = ">=4.3.0,<5.0.0"
-"databind.json" = ">=4.3.0,<5.0.0"
+"databind.core" = ">=4.4.0,<5.0.0"
+"databind.json" = ">=4.4.0,<5.0.0"
 docspec = ">=2.2.1,<3.0.0"
 docspec-python = ">=2.2.1,<3.0.0"
 docstring-parser = ">=0.11,<0.12"
@@ -1814,13 +1814,13 @@ urllib3 = ">=1.26.0"
 
 [[package]]
 name = "typeapi"
-version = "1.4.3"
+version = "2.0.1"
 description = ""
 optional = false
 python-versions = ">=3.6.3,<4.0.0"
 files = [
-    {file = "typeapi-1.4.3-py3-none-any.whl", hash = "sha256:c8c0b45912ebb65946d192556b20a0552143a8ca95b9246d4eb9ebdddda44035"},
-    {file = "typeapi-1.4.3.tar.gz", hash = "sha256:e293417bd04e7d690112b91665a6523d1685ef3f2b9a37a085079bbefe952750"},
+    {file = "typeapi-2.0.1-py3-none-any.whl", hash = "sha256:dfb93c5bd9203534013b96b578d7f10e8c47190fed20383f2d720889cd25787e"},
+    {file = "typeapi-2.0.1.tar.gz", hash = "sha256:eaf31c5164444535b6eb4b9f863bb3a1ebcaa3b5270f550f7c89121c91ec5bf2"},
 ]
 
 [package.dependencies]
