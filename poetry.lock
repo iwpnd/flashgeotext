@@ -1324,13 +1324,13 @@ typing-extensions = [
 
 [[package]]
 name = "pydoc-markdown"
-version = "4.8.1"
+version = "4.8.2"
 description = "Create Python API documentation in Markdown format."
 optional = false
 python-versions = ">=3.7,<4.0"
 files = [
-    {file = "pydoc_markdown-4.8.1-py3-none-any.whl", hash = "sha256:ef7a0f3705c824bd4f9bd6caf3c19039470ce5f866a0b7b0c973a8c937979643"},
-    {file = "pydoc_markdown-4.8.1.tar.gz", hash = "sha256:d185701d045bfb6c35d3566ee2f1be64db48517487aa3502e7c48058feb6cf32"},
+    {file = "pydoc_markdown-4.8.2-py3-none-any.whl", hash = "sha256:203f74119e6bb2f9deba43d452422de7c8ec31955b61e0620fa4dd8c2611715f"},
+    {file = "pydoc_markdown-4.8.2.tar.gz", hash = "sha256:fb6c927e31386de17472d42f9bd3d3be2905977d026f6216881c65145aa67f0b"},
 ]
 
 [package.dependencies]
