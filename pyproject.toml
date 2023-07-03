@@ -28,7 +28,7 @@ include = [
 python = "^3.10.0"
 flashtext = "^2.7"
 loguru = ">=0.5.3"
-pydantic = "^1.8"
+pydantic = ">=1.8,<3.0"
 
 [tool.poetry.group.dev.dependencies]
 markdown-include = "^0.8.0"
