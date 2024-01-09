@@ -40,7 +40,7 @@ class Extract:
         if not self.has_name(name):
             return
 
-        self.data[name].count = self.data[name].count + 1
+        self.data[name].count += 1
 
     def to_dict(self) -> Dict[str, Dict]:
         return {k: v.dict() for k, v in self.data.items()}
