@@ -54,22 +54,27 @@ build_command = "pip install poetry --upgrade && poetry build"
 
 [tool.semantic_release.commit_parser_options]
 allowed_tags = [
-    "build",
-    "chore",
-    "ci",
-    "docs",
     "feat",
     "fix",
+    "refactor",
+    "chore",
+    "build",
+    "ci",
+    "docs",
     "perf",
     "style",
-    "refactor",
     "test",
 ]
 minor_tags = ["feat"]
 patch_tags = ["fix", "perf"]
 
 [tool.semantic_release.changelog]
-exclude_commit_patterns = ["build(deps-dev)", "chore(deps-dev)", "chore:", "ci:"]
+exclude_commit_patterns = [
+  "chore\\(release\\):",
+  "chore\\(deps-dev\\):",
+  "build\\(deps-dev\\):",
+  "ci:",
+]
 
 [tool.mypy]
 ignore_missing_imports = true
