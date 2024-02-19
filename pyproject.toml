@@ -71,6 +71,9 @@ patch_tags = ["fix", "perf"]
 [tool.semantic_release.changelog]
 exclude_commit_patterns = ["build(deps-dev)", "chore(deps-dev)", "chore:", "ci:"]
 
+[tool.mypy]
+ignore_missing_imports = true
+
 [tool.ruff]
 line-length = 88
 

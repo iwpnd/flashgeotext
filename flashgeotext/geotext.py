@@ -43,7 +43,7 @@ class Extract:
         self.data[name].count += 1
 
     def to_dict(self) -> Dict[str, Dict]:
-        return {k: v.dict() for k, v in self.data.items()}
+        return {k: v.model_dump() for k, v in self.data.items()}
 
 
 class GeoText(LookupDataPool):

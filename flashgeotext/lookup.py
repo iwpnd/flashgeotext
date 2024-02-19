@@ -86,7 +86,7 @@ class LookupValidation:
         self.data.error_count = self.data.error_count + 1
 
     def to_dict(self):
-        return self.data.dict()
+        return self.data.model_dump()
 
 
 class LookupData(BaseModel, object):
