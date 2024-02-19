@@ -2,6 +2,142 @@
 
 
 
+## v0.5.2 (2024-02-19)
+
+### Chore
+
+* chore(deps-dev): update ([`3e29c03`](https://github.com/iwpnd/flashgeotext/commit/3e29c03051010e793ae36681beb0fa046af492c9))
+
+* chore(deps-dev): bump ruff from 0.1.15 to 0.2.1
+
+Bumps [ruff](https://github.com/astral-sh/ruff) from 0.1.15 to 0.2.1.
+- [Release notes](https://github.com/astral-sh/ruff/releases)
+- [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/astral-sh/ruff/compare/v0.1.15...v0.2.1)
+
+---
+updated-dependencies:
+- dependency-name: ruff
+  dependency-type: direct:development
+  update-type: version-update:semver-minor
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`d0f4b16`](https://github.com/iwpnd/flashgeotext/commit/d0f4b16a2bdeff3eaab0e3f6e278a8116c3bf328))
+
+* chore(deps): update ([`c77483a`](https://github.com/iwpnd/flashgeotext/commit/c77483acd74223669b71ca7955e7bc5de6426d11))
+
+* chore(deps-dev): update ([`2c23d25`](https://github.com/iwpnd/flashgeotext/commit/2c23d2540348770d619d47a70668949e3e4aa81f))
+
+* chore(deps-dev): pre-commit autoupdate ([`5d41c66`](https://github.com/iwpnd/flashgeotext/commit/5d41c66914a5f658494d38ddbc518bbb4aeb2602))
+
+* chore(deps-dev): update ([`2f0e281`](https://github.com/iwpnd/flashgeotext/commit/2f0e2816ba514638c31e4b20052ae68f81d7a52a))
+
+* chore(deps-dev): update pre-commit ([`fdd9ce2`](https://github.com/iwpnd/flashgeotext/commit/fdd9ce24d04009df34a1b8ffabc540122eace966))
+
+* chore(deps-dev): update dev dependencies ([`193eae6`](https://github.com/iwpnd/flashgeotext/commit/193eae617dcdbeba30bae8f0552dac18f4eba43e))
+
+* chore(deps-dev): bump ruff from 0.1.13 to 0.1.14
+
+Bumps [ruff](https://github.com/astral-sh/ruff) from 0.1.13 to 0.1.14.
+- [Release notes](https://github.com/astral-sh/ruff/releases)
+- [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/astral-sh/ruff/compare/v0.1.13...v0.1.14)
+
+---
+updated-dependencies:
+- dependency-name: ruff
+  dependency-type: direct:development
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`7ba8a2c`](https://github.com/iwpnd/flashgeotext/commit/7ba8a2c428c202be6903f1d3901a60d8210cf0fd))
+
+* chore(deps-dev): bump ruff from 0.1.11 to 0.1.13
+
+Bumps [ruff](https://github.com/astral-sh/ruff) from 0.1.11 to 0.1.13.
+- [Release notes](https://github.com/astral-sh/ruff/releases)
+- [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/astral-sh/ruff/compare/v0.1.11...v0.1.13)
+
+---
+updated-dependencies:
+- dependency-name: ruff
+  dependency-type: direct:development
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`e843a56`](https://github.com/iwpnd/flashgeotext/commit/e843a56ff93f3134be9b4f0d2c58b9049ae25b1b))
+
+* chore(deps): bump actions/cache from 3.3.2 to 3.3.3
+
+Bumps [actions/cache](https://github.com/actions/cache) from 3.3.2 to 3.3.3.
+- [Release notes](https://github.com/actions/cache/releases)
+- [Changelog](https://github.com/actions/cache/blob/main/RELEASES.md)
+- [Commits](https://github.com/actions/cache/compare/v3.3.2...v3.3.3)
+
+---
+updated-dependencies:
+- dependency-name: actions/cache
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`9e8394e`](https://github.com/iwpnd/flashgeotext/commit/9e8394efabfddc7bfb423a767a7d36cc3fbefc07))
+
+* chore(deps-dev): bump jinja2 from 3.1.2 to 3.1.3
+
+Bumps [jinja2](https://github.com/pallets/jinja) from 3.1.2 to 3.1.3.
+- [Release notes](https://github.com/pallets/jinja/releases)
+- [Changelog](https://github.com/pallets/jinja/blob/main/CHANGES.rst)
+- [Commits](https://github.com/pallets/jinja/compare/3.1.2...3.1.3)
+
+---
+updated-dependencies:
+- dependency-name: jinja2
+  dependency-type: indirect
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`9157518`](https://github.com/iwpnd/flashgeotext/commit/91575188e528c3a86caba407ef14fa43c346614b))
+
+* chore(deps): bump actions/checkout from 3 to 4
+
+Bumps [actions/checkout](https://github.com/actions/checkout) from 3 to 4.
+- [Release notes](https://github.com/actions/checkout/releases)
+- [Changelog](https://github.com/actions/checkout/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/actions/checkout/compare/v3...v4)
+
+---
+updated-dependencies:
+- dependency-name: actions/checkout
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`9024604`](https://github.com/iwpnd/flashgeotext/commit/9024604d36a8f4eb3cdea5afe6983ab2f594877a))
+
+* chore(deps): bump python-semantic-release/python-semantic-release
+
+Bumps [python-semantic-release/python-semantic-release](https://github.com/python-semantic-release/python-semantic-release) from 8.0.0 to 8.7.2.
+- [Release notes](https://github.com/python-semantic-release/python-semantic-release/releases)
+- [Changelog](https://github.com/python-semantic-release/python-semantic-release/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/python-semantic-release/python-semantic-release/compare/v8.0.0...v8.7.2)
+
+---
+updated-dependencies:
+- dependency-name: python-semantic-release/python-semantic-release
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`f20a81c`](https://github.com/iwpnd/flashgeotext/commit/f20a81cc2b7ef757f9ac5dfbc4f9fcbbcbc04f67))
+
+### Fix
+
+* fix: use model_dump as per pydantic 2.6 migration guide ([`d60fb27`](https://github.com/iwpnd/flashgeotext/commit/d60fb27ea92851e10e0d2205171bc293a7aef4de))
+
+* fix: use field_validator as per pydantic 2.6 migration guide ([`af2a874`](https://github.com/iwpnd/flashgeotext/commit/af2a8748a015478c866c59a3806e73d859dcf5c2))
+
+
 ## v0.5.1 (2024-01-09)
 
 ### Chore
