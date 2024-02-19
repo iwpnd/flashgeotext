@@ -4,7 +4,7 @@ from typing import Dict, List
 
 from flashtext import KeywordProcessor
 from loguru import logger
-from pydantic import BaseModel, StrictStr, validator
+from pydantic import BaseModel, StrictStr, field_validator
 
 from flashgeotext import settings
 
@@ -115,7 +115,7 @@ class LookupData(BaseModel, object):
     data: dict
     script: StrictStr = "default"
 
-    @validator("script")
+    @field_validator("script")
     def script_must_be_in_scripts(cls, value):
         if value not in settings.SCRIPTS:
             raise ValueError("must be supported script")
