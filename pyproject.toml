@@ -31,7 +31,7 @@ loguru = ">=0.5.3"
 pydantic = "^2.6.2"
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^8.0.2"
+pytest = "^8.1.1"
 pytest-cov = "^4.0.0"
 pre-commit = "^3.6.2"
 black = "^24.2.0"
@@ -39,7 +39,7 @@ gitlint = ">=0.18,<0.20"
 isort = "^5.10.1"
 poethepoet = "^0.25.0"
 python-semantic-release = "^9.1.1"
-ruff = "^0.2.2"
+ruff = "^0.3.2"
 
 [tool.semantic_release]
 version_variables = [
