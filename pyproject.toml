@@ -37,7 +37,7 @@ pre-commit = "^3.7.0"
 gitlint = ">=0.18,<0.20"
 isort = "^5.10.1"
 poethepoet = "^0.26.1"
-python-semantic-release = "^9.6.0"
+python-semantic-release = "^9.7.1"
 ruff = "^0.4.3"
 idna = "^3.7"
 
