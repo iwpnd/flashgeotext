@@ -41,7 +41,7 @@ python-semantic-release = "^9.8.6"
 ruff = "^0.5.7"
 idna = "^3.7"
 requests = "^2.32.3"
-setuptools = "^72.2.0"
+setuptools = ">=72.2,<75.0"
 
 [tool.semantic_release]
 version_variables = [
