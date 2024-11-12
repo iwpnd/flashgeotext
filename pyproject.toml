@@ -41,7 +41,7 @@ python-semantic-release = "^9.14.0"
 ruff = "^0.7.3"
 idna = "^3.10"
 requests = "^2.32.3"
-setuptools = "^75.2.0"
+setuptools = "^75.4.0"
 mypy = "^1.13.0"
 
 [tool.semantic_release]
