@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.5.5 (2025-01-21)
+
+### Bug Fixes
+
+- 🐛 versions
+  ([`4437ee4`](https://github.com/iwpnd/flashgeotext/commit/4437ee436f3b9096a7395ae143aeba374dc61570))
+
+
 ## v0.5.4 (2025-01-20)
 
 ### Build System
