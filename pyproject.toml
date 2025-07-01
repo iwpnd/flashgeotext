@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "flashgeotext"
-version = "1.0.0"
+version = "0.5.5"
 description = "Extract and count countries and cities (+their synonyms) from text"
 authors = ["Benjamin Ramser <ahoi@iwpnd.pw>"]
 license = "MIT"
@@ -50,10 +50,11 @@ version_variables = [
     "pyproject.toml:version",
 ]
 
-commit_subject = "ci: release v{version}"
+commit_message = "ci: release v{version}"
 branch = "master"
 upload_to_release = true
 build_command = "pip install poetry --upgrade && poetry build"
+allow_zero_version = true
 
 [tool.semantic_release.commit_parser_options]
 allowed_tags = [
