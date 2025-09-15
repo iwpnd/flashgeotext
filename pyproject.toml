@@ -32,7 +32,7 @@ pydantic = ">=2.7.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.4"
-pytest-cov = "^6.0.0"
+pytest-cov = ">=6,<8"
 pre-commit = "^4.0.1"
 gitlint = ">=0.18,<0.20"
 isort = ">=5.10.1,<7.0.0"
