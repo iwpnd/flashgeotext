@@ -1,3 +1,5 @@
+default_stages: [pre-commit, pre-push]
+default_install_hook_types: [pre-commit, prepare-commit-msg, commit-msg]
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
@@ -27,3 +29,8 @@ repos:
       - id: ruff
         args: ["--ignore", "E501", "--per-file-ignores", "__init__.py:F401"]
       - id: ruff-format
+  - repo: https://github.com/iwpnd/pre-commit-devmoji
+    rev: v0.0.6
+    hooks:
+      - id: devmoji
+        stages: [prepare-commit-msg]
